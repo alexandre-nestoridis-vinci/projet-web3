@@ -31,25 +31,8 @@ jobs:
         cd frontend
         npm run build
 
-    - name: 🚀 Deploy to Firebase Hosting (Live)
-      uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: '${{ secrets.GITHUB_TOKEN }}'
-        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEWS_APP_API_VINCI }}'
-        channelId: live
-        projectId: news-app-api-vinci
-        entryPoint: ./frontend
-      env:
-        FIREBASE_CLI_EXPERIMENTS: webframeworks
+    - name: 🚀 Deploy to Firebase Hosting
+      run: |
+        cd frontend
+        npx firebase-tools@latest deploy --only hosting --project news-app-api-vinci --token "${{ secrets.FIREBASE_TOKEN }}"
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
-
-    - name: 🔍 Deploy to Firebase Hosting (Preview)
-      uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: '${{ secrets.GITHUB_TOKEN }}'
-        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEWS_APP_API_VINCI }}'
-        projectId: news-app-api-vinci
-        entryPoint: ./frontend
-      env:
-        FIREBASE_CLI_EXPERIMENTS: webframeworks
-      if: github.event_name == 'pull_request'
