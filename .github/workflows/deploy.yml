@@ -32,7 +32,12 @@ jobs:
         npm run build
 
     - name: 🚀 Deploy to Firebase Hosting
-      run: |
-        cd frontend
-        npx firebase-tools@latest deploy --only hosting:news-app-api-vinci --project news-app-api-vinci --token "${{ secrets.FIREBASE_TOKEN }}"
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEWS_APP_API_VINCI }}'
+        channelId: live
+        projectId: news-app-api-vinci
+        entryPoint: ./frontend
+        target: news-app-api-vinci
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
