@@ -1,0 +1,18 @@
+export const environment = {
+  production: false,
+  firebase: {
+    apiKey: "your-api-key",
+    authDomain: "your-project.firebaseapp.com",
+    projectId: "your-project-id",
+    storageBucket: "your-project.appspot.com",
+    messagingSenderId: "123456789",
+    appId: "your-app-id"
+  },
+  newsApi: {
+    key: "your-news-api-key",
+    baseUrl: "https://newsapi.org/v2"
+  },
+  openai: {
+    apiKey: "your-openai-api-key"
+  }
+};
