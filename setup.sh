@@ -15,14 +15,23 @@ if ! command -v node &> /dev/null; then
     exit 1
 fi
 
-NODE_VERSION=$(node --version | sed 's/v//' | cut -d. -f1)
-if [ "$NODE_VERSION" -lt 20 ]; then
-    echo "❌ Node.js $NODE_VERSION détecté - Version trop ancienne"
-    echo "⚠️ Angular nécessite Node.js 20.19+ ou 22.12+"
-    echo "📥 Téléchargez: https://nodejs.org/"
+NODE_FULL_VERSION=$(node --version | sed 's/v//')
+NODE_MAJOR=$(echo $NODE_FULL_VERSION | cut -d. -f1)
+NODE_MINOR=$(echo $NODE_FULL_VERSION | cut -d. -f2)
+
+# Angular 20+ nécessite Node.js 22.12+ minimum
+if [ "$NODE_MAJOR" -lt 22 ]; then
+    echo "❌ Node.js $NODE_FULL_VERSION détecté - Version trop ancienne"
+    echo "⚠️ Angular 20+ nécessite Node.js 22.12+ minimum"
+    echo "📥 Téléchargez Node.js 22 LTS: https://nodejs.org/"
+    exit 1
+elif [ "$NODE_MAJOR" -eq 22 ] && [ "$NODE_MINOR" -lt 12 ]; then
+    echo "❌ Node.js $NODE_FULL_VERSION détecté - Version trop ancienne"
+    echo "⚠️ Angular 20+ nécessite Node.js 22.12+ minimum"
+    echo "📥 Téléchargez Node.js 22 LTS: https://nodejs.org/"
     exit 1
 fi
-echo "✅ Node.js $NODE_VERSION détecté (compatible)"
+echo "✅ Node.js $NODE_FULL_VERSION détecté (compatible Angular 20)"
 
 # Installation Firebase CLI si manquant
 echo "[2/6] 🔥 Vérification Firebase CLI..."

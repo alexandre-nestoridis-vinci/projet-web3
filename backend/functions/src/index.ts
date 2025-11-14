@@ -33,6 +33,16 @@ setGlobalOptions({maxInstances: 10});
 
 // Test de connexion Firestore depuis le backend
 export const testFirestore = onRequest(async (request, response) => {
+  // Headers CORS
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+
+  if (request.method === "OPTIONS") {
+    response.status(204).send("");
+    return;
+  }
+
   try {
     const db = getFirestore();
 
@@ -63,6 +73,16 @@ export const testFirestore = onRequest(async (request, response) => {
 
 // API pour récupérer les news
 export const fetchNews = onRequest(async (request, response) => {
+  // Headers CORS
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+
+  if (request.method === "OPTIONS") {
+    response.status(204).send("");
+    return;
+  }
+
   response.json({
     message: "API News - À implémenter",
     status: "TODO",
@@ -71,6 +91,16 @@ export const fetchNews = onRequest(async (request, response) => {
 
 // API pour traitement IA
 export const processWithAI = onRequest(async (request, response) => {
+  // Headers CORS
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+
+  if (request.method === "OPTIONS") {
+    response.status(204).send("");
+    return;
+  }
+
   response.json({
     message: "API IA - À implémenter",
     status: "TODO",

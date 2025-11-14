@@ -17,16 +17,30 @@ if %errorlevel% neq 0 (
     exit /b 1
 )
 
-for /f "tokens=1 delims=." %%a in ('node --version') do set "major_version=%%a"
+for /f "tokens=1,2 delims=." %%a in ('node --version') do (
+    set "major_version=%%a"
+    set "minor_version=%%b"
+)
 set "major_version=%major_version:v=%"
-if %major_version% LSS 20 (
-    echo ❌ Node.js %major_version% détecté - Version trop ancienne
-    echo ⚠️ Angular nécessite Node.js 20.19+ ou 22.12+
-    echo 📥 Téléchargez: https://nodejs.org/
+
+REM Angular 20+ nécessite Node.js 22.12+ (ou 20.19+ pour Angular 18)
+if %major_version% LSS 22 (
+    echo ❌ Node.js %major_version%.%minor_version% détecté - Version trop ancienne
+    echo ⚠️ Angular 20+ nécessite Node.js 22.12+ minimum
+    echo 📥 Téléchargez Node.js 22 LTS: https://nodejs.org/
     pause
     exit /b 1
 )
-echo ✅ Node.js %major_version% détecté (compatible)
+if %major_version% EQU 22 (
+    if %minor_version% LSS 12 (
+        echo ❌ Node.js %major_version%.%minor_version% détecté - Version trop ancienne  
+        echo ⚠️ Angular 20+ nécessite Node.js 22.12+ minimum
+        echo 📥 Téléchargez Node.js 22 LTS: https://nodejs.org/
+        pause
+        exit /b 1
+    )
+)
+echo ✅ Node.js %major_version%.%minor_version% détecté (compatible Angular 20)
 
 REM Installation Firebase CLI si manquant
 echo [2/6] 🔥 Vérification Firebase CLI...

@@ -11,11 +11,11 @@ export const environment = {
   },
   api: {
     // 🔥 URLs pour production (Firebase Functions déployées)
-    baseUrl: "https://us-central1-news-app-api-vinci.cloudfunctions.net",
+    baseUrl: "", // Base URL vide car chaque fonction a sa propre URL
     endpoints: {
-      testFirestore: "/testFirestore",
-      fetchNews: "/fetchNews",
-      processWithAI: "/processWithAI"
+      testFirestore: "https://testfirestore-4dizaotfxa-uc.a.run.app",
+      fetchNews: "https://fetchnews-4dizaotfxa-uc.a.run.app",
+      processWithAI: "https://processwithai-4dizaotfxa-uc.a.run.app"
     }
   },
   newsApi: {
