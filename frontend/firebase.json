@@ -6,7 +6,8 @@
     "indexes": "firestore.indexes.json"
   },
   "hosting": {
-    "public": "dist/news-app",
+    "site": "news-app-api-vinci",
+    "public": "dist/frontend",
     "ignore": [
       "firebase.json",
       "**/.*",

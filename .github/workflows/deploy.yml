@@ -34,5 +34,5 @@ jobs:
     - name: 🚀 Deploy to Firebase Hosting
       run: |
         cd frontend
-        npx firebase-tools@latest deploy --only hosting --project news-app-api-vinci --token "${{ secrets.FIREBASE_TOKEN }}"
+        npx firebase-tools@latest deploy --only hosting:news-app-api-vinci --project news-app-api-vinci --token "${{ secrets.FIREBASE_TOKEN }}"
       if: github.event_name == 'push' && github.ref == 'refs/heads/main'
