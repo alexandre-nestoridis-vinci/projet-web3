@@ -13,17 +13,19 @@ export class BackendService {
 
   // 🧪 Test de connexion Firestore backend
   testFirestore(): Observable<any> {
-    const url = environment.production 
-      ? environment.api.endpoints.testFirestore // URL complète en prod
-      : `${this.baseUrl}${environment.api.endpoints.testFirestore}`; // baseUrl + endpoint en dev
+    const endpoint = environment.api.endpoints.testFirestore;
+    const url = endpoint.startsWith('http') 
+      ? endpoint // URL complète (prod)
+      : `${this.baseUrl}${endpoint}`; // baseUrl + endpoint (dev)
     return this.http.get(url);
   }
 
   // 📰 Récupération des actualités
   fetchNews(category?: string, limit?: number): Observable<any> {
-    const url = environment.production 
-      ? environment.api.endpoints.fetchNews // URL complète en prod
-      : `${this.baseUrl}${environment.api.endpoints.fetchNews}`; // baseUrl + endpoint en dev
+    const endpoint = environment.api.endpoints.fetchNews;
+    const url = endpoint.startsWith('http') 
+      ? endpoint // URL complète (prod)
+      : `${this.baseUrl}${endpoint}`; // baseUrl + endpoint (dev)
     const params: any = {};
     
     if (category) params.category = category;
@@ -34,9 +36,10 @@ export class BackendService {
 
   // 🤖 Traitement IA d'un article
   processWithAI(articleData: any): Observable<any> {
-    const url = environment.production 
-      ? environment.api.endpoints.processWithAI // URL complète en prod
-      : `${this.baseUrl}${environment.api.endpoints.processWithAI}`; // baseUrl + endpoint en dev
+    const endpoint = environment.api.endpoints.processWithAI;
+    const url = endpoint.startsWith('http') 
+      ? endpoint // URL complète (prod)
+      : `${this.baseUrl}${endpoint}`; // baseUrl + endpoint (dev)
     return this.http.post(url, articleData);
   }
 
