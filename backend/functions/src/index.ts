@@ -10,6 +10,11 @@
 import {setGlobalOptions} from "firebase-functions";
 import {onRequest} from "firebase-functions/https";
 import * as logger from "firebase-functions/logger";
+import {initializeApp} from "firebase-admin/app";
+import {getFirestore} from "firebase-admin/firestore";
+
+// Initialize Firebase Admin
+initializeApp();
 
 // Start writing functions
 // https://firebase.google.com/docs/functions/typescript
@@ -24,9 +29,50 @@ import * as logger from "firebase-functions/logger";
 // functions should each use functions.runWith({ maxInstances: 10 }) instead.
 // In the v1 API, each function can only serve one request per container, so
 // this will be the maximum concurrent request count.
-setGlobalOptions({ maxInstances: 10 });
+setGlobalOptions({maxInstances: 10});
 
-// export const helloWorld = onRequest((request, response) => {
-//   logger.info("Hello logs!", {structuredData: true});
-//   response.send("Hello from Firebase!");
-// });
+// Test de connexion Firestore depuis le backend
+export const testFirestore = onRequest(async (request, response) => {
+  try {
+    const db = getFirestore();
+
+    // Test d'écriture en base
+    const testDoc = {
+      message: "Test depuis Cloud Functions",
+      timestamp: new Date(),
+      source: "backend",
+    };
+
+    const docRef = await db.collection("backend-tests").add(testDoc);
+
+    logger.info("Document ajouté avec ID:", docRef.id);
+
+    response.json({
+      success: true,
+      message: "Connexion Firestore réussie depuis le backend!",
+      docId: docRef.id,
+    });
+  } catch (error) {
+    logger.error("Erreur Firestore:", error);
+    response.status(500).json({
+      success: false,
+      error: "Erreur de connexion Firestore",
+    });
+  }
+});
+
+// API pour récupérer les news
+export const fetchNews = onRequest(async (request, response) => {
+  response.json({
+    message: "API News - À implémenter",
+    status: "TODO",
+  });
+});
+
+// API pour traitement IA
+export const processWithAI = onRequest(async (request, response) => {
+  response.json({
+    message: "API IA - À implémenter",
+    status: "TODO",
+  });
+});

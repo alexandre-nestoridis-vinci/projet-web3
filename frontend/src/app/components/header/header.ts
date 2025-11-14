@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FirebaseService } from '../../services/firebase';
+import { BackendService } from '../../services/backend.service';
 import { NewsArticle, NewsCategory } from '../../models/news.model';
 
 @Component({
@@ -14,7 +15,10 @@ export class HeaderComponent {
   title = 'News AI';
   subtitle = 'Actualités intelligentes avec IA';
 
-  constructor(private firebaseService: FirebaseService) {}
+  constructor(
+    private firebaseService: FirebaseService,
+    private backendService: BackendService
+  ) {}
 
   testFirestore() {
     console.log('🔥 Test de connexion Firestore...');
@@ -49,6 +53,22 @@ export class HeaderComponent {
       error: (error) => {
         console.error('❌ Erreur Firestore:', error);
         alert('❌ Erreur de connexion Firestore. Vérifiez la console.');
+      }
+    });
+  }
+
+  // 🚀 Test du backend API (via émulateurs)
+  testBackendAPI() {
+    console.log('🚀 Test de l\'API Backend...');
+    
+    this.backendService.testFirestore().subscribe({
+      next: (result) => {
+        console.log('✅ API Backend réussie!', result);
+        alert(`🎉 Backend connecté! ${result.message}`);
+      },
+      error: (error) => {
+        console.error('❌ Erreur API Backend:', error);
+        alert('❌ Erreur connexion Backend. Vérifiez que les émulateurs sont démarrés.');
       }
     });
   }

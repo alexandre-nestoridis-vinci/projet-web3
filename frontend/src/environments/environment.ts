@@ -1,5 +1,6 @@
 export const environment = {
   production: false,
+  useEmulators: true, // 🔧 Mode développement local avec émulateurs
   firebase: {
     apiKey: "AIzaSyBL7Y_moxFVhQBmsyLQDwT1H0twCn72TsE",
     authDomain: "news-app-api-vinci.firebaseapp.com",
@@ -7,6 +8,15 @@ export const environment = {
     storageBucket: "news-app-api-vinci.firebasestorage.app",
     messagingSenderId: "118445075960",
     appId: "1:118445075960:web:484e66323f36962babba0d"
+  },
+  api: {
+    // 🚀 URLs pour développement local (émulateurs)
+    baseUrl: "http://127.0.0.1:5001/news-app-api-vinci/us-central1",
+    endpoints: {
+      testFirestore: "/testFirestore",
+      fetchNews: "/fetchNews", 
+      processWithAI: "/processWithAI"
+    }
   },
   newsApi: {
     key: "your-news-api-key",
