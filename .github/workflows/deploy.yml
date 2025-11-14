@@ -2,9 +2,9 @@ name: 🚀 Deploy to Firebase Hosting
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main ]  # Déploiement automatique sur merge vers main
   pull_request:
-    branches: [ main ]
+    branches: [ main ]  # Preview automatique sur PR
 
 jobs:
   build-and-deploy:
@@ -31,7 +31,7 @@ jobs:
         cd frontend
         npm run build
 
-    - name: 🚀 Deploy to Firebase Hosting
+    - name: 🚀 Deploy to Firebase Hosting (Live)
       uses: FirebaseExtended/action-hosting-deploy@v0
       with:
         repoToken: '${{ secrets.GITHUB_TOKEN }}'
@@ -41,3 +41,15 @@ jobs:
         entryPoint: ./frontend
       env:
         FIREBASE_CLI_EXPERIMENTS: webframeworks
+      if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    - name: 🔍 Deploy to Firebase Hosting (Preview)
+      uses: FirebaseExtended/action-hosting-deploy@v0
+      with:
+        repoToken: '${{ secrets.GITHUB_TOKEN }}'
+        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_NEWS_APP_API_VINCI }}'
+        projectId: news-app-api-vinci
+        entryPoint: ./frontend
+      env:
+        FIREBASE_CLI_EXPERIMENTS: webframeworks
+      if: github.event_name == 'pull_request'

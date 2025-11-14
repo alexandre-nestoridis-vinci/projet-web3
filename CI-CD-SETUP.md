@@ -1,8 +1,6 @@
 # 🔥 Configuration CI/CD Firebase
 
-Ce fichier contient les instructions pour configurer le déploiement automatique.
-
-## 🚀 Activation du CI/CD (une seule fois)
+## 🚀 Activation du déploiement automatique (2 minutes)
 
 ### 1. Générer la clé de service Firebase
 
@@ -10,22 +8,40 @@ Ce fichier contient les instructions pour configurer le déploiement automatique
 # Se connecter à Firebase
 firebase login
 
-# Générer la clé de service
-firebase projects:list
+# Aller dans le projet backend
+cd backend
+
+# Générer la clé de service pour GitHub Actions
 firebase init hosting:github
 ```
 
-### 2. Configuration GitHub Secrets
+**Questions à répondre :**
+- Repository GitHub : `alexandre-nestoridis-vinci/projet-web3`
+- Set up workflow for automatic deployment : `Yes`
+- Overwrite existing workflow : `Yes`
 
-Dans votre repo GitHub, allez dans **Settings > Secrets and variables > Actions** et ajoutez :
+### 2. Configuration automatique du secret GitHub
 
-- `FIREBASE_SERVICE_ACCOUNT_NEWS_APP_API_VINCI` : La clé générée par Firebase
+Firebase va automatiquement :
+- ✅ Créer le secret `FIREBASE_SERVICE_ACCOUNT_NEWS_APP_API_VINCI` 
+- ✅ L'ajouter dans **Settings > Secrets and variables > Actions**
+- ✅ Configurer les permissions
 
-### 3. Test du déploiement
+### 3. Alternative manuelle (si auto-config échoue)
+
+1. Allez sur https://console.firebase.google.com/project/news-app-api-vinci/settings/serviceaccounts
+2. Cliquez **Generate new private key** 
+3. Téléchargez le fichier JSON
+4. Dans votre repo GitHub : **Settings > Secrets and variables > Actions**
+5. Cliquez **New repository secret**
+6. Nom : `FIREBASE_SERVICE_ACCOUNT_NEWS_APP_API_VINCI`
+7. Valeur : Copiez tout le contenu du fichier JSON
+
+### 4. Test du déploiement
 
 ```bash
 git add .
-git commit -m "🚀 Configuration CI/CD"
+git commit -m "🚀 Activation CI/CD"
 git push origin main
 ```
 

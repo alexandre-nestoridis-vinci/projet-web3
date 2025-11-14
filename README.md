@@ -41,8 +41,17 @@ npm run dev:frontend  # Angular sur :4200
 npm run dev:backend   # Firebase sur :5001
 ```
 
-### 🚀 Déploiement automatique
+### 🚀 Déploiement
+
+**Option 1 - Manuel (immédiat) :**
 ```bash
+cd frontend && npm run build
+firebase deploy --only hosting
+```
+
+**Option 2 - Automatique :**
+```bash
+# Voir CI-CD-SETUP.md pour configuration
 git push origin main  # → https://news-app-api-vinci.web.app
 ```
 
