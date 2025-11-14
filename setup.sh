@@ -11,9 +11,18 @@ echo ""
 echo "[1/6] 🟢 Vérification Node.js..."
 if ! command -v node &> /dev/null; then
     echo "❌ Node.js manquant - Installez depuis: https://nodejs.org"
+    echo "⚠️ Version requise: Node.js 20.19+ ou 22.12+ (pour Angular)"
     exit 1
 fi
-echo "✅ Node.js détecté: $(node --version)"
+
+NODE_VERSION=$(node --version | sed 's/v//' | cut -d. -f1)
+if [ "$NODE_VERSION" -lt 20 ]; then
+    echo "❌ Node.js $NODE_VERSION détecté - Version trop ancienne"
+    echo "⚠️ Angular nécessite Node.js 20.19+ ou 22.12+"
+    echo "📥 Téléchargez: https://nodejs.org/"
+    exit 1
+fi
+echo "✅ Node.js $NODE_VERSION détecté (compatible)"
 
 # Installation Firebase CLI si manquant
 echo "[2/6] 🔥 Vérification Firebase CLI..."

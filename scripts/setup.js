@@ -25,10 +25,20 @@ function checkPrerequisites() {
   console.log('[1/6] 🔍 Vérification des prérequis...');
   
   try {
-    execSync('node --version', { stdio: 'pipe' });
-    console.log('✅ Node.js détecté');
+    const nodeVersion = execSync('node --version', { stdio: 'pipe', encoding: 'utf8' }).trim();
+    const majorVersion = parseInt(nodeVersion.replace('v', '').split('.')[0]);
+    
+    if (majorVersion < 20) {
+      console.error(`❌ Node.js ${majorVersion} détecté - Version trop ancienne`);
+      console.error('⚠️ Angular nécessite Node.js 20.19+ ou 22.12+');
+      console.error('📥 Téléchargez: https://nodejs.org/');
+      process.exit(1);
+    }
+    
+    console.log(`✅ Node.js ${majorVersion} détecté (compatible)`);
   } catch {
     console.error('❌ Node.js manquant - https://nodejs.org');
+    console.error('⚠️ Version requise: Node.js 20.19+ ou 22.12+ (pour Angular)');
     process.exit(1);
   }
 

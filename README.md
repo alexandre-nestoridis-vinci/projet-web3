@@ -12,6 +12,10 @@ projet-web3/
 
 ## 🚀 Installation ULTRA-RAPIDE (1 commande)
 
+### ⚠️ Prérequis
+- **Node.js 20.19+** ou **22.12+** (requis pour Angular)
+- Git installé
+
 ### 🎯 Setup automatique complet
 ```bash
 git clone https://github.com/alexandre-nestoridis-vinci/projet-web3.git

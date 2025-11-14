@@ -12,10 +12,21 @@ echo [1/6] 🟢 Vérification Node.js...
 node --version >nul 2>&1
 if %errorlevel% neq 0 (
     echo ❌ Node.js manquant - Installez depuis: https://nodejs.org
+    echo ⚠️ Version requise: Node.js 20.19+ ou 22.12+ (pour Angular)
     pause
     exit /b 1
 )
-echo ✅ Node.js détecté
+
+for /f "tokens=1 delims=." %%a in ('node --version') do set "major_version=%%a"
+set "major_version=%major_version:v=%"
+if %major_version% LSS 20 (
+    echo ❌ Node.js %major_version% détecté - Version trop ancienne
+    echo ⚠️ Angular nécessite Node.js 20.19+ ou 22.12+
+    echo 📥 Téléchargez: https://nodejs.org/
+    pause
+    exit /b 1
+)
+echo ✅ Node.js %major_version% détecté (compatible)
 
 REM Installation Firebase CLI si manquant
 echo [2/6] 🔥 Vérification Firebase CLI...
