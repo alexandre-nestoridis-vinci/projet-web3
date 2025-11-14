@@ -13,13 +13,17 @@ export class BackendService {
 
   // 🧪 Test de connexion Firestore backend
   testFirestore(): Observable<any> {
-    const url = environment.api.endpoints.testFirestore;
+    const url = environment.production 
+      ? environment.api.endpoints.testFirestore // URL complète en prod
+      : `${this.baseUrl}${environment.api.endpoints.testFirestore}`; // baseUrl + endpoint en dev
     return this.http.get(url);
   }
 
   // 📰 Récupération des actualités
   fetchNews(category?: string, limit?: number): Observable<any> {
-    const url = environment.api.endpoints.fetchNews;
+    const url = environment.production 
+      ? environment.api.endpoints.fetchNews // URL complète en prod
+      : `${this.baseUrl}${environment.api.endpoints.fetchNews}`; // baseUrl + endpoint en dev
     const params: any = {};
     
     if (category) params.category = category;
@@ -30,7 +34,9 @@ export class BackendService {
 
   // 🤖 Traitement IA d'un article
   processWithAI(articleData: any): Observable<any> {
-    const url = environment.api.endpoints.processWithAI;
+    const url = environment.production 
+      ? environment.api.endpoints.processWithAI // URL complète en prod
+      : `${this.baseUrl}${environment.api.endpoints.processWithAI}`; // baseUrl + endpoint en dev
     return this.http.post(url, articleData);
   }
 

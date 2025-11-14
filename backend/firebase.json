@@ -22,11 +22,12 @@
       "port": 5001
     },
     "firestore": {
-      "port": 8080
+      "port": 9099
     },
     "ui": {
       "enabled": true,
-      "port": 4200
-    }
+      "port": 4000
+    },
+    "singleProjectMode": true
   }
 }
