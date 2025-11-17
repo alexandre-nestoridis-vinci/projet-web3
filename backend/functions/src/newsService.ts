@@ -4,9 +4,9 @@
  */
 
 import crypto from "crypto";
-import { articlesCol } from "./firestore";
-import { analyzeArticle } from "./aiService";
-import { Article } from "./types";
+import {articlesCol} from "./firestore";
+import {analyzeArticle} from "./aiService";
+import {Article} from "./types";
 
 /**
  * Mock news data for development
@@ -19,17 +19,17 @@ const mockNewsByCategory: Record<string, any[]> = {
       description: "Les derniers développements en intelligence artificielle changent la façon dont les entreprises opèrent",
       content: "Les modèles de langue géante comme GPT-4 révolutionnent le développement logiciel. Les entreprises investissent massivement dans l'IA...",
       url: "https://example.com/tech-ai-revolution",
-      source: { name: "Tech News Daily", url: "https://technewsdaily.example.com" },
-      publishedAt: new Date()
+      source: {name: "Tech News Daily", url: "https://technewsdaily.example.com"},
+      publishedAt: new Date(),
     },
     {
       title: "Nouvelle génération de puces informatiques lancée",
       description: "Les fabricants annoncent des puces plus rapides et économes en énergie",
       content: "Les nouvelles architectures de processeurs promettent une augmentation de 40% des performances tout en réduisant la consommation énergétique de 30%...",
       url: "https://example.com/new-chips",
-      source: { name: "Tech News Daily", url: "https://technewsdaily.example.com" },
-      publishedAt: new Date()
-    }
+      source: {name: "Tech News Daily", url: "https://technewsdaily.example.com"},
+      publishedAt: new Date(),
+    },
   ],
   sport: [
     {
@@ -37,9 +37,9 @@ const mockNewsByCategory: Record<string, any[]> = {
       description: "Un match mémorable se termine par une victoire 3-2 face aux rivaux",
       content: "Le match de Ligue 1 d'aujourd'hui a livré un spectacle incroyable avec des buts en succession rapide et des retournements de situation dramatiques...",
       url: "https://example.com/sport-ligue1",
-      source: { name: "Sports Daily", url: "https://sportsdaily.example.com" },
-      publishedAt: new Date()
-    }
+      source: {name: "Sports Daily", url: "https://sportsdaily.example.com"},
+      publishedAt: new Date(),
+    },
   ],
   politique: [
     {
@@ -47,9 +47,9 @@ const mockNewsByCategory: Record<string, any[]> = {
       description: "Une loi majeure concernant la réforme fiscale est approuvée",
       content: "Le Parlement a voté en faveur d'une réforme fiscale complète après des débats intenses. Cette législation affectera millions de citoyens...",
       url: "https://example.com/politics-law",
-      source: { name: "Politics Today", url: "https://politicstoday.example.com" },
-      publishedAt: new Date()
-    }
+      source: {name: "Politics Today", url: "https://politicstoday.example.com"},
+      publishedAt: new Date(),
+    },
   ],
   economie: [
     {
@@ -57,10 +57,10 @@ const mockNewsByCategory: Record<string, any[]> = {
       description: "Les indices boursiers montent sur les perspectives d'une baisse des taux d'intérêt",
       content: "Les marchés financiers mondiaux réagissent positivement aux derniers chiffres d'inflation qui sont plus faibles que prévu. Cela augmente les attentes...",
       url: "https://example.com/economy-market",
-      source: { name: "Finance News", url: "https://financenews.example.com" },
-      publishedAt: new Date()
-    }
-  ]
+      source: {name: "Finance News", url: "https://financenews.example.com"},
+      publishedAt: new Date(),
+    },
+  ],
 };
 
 /**
@@ -99,7 +99,7 @@ export async function fetchNewsByCategory(
 
     if (!existing.empty) {
       const doc = existing.docs[0];
-      await doc.ref.update({ fetchedAt: new Date() });
+      await doc.ref.update({fetchedAt: new Date()});
       continue;
     }
 
@@ -108,10 +108,10 @@ export async function fetchNewsByCategory(
       description,
       content,
       url,
-      source: it.source || { name: "Unknown", url: "" },
+      source: it.source || {name: "Unknown", url: ""},
       publishedAt,
       category: category.toLowerCase(),
-      dedupHash
+      dedupHash,
     };
 
     // Analyze with AI (simple heuristics)
@@ -127,7 +127,7 @@ export async function fetchNewsByCategory(
     // Save to Firestore
     const docRef = await articlesCol.add({
       ...article,
-      fetchedAt: new Date()
+      fetchedAt: new Date(),
     });
     article.id = docRef.id;
     processed.push(article);
