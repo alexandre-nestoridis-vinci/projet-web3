@@ -7,7 +7,6 @@ import axios from "axios";
 import {articlesCol} from "./firestore";
 import {analyzeArticle} from "./aiService";
 import {Article} from "./types";
-import {fetchNewsByCategory} from "./newsService";
 import crypto from "crypto";
 
 // Configuration - À remplir avec ta clé API
@@ -15,15 +14,37 @@ const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 heure
 
+/** Structure de news brute depuis l'IA */
+interface RawNewsItem {
+  title: string;
+  description: string;
+  content: string;
+  url: string;
+  source: string;
+}
+
 /**
  * Récupère les news via Google Gemini (gratuit et simple)
+ * @param {string} category - Catégorie des news
+ * @param {number} limit - Nombre maximum de news
+ * @return {Promise<RawNewsItem[]>} News récupérées
  */
-async function fetchNewsWithGemini(category: string, limit = 5): Promise<any[]> {
+async function fetchNewsWithGemini(
+  category: string,
+  limit = 5
+): Promise<Array<{
+  title: string;
+  description: string;
+  content: string;
+  url: string;
+  source: string;
+}>> {
   if (!GEMINI_API_KEY) {
     throw new Error("GEMINI_API_KEY not configured");
   }
 
-  const prompt = `Donne-moi ${limit} actualités récentes du domaine "${category}" en français.
+  const prompt = `Donne-moi ${limit} actualités récentes du ` +
+    `domaine "${category}" en français.
 Format JSON exact:
 [
   {
@@ -38,8 +59,11 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
 
   try {
     console.log(`Calling Gemini API for category: ${category}`);
+    const url =
+      "https://generativelanguage.googleapis.com/v1beta/models/" +
+      `gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`;
     const response = await axios.post(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
+      url,
       {
         contents: [{
           parts: [{text: prompt}],
@@ -49,7 +73,8 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
     );
 
     console.log("Gemini response received!");
-    const text = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
+    const text =
+      response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
     console.log("Gemini response text:", text.substring(0, 200));
     // Extraire le JSON de la réponse
     const jsonMatch = text.match(/\[[\s\S]*\]/);
@@ -64,13 +89,26 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
 
 /**
  * Récupère les news via OpenAI (meilleure qualité)
+ * @param {string} category - Catégorie des news
+ * @param {number} limit - Nombre maximum de news
+ * @return {Promise<RawNewsItem[]>} News récupérées
  */
-async function fetchNewsWithOpenAI(category: string, limit = 5): Promise<any[]> {
+async function fetchNewsWithOpenAI(
+  category: string,
+  limit = 5
+): Promise<Array<{
+  title: string;
+  description: string;
+  content: string;
+  url: string;
+  source: string;
+}>> {
   if (!OPENAI_API_KEY) {
     throw new Error("OPENAI_API_KEY not configured");
   }
 
-  const prompt = `Donne-moi ${limit} actualités récentes du domaine "${category}" en français.
+  const prompt = `Donne-moi ${limit} actualités récentes du ` +
+    `domaine "${category}" en français.
 Format JSON exact:
 [
   {
@@ -111,6 +149,8 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
 
 /**
  * Vérifie si on doit récupérer les news (cache 1h)
+ * @param {string} category - Catégorie à vérifier
+ * @return {Promise<boolean>} True si fetch nécessaire
  */
 async function shouldFetchNews(category: string): Promise<boolean> {
   try {
@@ -136,6 +176,10 @@ async function shouldFetchNews(category: string): Promise<boolean> {
 
 /**
  * Récupère les news via IA et les stocke dans Firestore
+ * @param {string} category - Catégorie des news
+ * @param {number} limit - Nombre maximum de news
+ * @param {boolean} forceRefresh - Forcer le refresh du cache
+ * @return {Promise<Object>} Résultat de l'opération
  */
 export async function fetchRealNewsWithAI(
   category: string,
@@ -148,12 +192,14 @@ export async function fetchRealNewsWithAI(
       return {
         success: false,
         articles: [],
-        message: "Les news ont déjà été récupérées il y a moins d'1h. Réessaie plus tard.",
+        message:
+          "Les news ont déjà été récupérées il y a moins d'1h. " +
+          "Réessaie plus tard.",
       };
     }
 
-    // Récupérer via IA (utiliser Gemini par défaut, fallback OpenAI, puis mock data)
-    let newsData: any[];
+    // Récupérer via IA (Gemini, fallback OpenAI, mock data)
+    let newsData: RawNewsItem[] | Article[];
     let source = "";
 
     if (GEMINI_API_KEY) {
@@ -169,14 +215,14 @@ export async function fetchRealNewsWithAI(
             newsData = await fetchNewsWithOpenAI(category, limit);
             source = "OpenAI";
           } catch (e2) {
-            console.warn("OpenAI failed, using mock data...");
-            newsData = await fetchNewsByCategory(category, limit);
-            source = "Mock Data";
+            console.warn("OpenAI failed, no data available");
+            newsData = [];
+            source = "No Data";
           }
         } else {
-          console.warn("No OpenAI key, using mock data...");
-          newsData = await fetchNewsByCategory(category, limit);
-          source = "Mock Data";
+          console.warn("No OpenAI key, no data available");
+          newsData = [];
+          source = "No Data";
         }
       }
     } else if (OPENAI_API_KEY) {
@@ -185,14 +231,14 @@ export async function fetchRealNewsWithAI(
         newsData = await fetchNewsWithOpenAI(category, limit);
         source = "OpenAI";
       } catch (e) {
-        console.warn("OpenAI failed, using mock data...");
-        newsData = await fetchNewsByCategory(category, limit);
-        source = "Mock Data";
+        console.warn("OpenAI failed, no data available");
+        newsData = [];
+        source = "No Data";
       }
     } else {
-      console.log("No API keys configured, using mock data...");
-      newsData = await fetchNewsByCategory(category, limit);
-      source = "Mock Data";
+      console.warn("No AI API keys available, no data");
+      newsData = [];
+      source = "No Data";
     }
 
     const addedArticles: Article[] = [];
@@ -202,7 +248,8 @@ export async function fetchRealNewsWithAI(
       const description = item.description || "";
       const content = item.content || description;
       const url = item.url || `https://news.example.com/${crypto.randomBytes(4).toString("hex")}`;
-      const itemSource = item.source || source;
+      const itemSource = typeof item.source === "string" ?
+        item.source : item.source?.name || source;
 
       // Créer un hash pour la déduplication
       const dedupHash = crypto
@@ -256,7 +303,9 @@ export async function fetchRealNewsWithAI(
     return {
       success: true,
       articles: addedArticles,
-      message: `${addedArticles.length} nouvelle(s) news ajoutée(s) pour "${category}" (source: ${source})`,
+      message:
+        `${addedArticles.length} nouvelle(s) news ` +
+        `ajoutée(s) pour "${category}" (source: ${source})`,
     };
   } catch (e) {
     console.error("Error fetching news with AI:", e);

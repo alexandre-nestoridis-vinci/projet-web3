@@ -7,9 +7,13 @@
 import {AnalysisResult, Article} from "./types";
 
 /**
- * Simple sentiment analysis (heuristic-based, no API call)
+ * Analyse le sentiment d'un texte
+ * @param {string} text - Texte à analyser
+ * @return {string} Sentiment: positive, negative ou neutral
  */
-function analyzeSentiment(text: string): "positive" | "negative" | "neutral" {
+function analyzeSentiment(
+  text: string
+): "positive" | "negative" | "neutral" {
   const positiveWords = [
     "excellent", "great", "wonderful", "amazing", "fantastic",
     "good", "positive", "gain", "profit", "success", "better",
@@ -32,6 +36,9 @@ function analyzeSentiment(text: string): "positive" | "negative" | "neutral" {
 
 /**
  * Extract keywords using simple heuristics
+ * @param {string} text - The text to extract keywords from
+ * @param {number} limit - Maximum number of keywords
+ * @return {string[]} Array of extracted keywords
  */
 function extractKeywords(text: string, limit = 5): string[] {
   // Split into words, filter stop words
@@ -52,6 +59,9 @@ function extractKeywords(text: string, limit = 5): string[] {
 
 /**
  * Generate summary using simple extraction
+ * @param {string} text - The text to summarize
+ * @param {number} maxLength - Maximum length of the summary
+ * @return {string} The generated summary
  */
 function generateSummary(text: string, maxLength = 200): string {
   const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
@@ -69,8 +79,12 @@ function generateSummary(text: string, maxLength = 200): string {
 /**
  * Analyze article using simple heuristics
  * TODO: Replace with real ChatGPT/Gemini API when available
+ * @param {Article} article - The article to analyze
+ * @return {Promise<AnalysisResult>} Analysis results
  */
-export async function analyzeArticle(article: Article): Promise<AnalysisResult> {
+export async function analyzeArticle(
+  article: Article
+): Promise<AnalysisResult> {
   const fullText = `${article.title} ${article.description} ${article.content}`;
 
   return {

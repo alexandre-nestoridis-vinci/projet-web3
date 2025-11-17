@@ -6,7 +6,6 @@
 import * as functions from "firebase-functions";
 import express from "express";
 import cors from "cors";
-import {fetchNewsByCategory} from "./newsService";
 import {fetchRealNewsWithAI} from "./aiNewsService";
 import {articlesCol} from "./firestore";
 
@@ -16,26 +15,13 @@ app.use(express.json());
 
 /**
  * POST /api/news/fetch
- * Fetch news by category from external sources
+ * DEPRECATED - Use /api/fetch-ai-news instead
  */
 app.post("/api/news/fetch", async (req, res) => {
-  const category = String(req.body?.category || "technology");
-  const limit = Number(req.body?.limit || 20);
-
-  try {
-    const added = await fetchNewsByCategory(category, limit);
-    res.json({
-      ok: true,
-      addedCount: added.length,
-      added,
-    });
-  } catch (e) {
-    console.error("Fetch error:", e);
-    res.status(500).json({
-      ok: false,
-      error: String(e),
-    });
-  }
+  res.status(410).json({
+    ok: false,
+    message: "This endpoint is deprecated. Use /api/fetch-ai-news instead",
+  });
 });
 
 /**
@@ -58,15 +44,15 @@ app.get("/api/news", async (req, res) => {
     const snap = await query.get();
     const list = snap.docs.map((d) => ({
       id: d.id,
-      ...(d.data() as any),
+      ...(d.data() as FirebaseFirestore.DocumentData),
     }));
 
     res.json({
       ok: true,
       articles: list,
     });
-  } catch (e) {
-    console.error("Get news error:", e);
+  } catch (e: unknown) {
+    console.error("List error:", e);
     res.status(500).json({
       ok: false,
       error: String(e),
@@ -95,7 +81,7 @@ app.get("/api/articles/:id", async (req, res) => {
       ok: true,
       article: {
         id: doc.id,
-        ...(doc.data() as any),
+        ...(doc.data() as FirebaseFirestore.DocumentData),
       },
     });
   } catch (e) {
@@ -154,7 +140,7 @@ app.post("/api/articles/:id/comments", async (req, res) => {
         ...created,
       },
     });
-  } catch (e) {
+  } catch (e: unknown) {
     console.error("Add comment error:", e);
     return res.status(500).json({
       ok: false,
@@ -179,7 +165,7 @@ app.get("/api/articles/:id/comments", async (req, res) => {
     const snap = await commentsRef.get();
     const items = snap.docs.map((d) => ({
       id: d.id,
-      ...(d.data() as any),
+      ...(d.data() as FirebaseFirestore.DocumentData),
     }));
 
     res.json({

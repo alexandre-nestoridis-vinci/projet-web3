@@ -8,11 +8,16 @@ export const getNewsById = async (id: string) => {
   return firestore().collection("news").doc(id).get();
 };
 
-export const addNews = async (news: any) => {
+export const addNews = async (
+  news: FirebaseFirestore.DocumentData
+) => {
   return firestore().collection("news").add(news);
 };
 
-export const updateNews = async (id: string, data: any) => {
+export const updateNews = async (
+  id: string,
+  data: FirebaseFirestore.DocumentData
+) => {
   return firestore().collection("news").doc(id).update(data);
 };
 
