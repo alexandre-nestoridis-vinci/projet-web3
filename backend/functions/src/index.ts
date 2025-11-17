@@ -6,8 +6,8 @@
 import * as functions from "firebase-functions";
 import express from "express";
 import cors from "cors";
-import {fetchRealNewsWithAI} from "./aiNewsService";
-import {articlesCol} from "./firestore";
+import {fetchRealNewsWithAI} from "./services/aiNewsService";
+import {articlesCol} from "./services/firestore";
 
 const app = express();
 app.use(cors({origin: true}));
