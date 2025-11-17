@@ -6,12 +6,12 @@
 import * as functions from "firebase-functions";
 import express from "express";
 import cors from "cors";
-import { fetchNewsByCategory } from "./newsService";
-import { fetchRealNewsWithAI } from "./aiNewsService";
-import { articlesCol } from "./firestore";
+import {fetchNewsByCategory} from "./newsService";
+import {fetchRealNewsWithAI} from "./aiNewsService";
+import {articlesCol} from "./firestore";
 
 const app = express();
-app.use(cors({ origin: true }));
+app.use(cors({origin: true}));
 app.use(express.json());
 
 /**
@@ -27,13 +27,13 @@ app.post("/api/news/fetch", async (req, res) => {
     res.json({
       ok: true,
       addedCount: added.length,
-      added
+      added,
     });
   } catch (e) {
     console.error("Fetch error:", e);
     res.status(500).json({
       ok: false,
-      error: String(e)
+      error: String(e),
     });
   }
 });
@@ -56,20 +56,20 @@ app.get("/api/news", async (req, res) => {
     }
 
     const snap = await query.get();
-    const list = snap.docs.map(d => ({
+    const list = snap.docs.map((d) => ({
       id: d.id,
-      ...(d.data() as any)
+      ...(d.data() as any),
     }));
 
     res.json({
       ok: true,
-      articles: list
+      articles: list,
     });
   } catch (e) {
     console.error("Get news error:", e);
     res.status(500).json({
       ok: false,
-      error: String(e)
+      error: String(e),
     });
   }
 });
@@ -87,7 +87,7 @@ app.get("/api/articles/:id", async (req, res) => {
     if (!doc.exists) {
       return res.status(404).json({
         ok: false,
-        error: "Article not found"
+        error: "Article not found",
       });
     }
 
@@ -95,14 +95,14 @@ app.get("/api/articles/:id", async (req, res) => {
       ok: true,
       article: {
         id: doc.id,
-        ...(doc.data() as any)
-      }
+        ...(doc.data() as any),
+      },
     });
   } catch (e) {
     console.error("Get article error:", e);
     return res.status(500).json({
       ok: false,
-      error: String(e)
+      error: String(e),
     });
   }
 });
@@ -114,14 +114,14 @@ app.get("/api/articles/:id", async (req, res) => {
 app.post("/api/articles/:id/comments", async (req, res) => {
   const articleId = req.params.id;
   const text = String(req.body?.text || "").trim();
-  const authorName = req.body?.authorName
-    ? String(req.body.authorName).trim()
-    : "Anonymous";
+  const authorName = req.body?.authorName ?
+    String(req.body.authorName).trim() :
+    "Anonymous";
 
   if (!text) {
     return res.status(400).json({
       ok: false,
-      error: "Comment text is required"
+      error: "Comment text is required",
     });
   }
 
@@ -131,7 +131,7 @@ app.post("/api/articles/:id/comments", async (req, res) => {
     if (!articleDoc.exists) {
       return res.status(404).json({
         ok: false,
-        error: "Article not found"
+        error: "Article not found",
       });
     }
 
@@ -142,7 +142,7 @@ app.post("/api/articles/:id/comments", async (req, res) => {
     const docRef = await commentsRef.add({
       text,
       authorName: authorName || "Anonymous",
-      createdAt: new Date()
+      createdAt: new Date(),
     });
 
     const created = (await docRef.get()).data();
@@ -151,14 +151,14 @@ app.post("/api/articles/:id/comments", async (req, res) => {
       ok: true,
       comment: {
         id: docRef.id,
-        ...created
-      }
+        ...created,
+      },
     });
   } catch (e) {
     console.error("Add comment error:", e);
     return res.status(500).json({
       ok: false,
-      error: String(e)
+      error: String(e),
     });
   }
 });
@@ -177,20 +177,20 @@ app.get("/api/articles/:id/comments", async (req, res) => {
       .orderBy("createdAt", "asc");
 
     const snap = await commentsRef.get();
-    const items = snap.docs.map(d => ({
+    const items = snap.docs.map((d) => ({
       id: d.id,
-      ...(d.data() as any)
+      ...(d.data() as any),
     }));
 
     res.json({
       ok: true,
-      comments: items
+      comments: items,
     });
   } catch (e) {
     console.error("Get comments error:", e);
     res.status(500).json({
       ok: false,
-      error: String(e)
+      error: String(e),
     });
   }
 });
@@ -212,19 +212,19 @@ app.post("/api/fetch-ai-news", async (req, res) => {
         ok: true,
         message: result.message,
         addedCount: result.articles.length,
-        articles: result.articles
+        articles: result.articles,
       });
     } else {
       return res.status(200).json({
         ok: false,
-        message: result.message
+        message: result.message,
       });
     }
   } catch (e) {
     console.error("Fetch AI news error:", e);
     return res.status(500).json({
       ok: false,
-      error: String(e)
+      error: String(e),
     });
   }
 });
@@ -235,7 +235,7 @@ app.post("/api/fetch-ai-news", async (req, res) => {
 app.get("/api/health", (req, res) => {
   res.json({
     ok: true,
-    message: "News API is running"
+    message: "News API is running",
   });
 });
 

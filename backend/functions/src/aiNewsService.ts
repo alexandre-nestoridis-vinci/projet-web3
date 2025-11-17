@@ -4,10 +4,10 @@
  */
 
 import axios from "axios";
-import { articlesCol } from "./firestore";
-import { analyzeArticle } from "./aiService";
-import { Article } from "./types";
-import { fetchNewsByCategory } from "./newsService";
+import {articlesCol} from "./firestore";
+import {analyzeArticle} from "./aiService";
+import {Article} from "./types";
+import {fetchNewsByCategory} from "./newsService";
 import crypto from "crypto";
 
 // Configuration - À remplir avec ta clé API
@@ -42,10 +42,10 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
       `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${GEMINI_API_KEY}`,
       {
         contents: [{
-          parts: [{ text: prompt }]
-        }]
+          parts: [{text: prompt}],
+        }],
       },
-      { timeout: 30000 }
+      {timeout: 30000}
     );
 
     console.log("Gemini response received!");
@@ -88,13 +88,13 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
       "https://api.openai.com/v1/chat/completions",
       {
         model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: prompt }],
+        messages: [{role: "user", content: prompt}],
         temperature: 0.7,
-        max_tokens: 2000
+        max_tokens: 2000,
       },
       {
-        headers: { Authorization: `Bearer ${OPENAI_API_KEY}` },
-        timeout: 15000
+        headers: {Authorization: `Bearer ${OPENAI_API_KEY}`},
+        timeout: 15000,
       }
     );
 
@@ -148,14 +148,14 @@ export async function fetchRealNewsWithAI(
       return {
         success: false,
         articles: [],
-        message: `Les news ont déjà été récupérées il y a moins d'1h. Réessaie plus tard.`
+        message: "Les news ont déjà été récupérées il y a moins d'1h. Réessaie plus tard.",
       };
     }
 
     // Récupérer via IA (utiliser Gemini par défaut, fallback OpenAI, puis mock data)
     let newsData: any[];
     let source = "";
-    
+
     if (GEMINI_API_KEY) {
       try {
         console.log("Fetching with Gemini...");
@@ -227,10 +227,10 @@ export async function fetchRealNewsWithAI(
         description,
         content,
         url,
-        source: { name: itemSource, url: "" },
+        source: {name: itemSource, url: ""},
         publishedAt: new Date(),
         category: category.toLowerCase(),
-        dedupHash
+        dedupHash,
       };
 
       try {
@@ -246,7 +246,7 @@ export async function fetchRealNewsWithAI(
       const docRef = await articlesCol.add({
         ...article,
         fetchedAt: new Date(),
-        source: { name: itemSource, url: "" }
+        source: {name: itemSource, url: ""},
       });
 
       article.id = docRef.id;
@@ -256,14 +256,14 @@ export async function fetchRealNewsWithAI(
     return {
       success: true,
       articles: addedArticles,
-      message: `${addedArticles.length} nouvelle(s) news ajoutée(s) pour "${category}" (source: ${source})`
+      message: `${addedArticles.length} nouvelle(s) news ajoutée(s) pour "${category}" (source: ${source})`,
     };
   } catch (e) {
     console.error("Error fetching news with AI:", e);
     return {
       success: false,
       articles: [],
-      message: `Erreur: ${String(e)}`
+      message: `Erreur: ${String(e)}`,
     };
   }
 }

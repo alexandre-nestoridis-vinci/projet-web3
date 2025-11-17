@@ -4,7 +4,7 @@
  * In production: integrate with actual OpenAI API
  */
 
-import { AnalysisResult, Article } from "./types";
+import {AnalysisResult, Article} from "./types";
 
 /**
  * Simple sentiment analysis (heuristic-based, no API call)
@@ -13,17 +13,17 @@ function analyzeSentiment(text: string): "positive" | "negative" | "neutral" {
   const positiveWords = [
     "excellent", "great", "wonderful", "amazing", "fantastic",
     "good", "positive", "gain", "profit", "success", "better",
-    "growth", "increase", "improve", "innovation", "advanced"
+    "growth", "increase", "improve", "innovation", "advanced",
   ];
   const negativeWords = [
     "bad", "terrible", "horrible", "awful", "worst",
     "negative", "loss", "fail", "failure", "crisis", "decline",
-    "decrease", "poor", "problem", "danger", "risk"
+    "decrease", "poor", "problem", "danger", "risk",
   ];
 
   const lower = text.toLowerCase();
-  const posCount = positiveWords.filter(w => lower.includes(w)).length;
-  const negCount = negativeWords.filter(w => lower.includes(w)).length;
+  const posCount = positiveWords.filter((w) => lower.includes(w)).length;
+  const negCount = negativeWords.filter((w) => lower.includes(w)).length;
 
   if (posCount > negCount) return "positive";
   if (negCount > posCount) return "negative";
@@ -38,13 +38,13 @@ function extractKeywords(text: string, limit = 5): string[] {
   const stopWords = new Set([
     "a", "an", "and", "are", "as", "at", "be", "by", "for",
     "from", "has", "he", "in", "is", "it", "of", "on", "or",
-    "that", "the", "to", "was", "will", "with", "the"
+    "that", "the", "to", "was", "will", "with", "the",
   ]);
 
   const words = text
     .toLowerCase()
     .split(/\W+/)
-    .filter(w => w.length > 3 && !stopWords.has(w))
+    .filter((w) => w.length > 3 && !stopWords.has(w))
     .slice(0, limit);
 
   return [...new Set(words)];
@@ -54,7 +54,7 @@ function extractKeywords(text: string, limit = 5): string[] {
  * Generate summary using simple extraction
  */
 function generateSummary(text: string, maxLength = 200): string {
-  const sentences = text.split(/[.!?]+/).filter(s => s.trim().length > 0);
+  const sentences = text.split(/[.!?]+/).filter((s) => s.trim().length > 0);
   let summary = "";
   for (const sentence of sentences) {
     if (summary.length + sentence.length <= maxLength) {
@@ -76,6 +76,6 @@ export async function analyzeArticle(article: Article): Promise<AnalysisResult> 
   return {
     summary: generateSummary(fullText),
     sentiment: analyzeSentiment(fullText),
-    keywords: extractKeywords(fullText)
+    keywords: extractKeywords(fullText),
   };
 }
