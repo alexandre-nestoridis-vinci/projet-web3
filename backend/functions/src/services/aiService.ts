@@ -329,16 +329,300 @@ export class AIService {
   }
 
   /**
-   * Statistiques d'analyse IA
-   * @return {Promise<object>} Statistiques détaillées des analyses IA
+   * Détection de fake news avec score de fiabilité
+   * @param {object} article - Article à analyser
+   * @return {Promise<object>} Score et facteurs de fiabilité
+   */
+  async detectFakeNews(article: {
+    title: string;
+    content: string;
+    source: string;
+    url: string;
+  }): Promise<{ score: number; factors: string[]; reliable: boolean }> {
+    try {
+      const factors: string[] = [];
+      let score = 0.5; // Score neutre de base
+
+      // Vérification de la source
+      const reliableSources = [
+        "lemonde.fr",
+        "lefigaro.fr",
+        "lesechos.fr",
+        "franceinfo.fr",
+        "bfmtv.com",
+        "lci.fr",
+        "europe1.fr",
+        "rtl.fr",
+      ];
+
+      const domain = this.extractDomain(article.url);
+      if (reliableSources.some((source) => domain.includes(source))) {
+        score += 0.3;
+        factors.push("Source fiable reconnue");
+      } else {
+        score -= 0.1;
+        factors.push("Source inconnue ou peu fiable");
+      }
+
+      // Analyse du contenu
+      const suspiciousPatterns = [
+        /URGENT|ALERTE|SCANDALE/gi,
+        /100%|GARANTI|PROUVÉ/gi,
+        /ILS NE VEULENT PAS QUE VOUS SACHIEZ/gi,
+        /RÉVÉLATION CHOC/gi,
+      ];
+
+      const fullText = `${article.title} ${article.content}`;
+      let suspiciousCount = 0;
+      suspiciousPatterns.forEach((pattern) => {
+        if (pattern.test(fullText)) {
+          suspiciousCount++;
+        }
+      });
+
+      if (suspiciousCount > 0) {
+        score -= suspiciousCount * 0.1;
+        factors.push(`${suspiciousCount} indicateur(s) de sensationnalisme`);
+      }
+
+      // Vérification de la longueur et qualité
+      if (article.content.length < 200) {
+        score -= 0.15;
+        factors.push("Contenu trop court pour être informatif");
+      }
+
+      if (article.content.length > 1000) {
+        score += 0.1;
+        factors.push("Contenu détaillé et complet");
+      }
+
+      // Vérification des majuscules excessives
+      const upperCaseRatio =
+        (fullText.match(/[A-Z]/g) || []).length / fullText.length;
+      if (upperCaseRatio > 0.15) {
+        score -= 0.2;
+        factors.push("Usage excessif de majuscules");
+      }
+
+      // Vérification des URLs douteuses
+      if (article.url.includes(".tk") || article.url.includes(".ml")) {
+        score -= 0.2;
+        factors.push("Domaine suspect");
+      }
+
+      // Normalisation du score entre 0 et 1
+      score = Math.max(0, Math.min(1, score));
+
+      const reliable = score >= 0.6;
+
+      logger.info(
+        `Analyse fake news - Score: ${score.toFixed(2)}, ` +
+          `Fiable: ${reliable}`
+      );
+
+      return {
+        score: Number(score.toFixed(2)),
+        factors,
+        reliable,
+      };
+    } catch (error) {
+      logger.error("Erreur détection fake news:", error);
+      return {
+        score: 0.5,
+        factors: ["Erreur lors de l'analyse"],
+        reliable: false,
+      };
+    }
+  }
+
+  /**
+   * Classification automatique par catégorie avec ML
+   * @param {string} title - Titre de l'article
+   * @param {string} content - Contenu de l'article
+   * @return {Promise<object>} Catégorie et score de confiance
+   */
+  async classifyCategory(title: string, content: string): Promise<{
+    category: string;
+    confidence: number;
+    alternatives: Array<{ category: string; confidence: number }>;
+  }> {
+    try {
+      const text = `${title} ${content}`.toLowerCase();
+
+      // Dictionnaire de mots-clés par catégorie avec poids
+      const categoryKeywords = {
+        technology: {
+          keywords: [
+            "technologie",
+            "intelligence artificielle",
+            "startup",
+            "digital",
+            "innovation",
+            "internet",
+            "smartphone",
+            "application",
+            "données",
+            "cybersécurité",
+          ],
+          weight: 1,
+        },
+        sports: {
+          keywords: [
+            "football",
+            "tennis",
+            "rugby",
+            "match",
+            "championnat",
+            "équipe",
+            "joueur",
+            "sport",
+            "olympiques",
+            "compétition",
+          ],
+          weight: 1,
+        },
+        politics: {
+          keywords: [
+            "gouvernement",
+            "ministre",
+            "président",
+            "politique",
+            "élection",
+            "député",
+            "sénat",
+            "assemblée",
+            "vote",
+            "réforme",
+          ],
+          weight: 1,
+        },
+        business: {
+          keywords: [
+            "économie",
+            "entreprise",
+            "bourse",
+            "finance",
+            "investissement",
+            "banque",
+            "marché",
+            "cac40",
+            "emploi",
+            "industrie",
+          ],
+          weight: 1,
+        },
+        health: {
+          keywords: [
+            "santé",
+            "médecine",
+            "hôpital",
+            "maladie",
+            "traitement",
+            "vaccin",
+            "épidémie",
+            "médecin",
+            "patient",
+            "thérapie",
+          ],
+          weight: 1,
+        },
+        science: {
+          keywords: [
+            "recherche",
+            "scientifique",
+            "étude",
+            "découverte",
+            "laboratoire",
+            "expérience",
+            "climat",
+            "environnement",
+            "espace",
+            "physique",
+          ],
+          weight: 1,
+        },
+      };
+
+      const scores: Record<string, number> = {};
+
+      // Calcul des scores pour chaque catégorie
+      Object.entries(categoryKeywords).forEach(([category, config]) => {
+        let score = 0;
+        config.keywords.forEach((keyword) => {
+          const regex = new RegExp(`\\b${keyword}\\b`, "gi");
+          const matches = text.match(regex) || [];
+          score += matches.length * config.weight;
+        });
+        scores[category] = score;
+      });
+
+      // Tri par score décroissant
+      const sortedScores = Object.entries(scores)
+        .sort(([, a], [, b]) => b - a)
+        .map(([category, score]) => ({
+          category,
+          confidence: Number(
+            Math.min(score / 10, 1).toFixed(2)
+          ), // Normalisation
+        }));
+
+      const primaryCategory = sortedScores[0] || {
+        category: "general",
+        confidence: 0.5,
+      };
+      const alternatives = sortedScores.slice(1, 3);
+
+      logger.info(
+        `Classification: ${primaryCategory.category} ` +
+          `(${primaryCategory.confidence})`
+      );
+
+      return {
+        category: primaryCategory.category,
+        confidence: primaryCategory.confidence,
+        alternatives,
+      };
+    } catch (error) {
+      logger.error("Erreur classification:", error);
+      return {
+        category: "general",
+        confidence: 0.5,
+        alternatives: [],
+      };
+    }
+  }
+
+  /**
+   * Extraire le domaine d'une URL
+   * @param {string} url - URL complète
+   * @return {string} Domaine extrait
+   */
+  private extractDomain(url: string): string {
+    try {
+      const urlObj = new URL(url);
+      return urlObj.hostname.toLowerCase();
+    } catch {
+      return "";
+    }
+  }
+
+  /**
+   * Obtenir les statistiques IA
+   * @return {Promise<object>} Statistiques complètes
    */
   async getAIStats(): Promise<{
-    totalProcessed: number;
-    successfullyProcessed: number;
-    failedProcessing: number;
+    totalAnalyses: number;
+    successfulAnalyses: number;
+    failedAnalyses: number;
     averageProcessingTime: number;
+    sentimentDistribution: {
+      positive: number;
+      negative: number;
+      neutral: number;
+    };
+    popularKeywords: string[];
+    dailyAnalyses: number;
     successRate: number;
-    dailyProcessing: number;
   }> {
     try {
       const today = new Date();
@@ -373,22 +657,34 @@ export class AIService {
       const dailyProcessing = todayAnalyses.size;
 
       return {
-        totalProcessed,
-        successfullyProcessed,
-        failedProcessing,
+        totalAnalyses: totalProcessed,
+        successfulAnalyses: successfullyProcessed,
+        failedAnalyses: failedProcessing,
         averageProcessingTime,
+        sentimentDistribution: {
+          positive: 0,
+          negative: 0,
+          neutral: 0,
+        },
+        popularKeywords: [],
+        dailyAnalyses: dailyProcessing,
         successRate,
-        dailyProcessing,
       };
     } catch (error) {
       logger.error("Erreur lors du calcul des statistiques IA:", error);
       return {
-        totalProcessed: 0,
-        successfullyProcessed: 0,
-        failedProcessing: 0,
+        totalAnalyses: 0,
+        successfulAnalyses: 0,
+        failedAnalyses: 0,
         averageProcessingTime: 0,
+        sentimentDistribution: {
+          positive: 0,
+          negative: 0,
+          neutral: 0,
+        },
+        popularKeywords: [],
+        dailyAnalyses: 0,
         successRate: 0,
-        dailyProcessing: 0,
       };
     }
   }

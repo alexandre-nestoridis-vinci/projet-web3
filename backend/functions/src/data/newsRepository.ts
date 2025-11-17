@@ -98,7 +98,35 @@ export class NewsRepository {
   async getArticlesByCategory(
     category: string
   ): Promise<NewsArticle[]> {
-    return this.getArticles({category});
+    try {
+      const query = this.db.collection("articles")
+        .where("status", "==", "published")
+        .where("category.id", "==", category)
+        .orderBy("publishedAt", "desc")
+        .limit(50);
+
+      const snapshot = await query.get();
+      const articles: NewsArticle[] = [];
+
+      snapshot.forEach((doc) => {
+        const data = doc.data();
+        articles.push({
+          id: doc.id,
+          ...data,
+          publishedAt: data.publishedAt?.toDate(),
+          createdAt: data.createdAt?.toDate(),
+          updatedAt: data.updatedAt?.toDate(),
+        } as NewsArticle);
+      });
+
+      return articles;
+    } catch (error) {
+      logger.error(
+        `Erreur récupération articles catégorie ${category}:`,
+        error
+      );
+      return [];
+    }
   }
 
   // 🔍 Recherche d'articles avec texte

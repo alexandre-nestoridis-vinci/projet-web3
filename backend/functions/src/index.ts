@@ -77,6 +77,9 @@ export const testFirestore = onRequest(async (request, response) => {
   }
 });
 
+// Import des services pour les catégories
+import {MockDataService} from "./services/mockDataService";
+
 // Services déjà déclarés plus haut
 
 // 📰 API pour récupérer les articles avec filtres
@@ -116,13 +119,31 @@ export const getArticles = onRequest(async (request, response) => {
       status: status as "draft" | "published" | "archived",
     };
 
-    const articles = await newsRepo.getArticles(filter);
+    let articles = await newsRepo.getArticles(filter);
+
+    // Si aucun article, essayer de peupler avec des données de test
+    if (articles.length === 0) {
+      try {
+        const {MockDataService} = await import("./services/mockDataService.js");
+        const mockService = new MockDataService();
+
+        logger.info("Aucun article trouvé - Génération de données de test");
+        await mockService.populateDatabase("all");
+
+        // Re-récupérer les articles
+        articles = await newsRepo.getArticles(filter);
+        logger.info(`${articles.length} articles générés et récupérés`);
+      } catch (popError) {
+        logger.warn("Erreur génération données de test:", popError);
+      }
+    }
 
     response.json({
       success: true,
       data: articles,
       total: articles.length,
       filter,
+      generated: articles.length > 0 ? "Articles disponibles" : "Aucun article",
     });
   } catch (error) {
     logger.error("Erreur getArticles:", error);
@@ -438,4 +459,124 @@ export const processWithAI = onRequest(async (request, response) => {
       "/getAIStats",
     ],
   });
+});
+
+// 📂 API pour récupérer les articles par catégorie
+export const fetchNewsByCategory = onRequest(async (request, response) => {
+  // Headers CORS
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+
+  if (request.method === "OPTIONS") {
+    response.status(204).send("");
+    return;
+  }
+
+  try {
+    const category = request.query.category as string;
+    const limit = Number(request.query.limit) || 10;
+    const force = request.query.force === "true";
+
+    if (!category) {
+      response.status(400).json({
+        success: false,
+        error: "Paramètre 'category' requis",
+      });
+      return;
+    }
+
+    logger.info(`Récupération des news pour la catégorie: ${category}`);
+
+    const mockService = new MockDataService();
+    let articles = await newsRepo.getArticlesByCategory(category);
+
+    // Si pas d'articles ou force refresh, générer des données
+    if (articles.length === 0 || force) {
+      logger.info(`Génération d'articles pour la catégorie: ${category}`);
+
+      const result = await mockService.populateDatabase(category);
+      articles = await newsRepo.getArticlesByCategory(category);
+
+      logger.info(`${result.saved} nouveaux articles créés pour ${category}`);
+    }
+
+    const limitedArticles = articles.slice(0, limit);
+
+    response.json({
+      success: true,
+      data: limitedArticles,
+      category,
+      total: limitedArticles.length,
+      message: `${limitedArticles.length} articles récupérés pour ${category}`,
+    });
+  } catch (error) {
+    logger.error("Erreur récupération catégorie:", error);
+    response.status(500).json({
+      success: false,
+      error: "Erreur lors de la récupération des actualités",
+    });
+  }
+});
+
+// 📂 API pour obtenir toutes les catégories
+export const getCategories = onRequest(async (request, response) => {
+  // Headers CORS
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+
+  if (request.method === "OPTIONS") {
+    response.status(204).send("");
+    return;
+  }
+
+  try {
+    const mockService = new MockDataService();
+    const categories = mockService.getCategories();
+
+    response.json({
+      success: true,
+      data: categories,
+      total: categories.length,
+    });
+  } catch (error) {
+    logger.error("Erreur récupération catégories:", error);
+    response.status(500).json({
+      success: false,
+      error: "Erreur lors de la récupération des catégories",
+    });
+  }
+});
+
+// 📂 API pour peupler toutes les catégories
+export const populateAllCategories = onRequest(async (request, response) => {
+  // Headers CORS
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
+
+  if (request.method === "OPTIONS") {
+    response.status(204).send("");
+    return;
+  }
+
+  try {
+    logger.info("Peuplement de toutes les catégories");
+
+    const mockService = new MockDataService();
+    const result = await mockService.populateDatabase("all");
+
+    response.json({
+      success: true,
+      data: result,
+      message: `${result.saved} articles générés pour toutes les catégories`,
+    });
+  } catch (error) {
+    logger.error("Erreur peuplement complet:", error);
+    response.status(500).json({
+      success: false,
+      error: "Erreur lors du peuplement de la base de données",
+    });
+  }
 });

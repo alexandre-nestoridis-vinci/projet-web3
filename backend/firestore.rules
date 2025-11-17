@@ -1,0 +1,35 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Collection Articles - Lecture publique, écriture admin
+    match /articles/{document} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Collection Catégories - Lecture publique, écriture admin  
+    match /categories/{document} {
+      allow read: if true;
+      allow write: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Collection Analyses IA - Lecture publique, écriture système
+    match /ai_analyses/{document} {
+      allow read: if true;
+      allow write: if request.auth != null;
+    }
+    
+    // Collection Logs de recherche - Écriture publique, lecture admin
+    match /search_logs/{document} {
+      allow create: if true;
+      allow read, update, delete: if request.auth != null && request.auth.token.admin == true;
+    }
+    
+    // Collection Tests backend - Accès complet pour développement
+    match /backend-tests/{document} {
+      allow read, write: if true;
+    }
+  }
+}
