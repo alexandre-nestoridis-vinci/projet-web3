@@ -33,3 +33,19 @@ export interface AnalysisResult {
   sentiment: "positive" | "negative" | "neutral";
   keywords: string[];
 }
+
+/** Structure de news brute depuis l'IA */
+export interface RawNewsItem {
+  title: string;
+  description: string;
+  content: string;
+  url: string;
+  source: string;
+}
+
+/** Résultat de récupération de news */
+export interface FetchNewsResult {
+  success: boolean;
+  articles: Article[];
+  message: string;
+}

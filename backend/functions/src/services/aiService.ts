@@ -4,7 +4,7 @@
  * In production: integrate with actual OpenAI API
  */
 
-import {AnalysisResult, Article} from "./types";
+import {AnalysisResult, Article} from "../types";
 
 /**
  * Analyse le sentiment d'un texte

@@ -3,7 +3,7 @@
  * Kept for potential future fallback scenarios
  */
 
-import {Article} from "./types";
+import {Article} from "../types";
 
 /**
  * Fetch news by category

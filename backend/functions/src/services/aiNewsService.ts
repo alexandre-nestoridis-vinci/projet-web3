@@ -4,24 +4,15 @@
  */
 
 import axios from "axios";
-import {articlesCol} from "./firestore";
 import {analyzeArticle} from "./aiService";
-import {Article} from "./types";
+import {Article, RawNewsItem, FetchNewsResult} from "../types";
+import * as newsRepository from "../data/newsRepository";
 import crypto from "crypto";
 
 // Configuration - À remplir avec ta clé API
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 heure
-
-/** Structure de news brute depuis l'IA */
-interface RawNewsItem {
-  title: string;
-  description: string;
-  content: string;
-  url: string;
-  source: string;
-}
 
 /**
  * Récupère les news via Google Gemini (gratuit et simple)
@@ -32,13 +23,7 @@ interface RawNewsItem {
 async function fetchNewsWithGemini(
   category: string,
   limit = 5
-): Promise<Array<{
-  title: string;
-  description: string;
-  content: string;
-  url: string;
-  source: string;
-}>> {
+): Promise<RawNewsItem[]> {
   if (!GEMINI_API_KEY) {
     throw new Error("GEMINI_API_KEY not configured");
   }
@@ -96,13 +81,7 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
 async function fetchNewsWithOpenAI(
   category: string,
   limit = 5
-): Promise<Array<{
-  title: string;
-  description: string;
-  content: string;
-  url: string;
-  source: string;
-}>> {
+): Promise<RawNewsItem[]> {
   if (!OPENAI_API_KEY) {
     throw new Error("OPENAI_API_KEY not configured");
   }
@@ -148,47 +127,23 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
 }
 
 /**
- * Vérifie si on doit récupérer les news (cache 1h)
- * @param {string} category - Catégorie à vérifier
- * @return {Promise<boolean>} True si fetch nécessaire
- */
-async function shouldFetchNews(category: string): Promise<boolean> {
-  try {
-    const snapshot = await articlesCol
-      .where("category", "==", category)
-      .orderBy("fetchedAt", "desc")
-      .limit(1)
-      .get();
-
-    if (snapshot.empty) return true; // Aucun article, on fetch
-
-    const lastArticle = snapshot.docs[0].data();
-    const lastFetch = lastArticle.fetchedAt?.toDate?.() || new Date(0);
-    const now = new Date();
-
-    // Si plus de 1h depuis le dernier fetch, on refetch
-    return now.getTime() - lastFetch.getTime() > CACHE_DURATION_MS;
-  } catch (e) {
-    console.warn("Error checking cache:", e);
-    return true; // En cas d'erreur, refetch
-  }
-}
-
-/**
  * Récupère les news via IA et les stocke dans Firestore
  * @param {string} category - Catégorie des news
  * @param {number} limit - Nombre maximum de news
  * @param {boolean} forceRefresh - Forcer le refresh du cache
- * @return {Promise<Object>} Résultat de l'opération
+ * @return {Promise<FetchNewsResult>} Résultat de l'opération
  */
 export async function fetchRealNewsWithAI(
   category: string,
   limit = 5,
   forceRefresh = false
-): Promise<{success: boolean; articles: Article[]; message: string}> {
+): Promise<FetchNewsResult> {
   try {
     // Vérifier le cache
-    if (!forceRefresh && !(await shouldFetchNews(category))) {
+    if (!forceRefresh && !(await newsRepository.shouldRefreshNews(
+      category,
+      CACHE_DURATION_MS
+    ))) {
       return {
         success: false,
         articles: [],
@@ -199,7 +154,7 @@ export async function fetchRealNewsWithAI(
     }
 
     // Récupérer via IA (Gemini, fallback OpenAI, mock data)
-    let newsData: RawNewsItem[] | Article[];
+    let newsData: RawNewsItem[];
     let source = "";
 
     if (GEMINI_API_KEY) {
@@ -247,9 +202,10 @@ export async function fetchRealNewsWithAI(
       const title = item.title || "Untitled";
       const description = item.description || "";
       const content = item.content || description;
-      const url = item.url || `https://news.example.com/${crypto.randomBytes(4).toString("hex")}`;
+      const url = item.url ||
+        `https://news.example.com/${crypto.randomBytes(4).toString("hex")}`;
       const itemSource = typeof item.source === "string" ?
-        item.source : item.source?.name || source;
+        item.source : source;
 
       // Créer un hash pour la déduplication
       const dedupHash = crypto
@@ -258,12 +214,9 @@ export async function fetchRealNewsWithAI(
         .digest("hex");
 
       // Vérifier si l'article existe déjà
-      const existing = await articlesCol
-        .where("dedupHash", "==", dedupHash)
-        .limit(1)
-        .get();
+      const exists = await newsRepository.articleExistsByHash(dedupHash);
 
-      if (!existing.empty) {
+      if (exists) {
         console.log(`Article déjà existant: ${title}`);
         continue;
       }
@@ -290,13 +243,8 @@ export async function fetchRealNewsWithAI(
       }
 
       // Sauvegarder dans Firestore
-      const docRef = await articlesCol.add({
-        ...article,
-        fetchedAt: new Date(),
-        source: {name: itemSource, url: ""},
-      });
-
-      article.id = docRef.id;
+      const docId = await newsRepository.addArticle(article);
+      article.id = docId;
       addedArticles.push(article);
     }
 
