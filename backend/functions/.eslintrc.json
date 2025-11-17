@@ -1,0 +1,66 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "@typescript-eslint/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["./tsconfig.json"],
+    "sourceType": "module",
+    "ecmaVersion": 2020
+  },
+  "plugins": [
+    "@typescript-eslint"
+  ],
+  "rules": {
+    // Erreurs critiques de sécurité et logique seulement
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/no-inferrable-types": "off",
+    "no-console": "off",
+    "no-debugger": "error",
+    "no-eval": "error",
+    "no-implied-eval": "error",
+    "no-new-func": "error",
+    "prefer-const": "error",
+    "no-var": "error",
+    
+    // Désactiver toutes les règles de style et documentation
+    "indent": "off",
+    "quotes": "off",
+    "semi": "off",
+    "comma-dangle": "off",
+    "max-len": "off",
+    "linebreak-style": "off",
+    "object-curly-spacing": "off",
+    "space-before-function-paren": "off",
+    "padded-blocks": "off",
+    "no-trailing-spaces": "off",
+    "require-jsdoc": "off",
+    "valid-jsdoc": "off",
+    "camelcase": "off",
+    "new-cap": "off",
+    "spaced-comment": "off",
+    "eol-last": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.test.ts", "**/*.spec.ts"],
+      "rules": {
+        "@typescript-eslint/no-explicit-any": "off"
+      }
+    }
+  ],
+  "ignorePatterns": [
+    "node_modules/",
+    "lib/",
+    "dist/",
+    "*.js"
+  ]
+}

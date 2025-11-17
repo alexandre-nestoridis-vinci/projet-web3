@@ -1,0 +1,240 @@
+<div class="article-detail-page">
+  <!-- Barre de navigation -->
+  <nav class="article-nav">
+    <div class="container">
+      <button (click)="goBack()" class="back-button">
+        <svg class="back-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path>
+        </svg>
+        Retour aux actualités
+      </button>
+      
+      <div class="breadcrumb">
+        <a [routerLink]="['/']">Accueil</a>
+        <span class="breadcrumb-separator">/</span>
+        <span class="breadcrumb-current" *ngIf="article">{{ article.title | slice:0:50 }}...</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Indicateur de chargement -->
+  <div *ngIf="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Chargement de l'article...</p>
+  </div>
+
+  <!-- Message d'erreur -->
+  <div *ngIf="error" class="error-container">
+    <div class="error-message">
+      <svg class="error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span>{{ error }}</span>
+    </div>
+    <button (click)="goBack()" class="retry-button">
+      Retourner à l'accueil
+    </button>
+  </div>
+
+  <!-- Contenu de l'article -->
+  <main *ngIf="!loading && !error && article" class="article-content">
+    <div class="container">
+      
+      <!-- En-tête de l'article -->
+      <header class="article-header">
+        <div class="article-meta">
+          <div class="category-badge" [style.background-color]="getCategoryInfo().color">
+            {{ getCategoryInfo().displayName }}
+          </div>
+          
+          <div class="article-source">{{ article.source }}</div>
+          
+          <div class="article-date">{{ formatDate(article.publishedAt) }}</div>
+          
+          <div *ngIf="article.aiGenerated" class="ai-badge">
+            <svg class="ai-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+            </svg>
+            Généré par IA
+          </div>
+        </div>
+        
+        <h1 class="article-title">{{ article.title }}</h1>
+        
+        <div class="article-summary" *ngIf="article.summary">
+          {{ article.summary }}
+        </div>
+        
+        <!-- Image principale -->
+        <div class="article-image" *ngIf="article.imageUrl">
+          <img 
+            [src]="article.imageUrl" 
+            [alt]="article.title"
+            (error)="$event.target.src='/assets/images/default-news.svg'"
+          />
+        </div>
+      </header>
+
+      <!-- Contenu principal -->
+      <div class="article-body">
+        <article class="article-text">
+          <div [innerHTML]="article.content" class="content"></div>
+        </article>
+
+        <!-- Sidebar avec analyse IA -->
+        <aside class="article-sidebar">
+          
+          <!-- Analyse IA -->
+          <div class="ai-analysis-card">
+            <div class="card-header">
+              <h3>
+                <svg class="ai-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                </svg>
+                Analyse IA
+              </h3>
+              <button 
+                *ngIf="!analysisLoading" 
+                (click)="refreshAnalysis()" 
+                class="refresh-button"
+                title="Actualiser l'analyse"
+              >
+                <svg class="refresh-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+                </svg>
+              </button>
+            </div>
+
+            <!-- Chargement de l'analyse -->
+            <div *ngIf="analysisLoading" class="analysis-loading">
+              <div class="loading-spinner-small"></div>
+              <p>Analyse en cours...</p>
+            </div>
+
+            <!-- Résultats de l'analyse -->
+            <div *ngIf="!analysisLoading && aiAnalysis" class="analysis-results">
+              
+              <!-- Sentiment -->
+              <div class="sentiment-section">
+                <h4>Sentiment</h4>
+                <div class="sentiment-indicator" [class]="getSentimentClass(aiAnalysis.sentiment)">
+                  <span class="sentiment-emoji">{{ getSentimentEmoji(aiAnalysis.sentiment) }}</span>
+                  <span class="sentiment-text">{{ aiAnalysis.sentiment || 'Non analysé' }}</span>
+                </div>
+              </div>
+
+              <!-- Résumé automatique -->
+              <div class="summary-section" *ngIf="aiAnalysis.summary">
+                <h4>Résumé automatique</h4>
+                <p class="ai-summary">{{ aiAnalysis.summary }}</p>
+              </div>
+
+              <!-- Points clés -->
+              <div class="keypoints-section" *ngIf="aiAnalysis.keyPoints && aiAnalysis.keyPoints.length > 0">
+                <h4>Points clés</h4>
+                <ul class="key-points-list">
+                  <li *ngFor="let point of aiAnalysis.keyPoints" class="key-point">
+                    {{ point }}
+                  </li>
+                </ul>
+              </div>
+
+              <!-- Mots-clés -->
+              <div class="keywords-section" *ngIf="aiAnalysis.keywords && aiAnalysis.keywords.length > 0">
+                <h4>Mots-clés</h4>
+                <div class="keywords-tags">
+                  <span *ngFor="let keyword of aiAnalysis.keywords" class="keyword-tag">
+                    {{ keyword }}
+                  </span>
+                </div>
+              </div>
+
+              <!-- Sujets liés -->
+              <div class="topics-section" *ngIf="aiAnalysis.relatedTopics && aiAnalysis.relatedTopics.length > 0">
+                <h4>Sujets liés</h4>
+                <div class="related-topics">
+                  <span *ngFor="let topic of aiAnalysis.relatedTopics" class="topic-tag">
+                    {{ topic }}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Message si pas d'analyse -->
+            <div *ngIf="!analysisLoading && !aiAnalysis" class="no-analysis">
+              <p>Aucune analyse disponible</p>
+              <button (click)="refreshAnalysis()" class="analyze-button">
+                Analyser maintenant
+              </button>
+            </div>
+          </div>
+
+          <!-- Statistiques de l'article -->
+          <div class="article-stats-card">
+            <h3>Statistiques</h3>
+            <div class="stats-grid">
+              <div class="stat-item" *ngIf="article.views">
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                </svg>
+                <div class="stat-content">
+                  <span class="stat-number">{{ article.views }}</span>
+                  <span class="stat-label">Vues</span>
+                </div>
+              </div>
+
+              <div class="stat-item" *ngIf="article.publishedAt">
+                <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                </svg>
+                <div class="stat-content">
+                  <span class="stat-number">{{ formatDate(article.publishedAt).split(' ')[0] }}</span>
+                  <span class="stat-label">Publié</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tags de l'article -->
+          <div class="article-tags-card" *ngIf="article.tags && article.tags.length > 0">
+            <h3>Tags</h3>
+            <div class="tags-container">
+              <span *ngFor="let tag of article.tags" class="article-tag">
+                {{ tag }}
+              </span>
+            </div>
+          </div>
+        </aside>
+      </div>
+
+      <!-- Articles similaires -->
+      <section class="similar-articles" *ngIf="similarArticles && similarArticles.length > 0">
+        <h2>Articles similaires</h2>
+        <div class="similar-grid">
+          <article 
+            *ngFor="let similarArticle of similarArticles" 
+            class="similar-article"
+            (click)="goToArticle(similarArticle.id)"
+          >
+            <div class="similar-image">
+              <img 
+                [src]="similarArticle.imageUrl || '/assets/images/default-news.svg'" 
+                [alt]="similarArticle.title"
+                (error)="$event.target.src='/assets/images/default-news.svg'"
+              />
+            </div>
+            <div class="similar-content">
+              <h3 class="similar-title">{{ similarArticle.title }}</h3>
+              <p class="similar-summary">{{ similarArticle.summary }}</p>
+              <div class="similar-meta">
+                <span class="similar-source">{{ similarArticle.source }}</span>
+                <span class="similar-date">{{ formatDate(similarArticle.publishedAt) }}</span>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

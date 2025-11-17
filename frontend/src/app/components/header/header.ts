@@ -39,9 +39,15 @@ export class HeaderComponent {
       source: 'Test Firebase',
       url: 'https://example.com',
       publishedAt: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      status: 'published',
       aiGenerated: true,
       tags: ['test', 'firebase', 'firestore'],
-      sentiment: 'positive'
+      keywords: ['test', 'firebase', 'firestore'],
+      sentiment: 'positive',
+      views: 0,
+      popularity: 0
     };
 
     // Sauvegarder l'article

@@ -1,0 +1,272 @@
+<div class="home-page">
+  <!-- En-tête avec recherche -->
+  <header class="hero-section">
+    <div class="container">
+      <div class="hero-content">
+        <h1 class="hero-title">
+          <span class="gradient-text">News IA</span>
+        </h1>
+        <p class="hero-subtitle">
+          Actualités intelligentes avec analyse IA en temps réel
+        </p>
+        
+        <!-- Barre de recherche principale -->
+        <div class="search-container">
+          <div class="search-box">
+            <input 
+              type="text" 
+              [(ngModel)]="searchQuery"
+              (input)="onSearchInput()"
+              (keyup.enter)="onSearch()"
+              placeholder="Rechercher dans les actualités..."
+              class="search-input"
+            />
+            <button (click)="onSearch()" class="search-button">
+              <svg class="search-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+              </svg>
+            </button>
+          </div>
+          
+          <!-- Suggestions de recherche -->
+          <div *ngIf="showSuggestions" class="suggestions-dropdown">
+            <div 
+              *ngFor="let suggestion of searchSuggestions" 
+              (click)="useSuggestion(suggestion)"
+              class="suggestion-item"
+            >
+              {{ suggestion }}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Navigation par catégories -->
+  <nav class="categories-nav">
+    <div class="container">
+      <div class="categories-scroll">
+        <button 
+          *ngFor="let category of categories"
+          (click)="filterByCategory(category.id)"
+          [class.active]="selectedCategory === category.id"
+          class="category-button"
+        >
+          <span class="category-name">{{ category.name }}</span>
+          <span *ngIf="getCategoryCount(category.id) > 0" class="category-count">
+            {{ getCategoryCount(category.id) }}
+          </span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Filtres avancés -->
+  <section class="filters-section" *ngIf="!loading">
+    <div class="container">
+      <div class="filters-header">
+        <h3>Filtres</h3>
+        <button (click)="resetFilters()" class="reset-button">
+          Réinitialiser
+        </button>
+      </div>
+      
+      <div class="filters-grid">
+        <!-- Tri -->
+        <div class="filter-group">
+          <label>Trier par</label>
+          <select [(ngModel)]="selectedSort" (change)="applyFilters()" class="filter-select">
+            <option value="publishedAt">Date de publication</option>
+            <option value="popularity">Popularité</option>
+            <option value="views">Nombre de vues</option>
+          </select>
+        </div>
+
+        <!-- Ordre -->
+        <div class="filter-group">
+          <label>Ordre</label>
+          <select [(ngModel)]="sortOrder" (change)="applyFilters()" class="filter-select">
+            <option value="desc">Décroissant</option>
+            <option value="asc">Croissant</option>
+          </select>
+        </div>
+
+        <!-- Source -->
+        <div class="filter-group" *ngIf="sources.length > 0">
+          <label>Source</label>
+          <select [(ngModel)]="selectedSource" (change)="applyFilters()" class="filter-select">
+            <option value="">Toutes les sources</option>
+            <option *ngFor="let source of sources" [value]="source">{{ source }}</option>
+          </select>
+        </div>
+
+        <!-- Date depuis -->
+        <div class="filter-group">
+          <label>Depuis le</label>
+          <input 
+            type="date" 
+            [(ngModel)]="dateFrom" 
+            (change)="applyFilters()" 
+            class="filter-input"
+          />
+        </div>
+
+        <!-- Date jusqu'à -->
+        <div class="filter-group">
+          <label>Jusqu'au</label>
+          <input 
+            type="date" 
+            [(ngModel)]="dateTo" 
+            (change)="applyFilters()" 
+            class="filter-input"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contenu principal -->
+  <main class="main-content">
+    <div class="container">
+      
+      <!-- Indicateur de chargement -->
+      <div *ngIf="loading" class="loading-container">
+        <div class="loading-spinner"></div>
+        <p>Chargement des actualités...</p>
+      </div>
+
+      <!-- Message d'erreur -->
+      <div *ngIf="error" class="error-container">
+        <div class="error-message">
+          <svg class="error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+          </svg>
+          <span>{{ error }}</span>
+        </div>
+        <button (click)="loadArticles()" class="retry-button">
+          Réessayer
+        </button>
+      </div>
+
+      <!-- Grille d'articles -->
+      <div *ngIf="!loading && !error" class="articles-section">
+        
+        <!-- Résultats de recherche -->
+        <div *ngIf="searchQuery" class="search-results-header">
+          <h2>Résultats pour "{{ searchQuery }}"</h2>
+          <p class="results-count">{{ totalItems }} article(s) trouvé(s)</p>
+        </div>
+
+        <!-- Grille d'articles -->
+        <div class="articles-grid">
+          <article 
+            *ngFor="let article of filteredArticles; trackBy: trackByArticleId"
+            class="article-card"
+            [routerLink]="['/article', article.id]"
+          >
+            <!-- Image de l'article -->
+            <div class="article-image">
+              <img 
+                [src]="article.imageUrl || '/assets/images/default-news.svg'" 
+                [alt]="article.title"
+                (error)="$event.target.src='/assets/images/default-news.svg'"
+              />
+              <div class="article-category" [style.background-color]="getCategoryInfo(article.category).color">
+                {{ getCategoryInfo(article.category).displayName }}
+              </div>
+            </div>
+
+            <!-- Contenu de l'article -->
+            <div class="article-content">
+              <div class="article-meta">
+                <span class="article-source">{{ article.source }}</span>
+                <span class="article-date">{{ formatDate(article.publishedAt) }}</span>
+              </div>
+              
+              <h3 class="article-title">{{ article.title }}</h3>
+              
+              <p class="article-summary">{{ article.summary }}</p>
+              
+              <!-- Tags et mots-clés -->
+              <div class="article-tags" *ngIf="article.tags && article.tags.length > 0">
+                <span 
+                  *ngFor="let tag of article.tags.slice(0, 3)" 
+                  class="tag"
+                >
+                  {{ tag }}
+                </span>
+              </div>
+
+              <!-- Footer de l'article -->
+              <div class="article-footer">
+                <div class="article-stats">
+                  <span class="stat" *ngIf="article.views">
+                    <svg class="stat-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                    </svg>
+                    {{ article.views }}
+                  </span>
+                  
+                  <span class="sentiment" [class]="getSentimentClass(article.sentiment)" *ngIf="article.sentiment">
+                    {{ getSentimentEmoji(article.sentiment) }}
+                    {{ article.sentiment }}
+                  </span>
+                </div>
+
+                <div class="article-ai" *ngIf="article.aiGenerated">
+                  <span class="ai-badge">
+                    <svg class="ai-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+                    </svg>
+                    IA
+                  </span>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <!-- Message si aucun article -->
+        <div *ngIf="filteredArticles.length === 0" class="empty-state">
+          <svg class="empty-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+          </svg>
+          <h3>Aucun article trouvé</h3>
+          <p>Essayez de modifier vos critères de recherche ou vos filtres.</p>
+        </div>
+
+        <!-- Pagination -->
+        <nav *ngIf="totalPages > 1" class="pagination-nav">
+          <button 
+            (click)="previousPage()" 
+            [disabled]="currentPage === 1"
+            class="pagination-button"
+          >
+            Précédent
+          </button>
+          
+          <div class="pagination-pages">
+            <button 
+              *ngFor="let page of visiblePages"
+              (click)="goToPage(page)"
+              [class.active]="page === currentPage"
+              class="pagination-page"
+            >
+              {{ page }}
+            </button>
+          </div>
+          
+          <button 
+            (click)="nextPage()" 
+            [disabled]="currentPage === totalPages"
+            class="pagination-button"
+          >
+            Suivant
+          </button>
+        </nav>
+      </div>
+    </div>
+  </main>
+</div>

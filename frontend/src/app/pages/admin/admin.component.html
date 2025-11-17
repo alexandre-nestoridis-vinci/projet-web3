@@ -1,0 +1,307 @@
+<div class="admin-page">
+  <!-- Header -->
+  <header class="admin-header">
+    <div class="container">
+      <div class="header-content">
+        <h1>
+          <svg class="admin-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 00-2-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+          </svg>
+          Dashboard Administrateur
+        </h1>
+        <div class="header-actions">
+          <button (click)="refresh()" class="refresh-button" [disabled]="loading">
+            <svg class="refresh-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+            </svg>
+            Actualiser
+          </button>
+          <a [routerLink]="['/']" class="home-button">
+            <svg class="home-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+            </svg>
+            Accueil
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Indicateur de chargement -->
+  <div *ngIf="loading" class="loading-container">
+    <div class="loading-spinner"></div>
+    <p>Chargement des données...</p>
+  </div>
+
+  <!-- Message d'erreur -->
+  <div *ngIf="error" class="error-container">
+    <div class="error-message">
+      <svg class="error-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+      </svg>
+      <span>{{ error }}</span>
+    </div>
+    <button (click)="refresh()" class="retry-button">
+      Réessayer
+    </button>
+  </div>
+
+  <!-- Contenu principal -->
+  <main *ngIf="!loading && !error" class="admin-content">
+    <div class="container">
+      
+      <!-- Statistiques générales -->
+      <section class="stats-overview">
+        <h2>Vue d'ensemble</h2>
+        <div class="stats-grid">
+          
+          <!-- Total articles -->
+          <div class="stat-card">
+            <div class="stat-icon articles">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <h3>{{ totalArticles }}</h3>
+              <p>Articles publiés</p>
+            </div>
+          </div>
+
+          <!-- Total vues -->
+          <div class="stat-card">
+            <div class="stat-icon views">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <h3>{{ totalViews | number }}</h3>
+              <p>Vues totales</p>
+            </div>
+          </div>
+
+          <!-- Analyses IA -->
+          <div class="stat-card" *ngIf="aiStats">
+            <div class="stat-icon ai">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path>
+              </svg>
+            </div>
+            <div class="stat-content">
+              <h3>{{ aiStats.totalAnalyses }}</h3>
+              <p>Analyses IA</p>
+            </div>
+          </div>
+
+          <!-- Sentiment moyen -->
+          <div class="stat-card">
+            <div class="stat-icon sentiment" [class]="averageSentiment">
+              <span class="sentiment-emoji">{{ getSentimentEmoji(averageSentiment) }}</span>
+            </div>
+            <div class="stat-content">
+              <h3>{{ averageSentiment | titlecase }}</h3>
+              <p>Sentiment moyen</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistiques par catégorie -->
+      <section class="category-stats">
+        <h2>Répartition par catégorie</h2>
+        <div class="category-grid">
+          <div 
+            *ngFor="let stat of categoryStats" 
+            class="category-card"
+            [style.border-left-color]="getCategoryColor(stat.categoryId)"
+          >
+            <div class="category-header">
+              <h3>{{ stat.categoryName }}</h3>
+              <div class="category-badge" [style.background-color]="getCategoryColor(stat.categoryId)">
+                {{ stat.articleCount }}
+              </div>
+            </div>
+            
+            <div class="category-stats-grid">
+              <div class="category-stat">
+                <span class="stat-label">Articles</span>
+                <span class="stat-value">{{ stat.articleCount }}</span>
+              </div>
+              
+              <div class="category-stat" *ngIf="stat.totalViews">
+                <span class="stat-label">Vues</span>
+                <span class="stat-value">{{ stat.totalViews | number }}</span>
+              </div>
+              
+              <div class="category-stat" *ngIf="stat.averagePopularity">
+                <span class="stat-label">Popularité</span>
+                <span class="stat-value">{{ stat.averagePopularity | number:'1.1-1' }}</span>
+              </div>
+            </div>
+            
+            <div class="category-percentage">
+              <div class="percentage-bar">
+                <div 
+                  class="percentage-fill" 
+                  [style.width.%]="getPercentage(stat.articleCount, totalArticles)"
+                  [style.background-color]="getCategoryColor(stat.categoryId)"
+                ></div>
+              </div>
+              <span class="percentage-text">
+                {{ getPercentage(stat.articleCount, totalArticles) }}% du total
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Statistiques IA détaillées -->
+      <section class="ai-stats" *ngIf="aiStats">
+        <h2>Analyse Intelligence Artificielle</h2>
+        
+        <div class="ai-stats-grid">
+          
+          <!-- Performance IA -->
+          <div class="ai-card performance">
+            <h3>
+              <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
+              </svg>
+              Performance
+            </h3>
+            
+            <div class="performance-metrics">
+              <div class="metric">
+                <span class="metric-label">Taux de réussite</span>
+                <span class="metric-value success">{{ aiStats.successRate | number:'1.1-1' }}%</span>
+              </div>
+              
+              <div class="metric">
+                <span class="metric-label">Temps moyen</span>
+                <span class="metric-value">{{ aiStats.averageProcessingTime }}ms</span>
+              </div>
+              
+              <div class="metric">
+                <span class="metric-label">Analyses réussies</span>
+                <span class="metric-value">{{ aiStats.successfulAnalyses }}</span>
+              </div>
+              
+              <div class="metric">
+                <span class="metric-label">Échecs</span>
+                <span class="metric-value error">{{ aiStats.failedAnalyses }}</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Distribution des sentiments -->
+          <div class="ai-card sentiment-distribution">
+            <h3>
+              <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1.01M15 10h1.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+              </svg>
+              Répartition des sentiments
+            </h3>
+            
+            <div class="sentiment-bars">
+              <div class="sentiment-bar">
+                <div class="sentiment-info">
+                  <span class="sentiment-label positive">😊 Positif</span>
+                  <span class="sentiment-count">{{ aiStats.sentimentDistribution.positive }}</span>
+                </div>
+                <div class="bar-container">
+                  <div 
+                    class="bar-fill positive" 
+                    [style.width.%]="getPercentage(aiStats.sentimentDistribution.positive, aiStats.totalAnalyses)"
+                  ></div>
+                </div>
+              </div>
+              
+              <div class="sentiment-bar">
+                <div class="sentiment-info">
+                  <span class="sentiment-label neutral">😐 Neutre</span>
+                  <span class="sentiment-count">{{ aiStats.sentimentDistribution.neutral }}</span>
+                </div>
+                <div class="bar-container">
+                  <div 
+                    class="bar-fill neutral" 
+                    [style.width.%]="getPercentage(aiStats.sentimentDistribution.neutral, aiStats.totalAnalyses)"
+                  ></div>
+                </div>
+              </div>
+              
+              <div class="sentiment-bar">
+                <div class="sentiment-info">
+                  <span class="sentiment-label negative">😔 Négatif</span>
+                  <span class="sentiment-count">{{ aiStats.sentimentDistribution.negative }}</span>
+                </div>
+                <div class="bar-container">
+                  <div 
+                    class="bar-fill negative" 
+                    [style.width.%]="getPercentage(aiStats.sentimentDistribution.negative, aiStats.totalAnalyses)"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mots-clés populaires -->
+          <div class="ai-card popular-keywords">
+            <h3>
+              <svg class="card-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"></path>
+              </svg>
+              Mots-clés populaires
+            </h3>
+            
+            <div class="keywords-cloud" *ngIf="aiStats.popularKeywords && aiStats.popularKeywords.length > 0">
+              <span 
+                *ngFor="let keyword of aiStats.popularKeywords" 
+                class="keyword-tag"
+              >
+                {{ keyword }}
+              </span>
+            </div>
+            
+            <div *ngIf="!aiStats.popularKeywords || aiStats.popularKeywords.length === 0" class="no-keywords">
+              <p>Aucun mot-clé disponible</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Actions rapides -->
+      <section class="quick-actions">
+        <h2>Actions rapides</h2>
+        <div class="actions-grid">
+          
+          <a [routerLink]="['/']" class="action-card">
+            <div class="action-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+              </svg>
+            </div>
+            <div class="action-content">
+              <h3>Voir les articles</h3>
+              <p>Consulter tous les articles publiés</p>
+            </div>
+          </a>
+
+          <button (click)="refresh()" class="action-card button">
+            <div class="action-icon">
+              <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
+              </svg>
+            </div>
+            <div class="action-content">
+              <h3>Actualiser les données</h3>
+              <p>Recharger toutes les statistiques</p>
+            </div>
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+</div>

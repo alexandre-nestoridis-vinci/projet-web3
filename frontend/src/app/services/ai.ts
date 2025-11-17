@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { AINewsAnalysis } from '../models/news.model';
+import { AIAnalysis } from '../models/news.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -13,7 +13,7 @@ export class AiService {
   constructor(private http: HttpClient) { }
 
   // Analyser un article avec l'IA (OpenAI GPT)
-  analyzeNews(content: string): Observable<AINewsAnalysis> {
+  analyzeNews(content: string): Observable<AIAnalysis> {
     // Pour le moment, simulons l'analyse IA
     // Plus tard, vous pourrez intégrer une vraie API IA
     
@@ -29,18 +29,38 @@ export class AiService {
 
     // Simulation d'une réponse IA pour le développement
     return of({
+      id: 'temp-analysis-' + Date.now(),
+      articleId: 'temp-article',
       summary: this.generateSummary(content),
       keyPoints: this.extractKeyPoints(content),
       sentiment: this.analyzeSentiment(content),
-      relatedTopics: this.findRelatedTopics(content)
+      sentimentScore: 0.5,
+      keywords: this.findRelatedTopics(content),
+      relatedTopics: this.findRelatedTopics(content),
+      confidence: 0.8,
+      processingTime: Math.random() * 1000 + 500,
+      createdAt: new Date(),
+      updatedAt: new Date(),
+      processedAt: new Date(),
+      success: true
     }).pipe(
       catchError(error => {
         console.error('Erreur lors de l\'analyse IA:', error);
         return of({
+          id: 'temp-analysis-error',
+          articleId: 'temp-article',
           summary: 'Résumé automatique non disponible.',
           keyPoints: ['Information non disponible'],
           sentiment: 'neutral' as const,
-          relatedTopics: ['actualités']
+          sentimentScore: 0,
+          keywords: ['actualités'],
+          relatedTopics: ['actualités'],
+          confidence: 0,
+          processingTime: 0,
+          createdAt: new Date(),
+          updatedAt: new Date(),
+          processedAt: new Date(),
+          success: false
         });
       })
     );

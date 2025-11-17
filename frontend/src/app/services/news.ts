@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, forkJoin, map, switchMap } from 'rxjs';
-import { NewsArticle, NewsCategory, NewsRequest, AINewsAnalysis } from '../models/news.model';
+import { NewsArticle, NewsCategory, NewsRequest, AIAnalysis } from '../models/news.model';
 import { FirebaseService } from './firebase';
 import { AiService } from './ai';
 import { environment } from '../../environments/environment';
@@ -34,7 +34,7 @@ export class NewsService {
   // Récupérer les news du jour avec IA (version de test avec données simulées)
   fetchTodaysNews(request: NewsRequest): Observable<NewsArticle[]> {
     // Pour l'instant, utilisons des données de test
-    const category = this.getCategoryById(request.category);
+    const category = this.getCategoryById(request.category || 'general');
     const mockArticles = this.generateMockNews(category, request.limit || 5);
     
     return this.aiService.analyzeNews("Article de test").pipe(
@@ -55,10 +55,16 @@ export class NewsService {
         source: 'Source de test',
         url: 'https://example.com',
         publishedAt: new Date(),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        status: 'published',
         aiGenerated: true,
         imageUrl: `https://picsum.photos/400/200?random=${Date.now() + i}`,
         tags: [`${category.name}`, 'test', 'actualité'],
-        sentiment: ['positive', 'neutral', 'negative'][Math.floor(Math.random() * 3)] as any
+        keywords: [`${category.name}`, 'test', 'actualité'],
+        sentiment: ['positive', 'neutral', 'negative'][Math.floor(Math.random() * 3)] as any,
+        views: Math.floor(Math.random() * 1000) + 100,
+        popularity: Math.random()
       });
     }
     
@@ -76,9 +82,15 @@ export class NewsService {
         source: rawArticle.source.name,
         url: rawArticle.url,
         publishedAt: new Date(rawArticle.publishedAt),
+        createdAt: new Date(),
+        updatedAt: new Date(),
+        status: 'published',
         aiGenerated: true,
         imageUrl: rawArticle.urlToImage,
         tags: analysis.relatedTopics,
+        keywords: analysis.keywords || analysis.relatedTopics,
+        views: 0,
+        popularity: 0,
         sentiment: analysis.sentiment
       }))
     );
