@@ -1,108 +1,212 @@
 /**
- * Import function triggers from their respective submodules:
- *
- * import {onCall} from "firebase-functions/v2/https";
- * import {onDocumentWritten} from "firebase-functions/v2/firestore";
- *
- * See a full list of supported triggers at https://firebase.google.com/docs/functions
+ * Backend API - News Application with Comments
+ * Firebase Cloud Functions + Express
  */
 
-import {setGlobalOptions} from "firebase-functions";
-import {onRequest} from "firebase-functions/https";
-import * as logger from "firebase-functions/logger";
-import {initializeApp} from "firebase-admin/app";
-import {getFirestore} from "firebase-admin/firestore";
+import * as functions from "firebase-functions";
+import express from "express";
+import cors from "cors";
+import { fetchNewsByCategory } from "./newsService";
+import { articlesCol } from "./firestore";
 
-// Initialize Firebase Admin
-initializeApp();
+const app = express();
+app.use(cors({ origin: true }));
+app.use(express.json());
 
-// Start writing functions
-// https://firebase.google.com/docs/functions/typescript
+/**
+ * POST /api/news/fetch
+ * Fetch news by category from external sources
+ */
+app.post("/api/news/fetch", async (req, res) => {
+  const category = String(req.body?.category || "technology");
+  const limit = Number(req.body?.limit || 20);
 
-// For cost control, you can set the maximum number of containers that can be
-// running at the same time. This helps mitigate the impact of unexpected
-// traffic spikes by instead downgrading performance. This limit is a
-// per-function limit. You can override the limit for each function using the
-// `maxInstances` option in the function's options, e.g.
-// `onRequest({ maxInstances: 5 }, (req, res) => { ... })`.
-// NOTE: setGlobalOptions does not apply to functions using the v1 API. V1
-// functions should each use functions.runWith({ maxInstances: 10 }) instead.
-// In the v1 API, each function can only serve one request per container, so
-// this will be the maximum concurrent request count.
-setGlobalOptions({maxInstances: 10});
+  try {
+    const added = await fetchNewsByCategory(category, limit);
+    res.json({
+      ok: true,
+      addedCount: added.length,
+      added
+    });
+  } catch (e) {
+    console.error("Fetch error:", e);
+    res.status(500).json({
+      ok: false,
+      error: String(e)
+    });
+  }
+});
 
-// Test de connexion Firestore depuis le backend
-export const testFirestore = onRequest(async (request, response) => {
-  // Headers CORS
-  response.set("Access-Control-Allow-Origin", "*");
-  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  response.set("Access-Control-Allow-Headers", "Content-Type");
+/**
+ * GET /api/news
+ * Retrieve articles, optionally filtered by category
+ */
+app.get("/api/news", async (req, res) => {
+  const category = String(req.query.category || "").trim();
+  const limit = Number(req.query.limit || 20);
 
-  if (request.method === "OPTIONS") {
-    response.status(204).send("");
-    return;
+  try {
+    let query: FirebaseFirestore.Query = articlesCol
+      .orderBy("publishedAt", "desc")
+      .limit(limit);
+
+    if (category) {
+      query = query.where("category", "==", category);
+    }
+
+    const snap = await query.get();
+    const list = snap.docs.map(d => ({
+      id: d.id,
+      ...(d.data() as any)
+    }));
+
+    res.json({
+      ok: true,
+      articles: list
+    });
+  } catch (e) {
+    console.error("Get news error:", e);
+    res.status(500).json({
+      ok: false,
+      error: String(e)
+    });
+  }
+});
+
+/**
+ * GET /api/articles/:id
+ * Get single article by ID
+ */
+app.get("/api/articles/:id", async (req, res) => {
+  const articleId = req.params.id;
+
+  try {
+    const doc = await articlesCol.doc(articleId).get();
+
+    if (!doc.exists) {
+      return res.status(404).json({
+        ok: false,
+        error: "Article not found"
+      });
+    }
+
+    return res.json({
+      ok: true,
+      article: {
+        id: doc.id,
+        ...(doc.data() as any)
+      }
+    });
+  } catch (e) {
+    console.error("Get article error:", e);
+    return res.status(500).json({
+      ok: false,
+      error: String(e)
+    });
+  }
+});
+
+/**
+ * POST /api/articles/:id/comments
+ * Add a comment to an article
+ */
+app.post("/api/articles/:id/comments", async (req, res) => {
+  const articleId = req.params.id;
+  const text = String(req.body?.text || "").trim();
+  const authorName = req.body?.authorName
+    ? String(req.body.authorName).trim()
+    : "Anonymous";
+
+  if (!text) {
+    return res.status(400).json({
+      ok: false,
+      error: "Comment text is required"
+    });
   }
 
   try {
-    const db = getFirestore();
+    // Check if article exists
+    const articleDoc = await articlesCol.doc(articleId).get();
+    if (!articleDoc.exists) {
+      return res.status(404).json({
+        ok: false,
+        error: "Article not found"
+      });
+    }
 
-    // Test d'écriture en base
-    const testDoc = {
-      message: "Test depuis Cloud Functions",
-      timestamp: new Date(),
-      source: "backend",
-    };
-
-    const docRef = await db.collection("backend-tests").add(testDoc);
-
-    logger.info("Document ajouté avec ID:", docRef.id);
-
-    response.json({
-      success: true,
-      message: "Connexion Firestore réussie depuis le backend!",
-      docId: docRef.id,
+    // Add comment to subcollection
+    const commentsRef = articlesCol
+      .doc(articleId)
+      .collection("comments");
+    const docRef = await commentsRef.add({
+      text,
+      authorName: authorName || "Anonymous",
+      createdAt: new Date()
     });
-  } catch (error) {
-    logger.error("Erreur Firestore:", error);
-    response.status(500).json({
-      success: false,
-      error: "Erreur de connexion Firestore",
+
+    const created = (await docRef.get()).data();
+
+    return res.json({
+      ok: true,
+      comment: {
+        id: docRef.id,
+        ...created
+      }
+    });
+  } catch (e) {
+    console.error("Add comment error:", e);
+    return res.status(500).json({
+      ok: false,
+      error: String(e)
     });
   }
 });
 
-// API pour récupérer les news
-export const fetchNews = onRequest(async (request, response) => {
-  // Headers CORS
-  response.set("Access-Control-Allow-Origin", "*");
-  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  response.set("Access-Control-Allow-Headers", "Content-Type");
+/**
+ * GET /api/articles/:id/comments
+ * Get all comments for an article
+ */
+app.get("/api/articles/:id/comments", async (req, res) => {
+  const articleId = req.params.id;
 
-  if (request.method === "OPTIONS") {
-    response.status(204).send("");
-    return;
+  try {
+    const commentsRef = articlesCol
+      .doc(articleId)
+      .collection("comments")
+      .orderBy("createdAt", "asc");
+
+    const snap = await commentsRef.get();
+    const items = snap.docs.map(d => ({
+      id: d.id,
+      ...(d.data() as any)
+    }));
+
+    res.json({
+      ok: true,
+      comments: items
+    });
+  } catch (e) {
+    console.error("Get comments error:", e);
+    res.status(500).json({
+      ok: false,
+      error: String(e)
+    });
   }
+});
 
-  response.json({
-    message: "API News - À implémenter",
-    status: "TODO",
+/**
+ * Health check endpoint
+ */
+app.get("/api/health", (req, res) => {
+  res.json({
+    ok: true,
+    message: "News API is running"
   });
 });
 
-// API pour traitement IA
-export const processWithAI = onRequest(async (request, response) => {
-  // Headers CORS
-  response.set("Access-Control-Allow-Origin", "*");
-  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
-  response.set("Access-Control-Allow-Headers", "Content-Type");
-
-  if (request.method === "OPTIONS") {
-    response.status(204).send("");
-    return;
-  }
-
-  response.json({
-    message: "API IA - À implémenter",
-    status: "TODO",
-  });
-});
+/**
+ * Export the Express app as a Cloud Function
+ */
+export const api = functions
+  .region("europe-west1")
+  .https.onRequest(app);
