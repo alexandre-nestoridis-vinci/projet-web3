@@ -39,7 +39,7 @@ export class NewsService {
     const category = this.getCategoryById(request.category);
     const limit = request.limit || 5;
 
-    return this.backendService.fetchNews(category.name, limit).pipe(
+    return this.backendService.processWithAI(category.name).pipe(
       switchMap((res: any) => {
         console.log(res);
         // backendService.fetchNews peut renvoyer { ok: true, articles: [...] } ou directement un tableau

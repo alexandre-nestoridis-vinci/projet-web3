@@ -11,11 +11,11 @@ export const environment = {
   },
   api: {
     // 🚀 URLs pour développement local (émulateurs)
-    baseUrl: "http://127.0.0.1:5001/news-app-api-vinci/us-central1",
+    baseUrl: "http://127.0.0.1:5001/news-app-api-vinci/us-central1/api",
     endpoints: {
-      testFirestore: "/testFirestore",
-      fetchNews: "/api/api/fetch-ai-news", 
-      processWithAI: "/processWithAI"
+      testFirestore: "/api/health",
+      fetchNews: "/api/news", 
+      processWithAI: "/api/fetch-ai-news"
     }
   },
   newsApi: {
