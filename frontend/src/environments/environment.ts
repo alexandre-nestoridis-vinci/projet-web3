@@ -14,7 +14,7 @@ export const environment = {
     baseUrl: "http://127.0.0.1:5001/news-app-api-vinci/us-central1",
     endpoints: {
       testFirestore: "/testFirestore",
-      fetchNews: "/fetchNews", 
+      fetchNews: "/api/api/fetch-ai-news", 
       processWithAI: "/processWithAI"
     }
   },

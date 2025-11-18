@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, forkJoin, map, switchMap } from 'rxjs';
-import { NewsArticle, NewsCategory, NewsRequest, AINewsAnalysis } from '../models/news.model';
+import { Observable, forkJoin, map, switchMap, of, catchError } from 'rxjs';
+import { NewsArticle, NewsCategory, NewsRequest } from '../models/news.model';
 import { FirebaseService } from './firebase';
 import { AiService } from './ai';
-import { environment } from '../../environments/environment';
+import { BackendService } from './backend.service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,7 +24,8 @@ export class NewsService {
   constructor(
     private http: HttpClient,
     private firebaseService: FirebaseService,
-    private aiService: AiService
+    private aiService: AiService,
+    private backendService: BackendService
   ) { }
 
   getCategories(): NewsCategory[] {
@@ -33,12 +34,33 @@ export class NewsService {
 
   // Récupérer les news du jour avec IA (version de test avec données simulées)
   fetchTodaysNews(request: NewsRequest): Observable<NewsArticle[]> {
-    // Pour l'instant, utilisons des données de test
+    // Récupérer des articles bruts via le backend, puis les analyser un à un
+    console.log(request);
     const category = this.getCategoryById(request.category);
-    const mockArticles = this.generateMockNews(category, request.limit || 5);
-    
-    return this.aiService.analyzeNews("Article de test").pipe(
-      map(() => mockArticles)
+    const limit = request.limit || 5;
+
+    return this.backendService.fetchNews(category.name, limit).pipe(
+      switchMap((res: any) => {
+        console.log(res);
+        // backendService.fetchNews peut renvoyer { ok: true, articles: [...] } ou directement un tableau
+        const rawArticles: any[] = res?.articles || res || [];
+
+        if (!rawArticles || rawArticles.length === 0) {
+          // fallback local
+          return of(this.generateMockNews(category, limit));
+        }
+
+        // limiter au paramètre limit et convertir chaque rawArticle en NewsArticle via processArticleWithAI
+        const slice = rawArticles.slice(0, limit);
+        const observables = slice.map(a => this.processArticleWithAI(a, category));
+
+        // forkJoin attend un array d'observables et émet un tableau de NewsArticle lorsque tous terminent
+        return forkJoin(observables);
+      }),
+      catchError(err => {
+        console.error('Erreur fetchTodaysNews:', err);
+        return of(this.generateMockNews(category, limit));
+      })
     );
   }
 
@@ -66,22 +88,31 @@ export class NewsService {
   }
 
   private processArticleWithAI(rawArticle: any, category: NewsCategory): Observable<NewsArticle> {
-    return this.aiService.analyzeNews(rawArticle.content || rawArticle.description).pipe(
-      map(analysis => ({
-        id: '',
-        title: rawArticle.title,
-        summary: analysis.summary,
-        content: rawArticle.content || rawArticle.description,
-        category: category,
-        source: rawArticle.source.name,
-        url: rawArticle.url,
-        publishedAt: new Date(rawArticle.publishedAt),
-        aiGenerated: true,
-        imageUrl: rawArticle.urlToImage,
-        tags: analysis.relatedTopics,
-        sentiment: analysis.sentiment
-      }))
-    );
+    // Map fields from the rawArticle returned by the backend into NewsArticle
+    const id = rawArticle.id || rawArticle._id || '';
+    const title = rawArticle.title || rawArticle.title || '';
+    const content = rawArticle.content || rawArticle.description || '';
+    const sourceName = (rawArticle.source && (typeof rawArticle.source === 'string' ? rawArticle.source : rawArticle.source.name)) || 'Unknown';
+    const url = rawArticle.url || '';
+    const publishedAt = rawArticle.publishedAt ? new Date(rawArticle.publishedAt) : new Date();
+    const imageUrl = rawArticle.urlToImage || rawArticle.imageUrl || '';
+
+    const mapped: NewsArticle = {
+      id,
+      title,
+      summary: rawArticle.summary || (content ? content.split('.').slice(0, 2).join('. ') : ''),
+      content,
+      category,
+      source: sourceName,
+      url,
+      publishedAt,
+      aiGenerated: Boolean(rawArticle.summary || rawArticle.aiGenerated),
+      imageUrl,
+      tags: rawArticle.keywords || rawArticle.tags || [],
+      sentiment: (rawArticle.sentiment as any) || 'neutral'
+    };
+
+    return of(mapped);
   }
 
   private getCategoryById(categoryId: string): NewsCategory {
