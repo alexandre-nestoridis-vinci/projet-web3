@@ -1,20 +1,24 @@
 /**
  * AI News Fetcher Service
- * Récupère les news réelles via une IA (Gemini ou OpenAI)
+ * Fetches real news via AI (Gemini or OpenAI)
  */
 
 import axios from "axios";
-import {articlesCol} from "./firestore";
-import {analyzeArticle} from "./aiService";
-import {Article} from "./types";
 import crypto from "crypto";
+import {Article} from "../types";
+import {analyzeArticle} from "./aiService";
+import {
+  createArticle,
+  articleExistsByHash,
+  getMostRecentArticleByCategory,
+} from "../data/articleRepository";
 
-// Configuration - À remplir avec ta clé API
+// Configuration - To be filled with API keys
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
-const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 heure
+const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
 
-/** Structure de news brute depuis l'IA */
+/** Raw news item structure from AI */
 interface RawNewsItem {
   title: string;
   description: string;
@@ -24,21 +28,15 @@ interface RawNewsItem {
 }
 
 /**
- * Récupère les news via Google Gemini (gratuit et simple)
- * @param {string} category - Catégorie des news
- * @param {number} limit - Nombre maximum de news
- * @return {Promise<RawNewsItem[]>} News récupérées
+ * Fetch news via Google Gemini (free and simple)
+ * @param {string} category - News category
+ * @param {number} limit - Maximum number of news items
+ * @return {Promise<RawNewsItem[]>} Fetched news
  */
 async function fetchNewsWithGemini(
   category: string,
   limit = 5
-): Promise<Array<{
-  title: string;
-  description: string;
-  content: string;
-  url: string;
-  source: string;
-}>> {
+): Promise<RawNewsItem[]> {
   if (!GEMINI_API_KEY) {
     throw new Error("GEMINI_API_KEY not configured");
   }
@@ -76,7 +74,7 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
     const text =
       response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "";
     console.log("Gemini response text:", text.substring(0, 200));
-    // Extraire le JSON de la réponse
+    // Extract JSON from response
     const jsonMatch = text.match(/\[[\s\S]*\]/);
     if (!jsonMatch) throw new Error("Invalid response format");
 
@@ -88,21 +86,15 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
 }
 
 /**
- * Récupère les news via OpenAI (meilleure qualité)
- * @param {string} category - Catégorie des news
- * @param {number} limit - Nombre maximum de news
- * @return {Promise<RawNewsItem[]>} News récupérées
+ * Fetch news via OpenAI (better quality)
+ * @param {string} category - News category
+ * @param {number} limit - Maximum number of news items
+ * @return {Promise<RawNewsItem[]>} Fetched news
  */
 async function fetchNewsWithOpenAI(
   category: string,
   limit = 5
-): Promise<Array<{
-  title: string;
-  description: string;
-  content: string;
-  url: string;
-  source: string;
-}>> {
+): Promise<RawNewsItem[]> {
   if (!OPENAI_API_KEY) {
     throw new Error("OPENAI_API_KEY not configured");
   }
@@ -148,38 +140,34 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
 }
 
 /**
- * Vérifie si on doit récupérer les news (cache 1h)
- * @param {string} category - Catégorie à vérifier
- * @return {Promise<boolean>} True si fetch nécessaire
+ * Check if news should be fetched (1h cache)
+ * @param {string} category - Category to check
+ * @return {Promise<boolean>} True if fetch is needed
  */
 async function shouldFetchNews(category: string): Promise<boolean> {
   try {
-    const snapshot = await articlesCol
-      .where("category", "==", category)
-      .orderBy("fetchedAt", "desc")
-      .limit(1)
-      .get();
+    const lastArticle = await getMostRecentArticleByCategory(category);
 
-    if (snapshot.empty) return true; // Aucun article, on fetch
+    if (!lastArticle) return true; // No articles, fetch
 
-    const lastArticle = snapshot.docs[0].data();
-    const lastFetch = lastArticle.fetchedAt?.toDate?.() || new Date(0);
+    const lastFetch = lastArticle.fetchedAt ?
+      new Date(lastArticle.fetchedAt) : new Date(0);
     const now = new Date();
 
-    // Si plus de 1h depuis le dernier fetch, on refetch
+    // If more than 1h since last fetch, refetch
     return now.getTime() - lastFetch.getTime() > CACHE_DURATION_MS;
   } catch (e) {
     console.warn("Error checking cache:", e);
-    return true; // En cas d'erreur, refetch
+    return true; // On error, refetch
   }
 }
 
 /**
- * Récupère les news via IA et les stocke dans Firestore
- * @param {string} category - Catégorie des news
- * @param {number} limit - Nombre maximum de news
- * @param {boolean} forceRefresh - Forcer le refresh du cache
- * @return {Promise<Object>} Résultat de l'opération
+ * Fetch news via AI and store in Firestore
+ * @param {string} category - News category
+ * @param {number} limit - Maximum number of news items
+ * @param {boolean} forceRefresh - Force cache refresh
+ * @return {Promise<Object>} Operation result
  */
 export async function fetchRealNewsWithAI(
   category: string,
@@ -187,7 +175,7 @@ export async function fetchRealNewsWithAI(
   forceRefresh = false
 ): Promise<{success: boolean; articles: Article[]; message: string}> {
   try {
-    // Vérifier le cache
+    // Check cache
     if (!forceRefresh && !(await shouldFetchNews(category))) {
       return {
         success: false,
@@ -198,8 +186,8 @@ export async function fetchRealNewsWithAI(
       };
     }
 
-    // Récupérer via IA (Gemini, fallback OpenAI, mock data)
-    let newsData: RawNewsItem[] | Article[];
+    // Fetch via AI (Gemini, fallback OpenAI, no data)
+    let newsData: RawNewsItem[] = [];
     let source = "";
 
     if (GEMINI_API_KEY) {
@@ -247,29 +235,25 @@ export async function fetchRealNewsWithAI(
       const title = item.title || "Untitled";
       const description = item.description || "";
       const content = item.content || description;
-      const url = item.url || `https://news.example.com/${crypto.randomBytes(4).toString("hex")}`;
+      const url = item.url ||
+        `https://news.example.com/${crypto.randomBytes(4).toString("hex")}`;
       const itemSource = typeof item.source === "string" ?
-        item.source : item.source?.name || source;
+        item.source : source;
 
-      // Créer un hash pour la déduplication
+      // Create hash for deduplication
       const dedupHash = crypto
         .createHash("md5")
         .update(`${url}${title}`.substring(0, 1000))
         .digest("hex");
 
-      // Vérifier si l'article existe déjà
-      const existing = await articlesCol
-        .where("dedupHash", "==", dedupHash)
-        .limit(1)
-        .get();
-
-      if (!existing.empty) {
-        console.log(`Article déjà existant: ${title}`);
+      // Check if article already exists
+      if (await articleExistsByHash(dedupHash)) {
+        console.log(`Article already exists: ${title}`);
         continue;
       }
 
-      // Analyser l'article
-      const article: Article = {
+      // Analyze the article
+      const article: Omit<Article, "id"> = {
         title,
         description,
         content,
@@ -278,10 +262,11 @@ export async function fetchRealNewsWithAI(
         publishedAt: new Date(),
         category: category.toLowerCase(),
         dedupHash,
+        fetchedAt: new Date(),
       };
 
       try {
-        const analysis = await analyzeArticle(article);
+        const analysis = await analyzeArticle(article as Article);
         article.summary = analysis.summary;
         article.sentiment = analysis.sentiment;
         article.keywords = analysis.keywords;
@@ -289,15 +274,9 @@ export async function fetchRealNewsWithAI(
         console.warn("AI analysis failed:", e);
       }
 
-      // Sauvegarder dans Firestore
-      const docRef = await articlesCol.add({
-        ...article,
-        fetchedAt: new Date(),
-        source: {name: itemSource, url: ""},
-      });
-
-      article.id = docRef.id;
-      addedArticles.push(article);
+      // Save to Firestore
+      const createdArticle = await createArticle(article);
+      addedArticles.push(createdArticle);
     }
 
     return {
