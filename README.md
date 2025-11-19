@@ -1,131 +1,196 @@
-# 📰 Projet News avec IA - VINCI
+# 📰 News IA - Application d'actualités intelligentes
 
-Site d'actualités avec moteur IA intégré pour analyse et recommandations.
+Application web moderne de consultation d'actualités avec génération automatique via intelligence artificielle (Gemini).
 
-## 🏗️ Architecture
+## 🎯 Description
 
+Application full-stack permettant de :
+- ✅ **Générer automatiquement** des actualités via l'API Gemini AI
+- ✅ **Stocker et organiser** les articles par catégorie (informatique, sport, politique, économie...)
+- ✅ **Analyser le sentiment** de chaque article (positif, négatif, neutre)
+- ✅ **Extraire des mots-clés** et générer des résumés automatiquement
+- ✅ **Déduplication intelligente** pour éviter les doublons
+
+## 🏗️ Architecture Technique
+
+### Frontend (Angular 18)
+- Interface utilisateur moderne et responsive
+- Affichage des articles par catégorie
+- Système de commentaires
+- Intégration temps réel avec Firestore
+
+### Backend (Firebase Cloud Functions)
+- **API REST** avec 7 endpoints
+- **Gemini AI** pour génération de contenu
+- **Firestore** pour stockage NoSQL
+- **Analyse de sentiment** automatique
+- **Cache intelligent** (1h par catégorie)
+
+## 📡 API Endpoints
+
+**Base URL (dev):** `http://127.0.0.1:5001/news-app-api-vinci/us-central1/api/api`
+
+### Endpoints disponibles
 ```
-projet-web3/
-├── frontend/     # Angular 18 (Interface utilisateur)
-└── backend/      # Firebase Functions (API + IA)
+GET  /health                    # Health check
+POST /fetch-ai-news             # Génération de news via Gemini AI ⭐
+GET  /news                      # Liste tous les articles (filtrable)
+GET  /articles/:id              # Détail d'un article
+POST /articles/:id/comments     # Ajouter un commentaire
+GET  /articles/:id/comments     # Récupérer les commentaires
 ```
 
-## 🚀 Installation ULTRA-RAPIDE (1 commande)
-
-### ⚠️ Prérequis
-- **Node.js 20.19+** ou **22.12+** (requis pour Angular)
-- Git installé
-
-### 🎯 Setup automatique complet
+### Exemple d'utilisation
 ```bash
+# Générer 25 news d'informatique
+POST /api/fetch-ai-news
+{
+  "category": "informatique",
+  "limit": 25,
+  "forceRefresh": true
+}
+
+# Récupérer les articles
+GET /api/news?category=informatique&limit=20
+```
+
+## 🤖 Intelligence Artificielle
+
+### Gemini 2.5 Flash
+- Génération de 5-25 articles par requête
+- Prompts optimisés pour news françaises des 2 derniers mois
+- Sources réelles (Le Monde Informatique, ZDNet, Silicon...)
+- Timeout de 30 secondes pour gérer les délais
+- Fallback OpenAI si Gemini échoue
+
+### Analyse automatique
+Chaque article est enrichi avec :
+- **Sentiment** : positive | neutral | negative
+- **Mots-clés** : extraction automatique (top 5)
+- **Résumé** : génération jusqu'à 200 caractères
+
+## 🗄️ Base de données (Firestore)
+
+### Collections
+```
+articles/
+  ├── {id}
+      ├── title: string
+      ├── description: string
+      ├── content: string
+      ├── url: string
+      ├── source: {name, url}
+      ├── category: string
+      ├── sentiment: string
+      ├── keywords: string[]
+      ├── summary: string
+      ├── dedupHash: string (MD5)
+      ├── publishedAt: timestamp
+      └── fetchedAt: timestamp
+
+articles/{id}/comments/
+  ├── {commentId}
+      ├── author: string
+      ├── content: string
+      └── createdAt: timestamp
+```
+
+## 🚀 Installation et démarrage
+
+### Prérequis
+- Node.js 20.19+ ou 22.12+
+- Firebase CLI
+- Clé API Gemini (gratuite)
+
+### Setup rapide
+```bash
+# Clone du projet
 git clone https://github.com/alexandre-nestoridis-vinci/projet-web3.git
 cd projet-web3
 
-# Windows
-.\setup.bat
-
-# Linux/Mac  
-chmod +x setup.sh && ./setup.sh
-
-# Alternative Node.js (multi-plateforme)
+# Installation automatique
 npm run setup
-```
 
-### 🔥 Démarrage développement
-```bash
-# Tout en 1 (Frontend + Backend)
+# Démarrage
 npm run dev
-
-# Ou séparément:
-npm run dev:frontend  # Angular sur :4200
-npm run dev:backend   # Firebase sur :5001
 ```
 
-### 🚀 Déploiement
-
-**Option 1 - Manuel (immédiat) :**
+### Configuration Gemini
 ```bash
-cd frontend && npm run build
-firebase deploy --only hosting
+cd backend/functions
+echo "GEMINI_API_KEY=your_key_here" > .env
 ```
 
-**Option 2 - Automatique :**
+## 🔧 Développement
+
+### Frontend (port 4200)
 ```bash
-# Voir CI-CD-SETUP.md pour configuration
-git push origin main  # → https://news-app-api-vinci.web.app
+npm run dev:frontend
 ```
 
-## 🛠️ Développement
+### Backend (port 5001)
+```bash
+npm run dev:backend
+```
 
-### Frontend (Angular)
-- **Port**: 4200
-- **Commandes**: `ng serve`, `ng build`, `ng test`
-- **Dossier**: `/frontend/src/app/`
+### Tests
+```bash
+# Backend
+cd backend/functions
+npm test
 
-### Backend (Firebase Functions) 
-- **Port**: 5001 (émulé)
-- **Commandes**: `firebase emulators:start`
-- **Dossier**: `/backend/functions/src/`
+# Frontend
+cd frontend
+ng test
+```
 
-### API Endpoints disponibles
-- `GET /testFirestore` - Test connexion base
-- `GET /fetchNews` - Récupération actualités  
-- `POST /processWithAI` - Traitement IA
+## 📊 Fonctionnalités clés
 
-## 👥 Répartition équipe (suggestion)
+### Cache intelligent
+- Durée : 1 heure par catégorie
+- Évite les appels API inutiles
+- Option `forceRefresh` pour bypass
 
-1. **Frontend Components** - Personne A
-2. **Service Angular + API** - Personne B  
-3. **Backend Functions** - Personne C
-4. **IA Integration** - Personne D
-5. **UI/UX + Tests** - Personne E
+### Déduplication
+- Hash MD5 basé sur URL + titre
+- Vérification avant insertion
+- Mise à jour automatique du `fetchedAt` si doublon
 
-## 📦 Dépendances principales
+### Gestion d'erreurs
+- Triple fallback : Gemini → OpenAI → Tableau vide
+- Logs détaillés pour debugging
+- Messages d'erreur explicites
+
+## 🛠️ Technologies utilisées
+
+### Backend
+- **Firebase Cloud Functions** (serverless)
+- **Firestore** (NoSQL)
+- **Express.js** (API REST)
+- **TypeScript** (typage strict)
+- **Gemini AI** (génération contenu)
+- **Axios** (requêtes HTTP)
 
 ### Frontend
-- Angular 18
-- @angular/fire
-- Bootstrap/Angular Material
+- **Angular 18** (framework)
+- **AngularFire** (intégration Firebase)
+- **RxJS** (programmation réactive)
+- **TypeScript**
 
-### Backend  
-- firebase-functions
-- firebase-admin
-- Intégration IA (OpenAI/Claude)
+### Outils
+- **ESLint** (qualité code - 0 erreur)
+- **Firebase Emulator** (dev local)
+- **Git** (versioning)
 
-## 🔥 Firebase Configuration
+## 📈 Performances
 
-**Projet**: `news-app-api-vinci`
-
-### Variables d'environnement
-```typescript
-// frontend/src/environments/environment.ts
-export const environment = {
-  production: false,
-  useEmulators: true, // LOCAL DEV
-  firebase: { /* config */ }
-};
-```
-
-## 📝 TODO Liste
-
-- [ ] Interface composants Angular
-- [ ] Service récupération news  
-- [ ] API endpoints backend
-- [ ] Intégration moteur IA
-- [ ] Tests unitaires
-- [ ] Déploiement Firebase
-
-## 🆘 Problèmes fréquents
-
-### "firebase.json not found"
-→ Vérifier d'être dans `/backend/` pour les commandes Firebase
-
-### Ports occupés  
-→ Changer ports dans `firebase.json` si conflits
-
-### npm install fails
-→ Supprimer `node_modules/` et `package-lock.json`, relancer
+- ⚡ **Cache 1h** : réduit les appels API
+- 🔒 **Déduplication** : évite les doublons
+- 🚀 **Serverless** : scalabilité automatique
+- 💾 **Firestore** : requêtes optimisées (index)
 
 ---
-**Deadline**: Vendredi prochain 📅
-**Équipe**: 5 développeurs
+
+**Projet** : Cours Web3 - VINCI  
+**Stack** : Angular + Firebase + Gemini AI  
+**Équipe** : 5 développeurs
