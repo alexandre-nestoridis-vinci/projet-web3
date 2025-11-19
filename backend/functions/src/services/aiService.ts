@@ -1,15 +1,15 @@
 /**
- * AI Service using OpenAI free tier (via unofficial API or mock)
+ * AI Service - Article analysis using simple heuristics
  * For development: uses simple heuristics instead of real GPT-4
  * In production: integrate with actual OpenAI API
  */
 
-import {AnalysisResult, Article} from "./types";
+import {AnalysisResult, Article} from "../types";
 
 /**
- * Analyse le sentiment d'un texte
- * @param {string} text - Texte à analyser
- * @return {string} Sentiment: positive, negative ou neutral
+ * Analyze sentiment of text
+ * @param {string} text - Text to analyze
+ * @return {string} Sentiment: positive, negative or neutral
  */
 function analyzeSentiment(
   text: string
