@@ -33,6 +33,8 @@ export class App implements OnInit {
   sortOrder: 'newest' | 'oldest' = 'newest';
   // Filtre: source (vide = toutes les sources)
   sourceFilter: string = '';
+  // Texte de recherche pour la liste des sources (affecte uniquement les options affichées)
+  sourceSearchTerm: string = '';
   // Barre de recherche
   searchTerm: string = '';
   allFetchedNews: NewsArticle[] = [];
@@ -338,16 +340,72 @@ export class App implements OnInit {
   // Change source filter (partial match, case-insensitive)
   onSourceFilterChange(value: string) {
     this.sourceFilter = (value || '').trim();
+
+    // If the user explicitly selected the empty option ("Toutes les sources"),
+    // reset the view to show all persisted news globally.
+    if (!this.sourceFilter) {
+      this.activeCategories = [];
+      this.searchActive = false;
+      this.articles = [...this.allFetchedNews];
+      this.suggestionResults = this.allFetchedNews.slice(0, 10);
+      return;
+    }
+
+    // Immediately update displayed articles according to the new source filter.
+    // If a global search is active, re-run the search to apply the source filter.
+    if (this.searchActive) {
+      // Re-apply search filtering which will respect sourceFilter when building results
+      this.onSearchSubmit();
+      return;
+    }
+
+    // If no category is selected (global list), filter from the loaded allFetchedNews
+    const noCategory = !this.activeCategories || this.activeCategories.length === 0;
+    if (noCategory) {
+      if (!this.sourceFilter) {
+        this.articles = [...this.allFetchedNews];
+      } else {
+        const needle = this.sourceFilter.toLowerCase();
+        this.articles = this.allFetchedNews.filter(a => ((a.source || '') + '').toLowerCase().includes(needle));
+      }
+      return;
+    }
+
+    // If category sections are shown, the template calls getArticlesByCategory which
+    // already applies the source filter. Trigger change detection by replacing the
+    // articles array reference (no-op content-wise) so Angular re-evaluates bindings.
+    this.articles = [...this.articles];
+  }
+
+  // Update the source search term used to filter the list of available sources
+  onSourceSearchInput(value: string) {
+    this.sourceSearchTerm = (value || '').trim().toLowerCase();
+    // No immediate change to sourceFilter (user must select an option to apply)
+    // Force change detection for the select options by touching articles array
+    this.articles = [...this.articles];
   }
 
   // Compute available sources from current articles (unique list)
   getAvailableSources(): string[] {
+    // Build the source list from all fetched news so the options are complete
+    // even if the currently-displayed `articles` list is filtered.
     const set = new Set<string>();
-    for (const a of this.articles) {
+    for (const a of this.allFetchedNews) {
       const s = a.source || 'Unknown';
       if (s) set.add(s);
     }
-    return Array.from(set).sort();
+
+    let sources = Array.from(set).sort();
+
+    // If the user is typing a source query, filter the options accordingly
+    if (this.sourceSearchTerm && this.sourceSearchTerm.length > 0) {
+      const filtered = sources.filter(s => s.toLowerCase().includes(this.sourceSearchTerm));
+      // If no match, return an empty array so the template will only show the
+      // default "Toutes les sources" option.
+      return filtered;
+    }
+
+    return sources;
   }
 
   getArticlesByCategory(categoryId: string): NewsArticle[] {
