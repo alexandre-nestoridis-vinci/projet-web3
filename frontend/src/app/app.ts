@@ -11,13 +11,14 @@ import { NewsArticle, NewsCategory } from './models/news.model';
 
 @Component({
   selector: 'app-root',
+  standalone: true, // Ajouté 'standalone: true' si ce n'était pas le cas
   imports: [
     RouterOutlet, 
     CommonModule,
     HeaderComponent, 
     NewsSectionComponent, 
-    CategoryFilterComponent
-    , NewsCardComponent
+    CategoryFilterComponent,
+    NewsCardComponent
   ],
   templateUrl: './app.html',
   styleUrl: './app.scss'
@@ -90,6 +91,59 @@ export class App implements OnInit {
         }
       });
   }
+  
+  // 🚩 CORRECTION ICI : Utilisation de 'receivedData: any' pour gérer les formats
+  onNewsGenerated(receivedData: any): void {
+    if (!receivedData) {
+      console.warn("Aucune donnée reçue de l'IA.");
+      return;
+    }
+
+    let newArticles: NewsArticle[] = [];
+
+    // Tenter d'extraire le tableau d'articles
+    if (Array.isArray(receivedData)) {
+        // Cas 1 : Le backend renvoie directement un tableau
+        newArticles = receivedData;
+    } else if (receivedData.articles && Array.isArray(receivedData.articles)) {
+        // Cas 2 : Le backend renvoie un objet avec une clé 'articles' (courant)
+        newArticles = receivedData.articles;
+    } else {
+        // Cas 3 : Le backend renvoie un seul article, nous l'enveloppons
+        console.warn("L'objet reçu n'est pas un tableau. Tentative de traitement comme un seul article.");
+        newArticles = [receivedData];
+    }
+    
+    if (newArticles.length === 0) {
+      console.warn("Aucun article valide trouvé dans la réponse de l'IA.");
+      return;
+    }
+    
+    // Si les articles reçus ne sont pas déjà mappés, il faut les mapper ici.
+    // Étant donné que le backend AI génère souvent des objets bruts, nous les mappons :
+    const mappedArticles = newArticles
+        .filter(article => article && article.title) // Filtrer les articles vides
+        .map(raw => this.mapRawToNewsArticle(raw));
+    
+    
+    if (mappedArticles.length === 0) {
+      console.warn("Les articles reçus n'ont pas pu être mappés au format NewsArticle.");
+      return;
+    }
+    
+    console.log(`Ajout de ${mappedArticles.length} nouveaux articles générés par l'IA.`);
+
+    // 1. Ajout des nouveaux articles à la liste générale
+    this.allFetchedNews = [...mappedArticles, ...this.allFetchedNews]; 
+    
+    // 2. Ajout des nouveaux articles à la liste affichée
+    this.articles = [...mappedArticles, ...this.articles];
+    
+    // 3. Réinitialiser les filtres/recherche pour montrer les nouveaux articles
+    this.searchActive = false; // Sortir du mode recherche
+    this.activeCategories = []; // Désactiver le filtre de catégorie
+  }
+
 
   onCategorySelected(category: NewsCategory) {
     this.isLoading = true;
@@ -126,24 +180,24 @@ export class App implements OnInit {
           this.isLoading = false;
         }
       });
-    } else {
-      this.newsService.fetchTodaysNews({
-      category: category.id,
-      limit: 10,
-      language: 'fr'
-      }).subscribe({
-        next: (articles: NewsArticle[]) => {
-          // replace articles with the category results (do not append)
-          this.articles = [...articles];
-          this.isLoading = false;
-        },
-        error: (error: any) => {
-          console.error('Erreur lors du chargement desnews:', error);
-          this.isLoading = false;
-        }
-      });
+      } else {
+        this.newsService.fetchTodaysNews({
+        category: category.id,
+        limit: 10,
+        language: 'fr'
+        }).subscribe({
+          next: (articles: NewsArticle[]) => {
+            // replace articles with the category results (do not append)
+            this.articles = [...articles];
+            this.isLoading = false;
+          },
+          error: (error: any) => {
+            console.error('Erreur lors du chargement desnews:', error);
+            this.isLoading = false;
+          }
+        });
+      }
     }
-  }
 
   // Change sort order (triggered depuis the template)
   // Accept a generic string from the template and normalize to the union type
