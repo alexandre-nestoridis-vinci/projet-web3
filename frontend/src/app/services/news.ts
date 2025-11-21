@@ -12,13 +12,7 @@ import { environment } from '../../environments/environment';
 export class NewsService {
 
   private readonly categories: NewsCategory[] = [
-    { id: 'tech', name: 'technology', displayName: 'Technologie', color: '#3b82f6', icon: 'laptop' },
-    { id: 'sports', name: 'sports', displayName: 'Sport', color: '#ef4444', icon: 'trophy' },
-    { id: 'politics', name: 'politics', displayName: 'Politique', color: '#8b5cf6', icon: 'government' },
-    { id: 'business', name: 'business', displayName: 'Économie', color: '#f59e0b', icon: 'briefcase' },
-    { id: 'health', name: 'health', displayName: 'Santé', color: '#10b981', icon: 'heart' },
-    { id: 'science', name: 'science', displayName: 'Sciences', color: '#06b6d4', icon: 'flask' },
-    { id: 'entertainment', name: 'entertainment', displayName: 'Divertissement', color: '#f97316', icon: 'film' }
+    { id: 'tech', name: 'technology', displayName: 'Technologie', color: '#3b82f6', icon: 'laptop' }
   ];
 
   constructor(
