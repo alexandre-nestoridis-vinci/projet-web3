@@ -14,6 +14,13 @@
   }
 
   .brand {
+    .greeting {
+      margin: 0 0 0.25rem 0;
+      font-size: 0.875rem;
+      opacity: 0.85;
+      font-weight: 500;
+    }
+
     h1 {
       margin: 0;
       font-size: 2rem;

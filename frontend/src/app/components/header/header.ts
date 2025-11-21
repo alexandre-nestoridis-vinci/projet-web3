@@ -12,6 +12,7 @@ import { NewsArticle, NewsCategory } from '../../models/news.model';
   styleUrl: './header.scss'
 })
 export class HeaderComponent {
+  greeting = 'Salam! 👋';
   title = 'News AI';
   subtitle = 'Actualités intelligentes avec IA';
 
