@@ -3,9 +3,6 @@
 <main class="main-container">
   <section class="filter-section">
     <app-category-filter 
-      [categories]="categories" 
-      (categorySelected)="onCategorySelected($event)"
-      
       (newsGenerated)="onNewsGenerated($event)">
     </app-category-filter>
   </section>
@@ -29,8 +26,7 @@
 
     <div class="filter-item" style="flex:1;">
       <label for="sourceSearch">Rechercher source</label>
-  <input id="sourceSearch" #sourceInput type="search" placeholder="Tapez un nom de source..." (input)="onSourceSearchInput(sourceInput.value)" />
-    </div>
+      <input id="sourceSearch" #sourceInput type="search" placeholder="Tapez un nom de source..." (input)="onSourceFilterChange(sourceInput.value)" />    </div>
   </section>
 
   <section class="global-search" style="margin: 0.5rem 0;">
@@ -61,14 +57,6 @@
       </div>
     </div>
 
-    <div class="news-grid" *ngIf="!searchActive && activeCategories.length > 0">
-      <app-news-section 
-        *ngFor="let category of activeCategories" 
-        [category]="category"
-        [articles]="getArticlesByCategory(category.id)">
-      </app-news-section>
-    </div>
-
     <div *ngIf="!searchActive && (!activeCategories || activeCategories.length === 0)">
       <div class="results-grid">
         <app-news-card *ngFor="let a of articles" [article]="a"></app-news-card>
@@ -82,7 +70,7 @@
 
     <div *ngIf="!isLoading && articles.length === 0" class="empty-state">
       <h2>Aucune actualité disponible</h2>
-      <p>Cliquez sur une catégorie ou utilisez le bouton Générer pour récupérer les news du jour</p>
+      <p>Utilisez le bouton Générer pour récupérer les dernières actualités IA.</p>
     </div>
   </section>
 </main>

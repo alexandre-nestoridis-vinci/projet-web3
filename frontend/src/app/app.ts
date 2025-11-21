@@ -77,21 +77,25 @@ export class App implements OnInit {
 
   ngOnInit() {
     this.categories = this.newsService.getCategories();
-    // Par défaut aucune catégorie sélectionnée — afficher toutes les news existantes
-    this.activeCategories = [];
-      // Charger toutes les news existantes pour l'affichage initial via NewsService
-      this.newsService.fetchExistingNews(undefined, 200).subscribe({
-        next: (articles: NewsArticle[]) => {
-          this.allFetchedNews = articles;
-          this.articles = articles;
-          this.suggestionResults = articles.slice(0, 10);
-        },
-        error: (err: any) => {
-          console.error('Erreur load initiale fetchExistingNews:', err);
-          // fallback to previously saved news
-          this.loadAllNews(200);
-        }
-      });
+    
+    // 1. Déterminer la catégorie cible
+    const TARGET_CATEGORY_ID = 'tech'; 
+    const techCategory = this.categories.find(c => c.id === TARGET_CATEGORY_ID);
+
+    if (techCategory) {
+        // 2. Déclencher le chargement de la catégorie 'tech'
+        // Nous appelons onCategorySelected pour lancer la requête asynchrone
+        this.onCategorySelected(techCategory);
+        
+    } else {
+        // Fallback si la catégorie 'tech' n'est pas trouvée
+        console.error(`Catégorie '${TARGET_CATEGORY_ID}' non trouvée. Tentative de chargement de toutes les news.`);
+        
+        // Exécuter la logique de chargement de toutes les news si la catégorie est introuvable
+        this.loadAllNews(200);
+    }
+    // 🚩 NOTE IMPORTANTE: Le chargement initial (fetchExistingNews) se fait maintenant
+    // via onCategorySelected(techCategory) ci-dessus.
   }
   
   // 🚩 CORRECTION ICI : Utilisation de 'receivedData: any' pour gérer les formats
@@ -147,11 +151,11 @@ export class App implements OnInit {
   }
 
 
-  onCategorySelected(category: NewsCategory) {
+ onCategorySelected(category: NewsCategory) {
     this.isLoading = true;
 
-    // set active category so UI shows category sections instead of global list
-    this.activeCategories = [category];
+    // 🚩 SUPPRIMÉ : Ligne qui mettait this.activeCategories = [category];
+    // Nous ne voulons plus activer le filtre de catégorie pour forcer l'affichage global.
 
     // Use fetchExistingNews to retrieve persisted articles for the category (do not create)
       if (typeof (this.newsService as any).fetchExistingNews === 'function') {
@@ -160,41 +164,57 @@ export class App implements OnInit {
         next: (articles: NewsArticle[]) => {
           // replace articles with the category results (do not append)
           if (!articles || articles.length === 0) {
-            // fallback to mock for this specific category
+            
             if (typeof (this.newsService as any).generateMockForCategory === 'function') {
+              // FORCER le MOCK si l'API est vide (ce qui arrive au démarrage)
               this.articles = (this.newsService as any).generateMockForCategory(category.id, 10);
+              console.warn(`Articles de Tech vides. Utilisation des Mocks pour l'affichage initial.`);
             } else {
-              this.articles = [];
+              this.articles = [...this.allFetchedNews]; 
+              if (this.articles.length === 0) this.articles = []; 
             }
           } else {
             this.articles = [...articles];
           }
+          
+          // 🚩 NOUVEAU : Réinitialiser activeCategories pour forcer l'affichage du bloc global
+          this.activeCategories = []; 
+          
           this.isLoading = false;
         },
         error: (error: any) => {
-          console.error('Erreur lors du chargement des news (existing):', error);
-          // on erreur, fallback to mock for category
+          console.error('Erreur lors du chargement des news (existing) par l\'API:', error);
+          
           if (typeof (this.newsService as any).generateMockForCategory === 'function') {
+            // FORCER le MOCK si l'API échoue
             this.articles = (this.newsService as any).generateMockForCategory(category.id, 10);
+            console.error(`Erreur d'API. Utilisation des Mocks pour l'affichage initial.`);
           } else {
-            this.articles = [];
+            this.articles = [...this.allFetchedNews];
+            if (this.articles.length === 0) this.articles = []; 
           }
+          
+          // 🚩 NOUVEAU : Réinitialiser activeCategories pour forcer l'affichage du bloc global
+          this.activeCategories = []; 
+          
           this.isLoading = false;
         }
       });
       } else {
+        // Logique de secours pour fetchTodaysNews si fetchExistingNews n'existe pas
         this.newsService.fetchTodaysNews({
         category: category.id,
         limit: 10,
         language: 'fr'
         }).subscribe({
           next: (articles: NewsArticle[]) => {
-            // replace articles with the category results (do not append)
             this.articles = [...articles];
+            this.activeCategories = []; // 🚩 NOUVEAU : Réinitialiser
             this.isLoading = false;
           },
           error: (error: any) => {
             console.error('Erreur lors du chargement desnews:', error);
+            this.activeCategories = []; // 🚩 NOUVEAU : Réinitialiser
             this.isLoading = false;
           }
         });

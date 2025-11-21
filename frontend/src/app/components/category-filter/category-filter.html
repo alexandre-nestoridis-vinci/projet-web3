@@ -1,4 +1,5 @@
 <div class="category-filter">
+  
   <div class="generation-area">
     <button 
       (click)="generateNewsByClick()"  
@@ -16,18 +17,8 @@
   </div>
   
   <div class="filter-header">
-    <h2>Récupérer les actualités du jour</h2>
-    <p>Sélectionnez une catégorie pour obtenir les dernières news analysées par IA</p>
+    <h2>Actualités Tech générées par IA</h2>
+    <p>Cliquez sur le bouton pour obtenir les 5 dernières actualités du domaine de l'informatique.</p>
   </div>
   
-  <div class="categories-grid">
-    <button 
-      *ngFor="let category of categories" 
-      class="category-btn"
-      [style.--category-color]="category.color"
-      (click)="onCategoryClick(category)">
-      <span class="category-icon">{{ getCategoryIcon(category.icon) }}</span>
-      <span class="category-name">{{ category.displayName }}</span>
-    </button>
   </div>
-</div>

@@ -1,6 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Output, EventEmitter } from '@angular/core'; // Suppression de Input
 import { CommonModule } from '@angular/common';
-import { NewsCategory, NewsArticle, NewsRequest } from '../../models/news.model'; 
+import { NewsArticle, NewsRequest } from '../../models/news.model'; // Suppression de NewsCategory
 import { BackendService } from '../../services/backend.service'; 
 
 @Component({
@@ -15,18 +15,12 @@ export class CategoryFilterComponent {
   // État pour désactiver le bouton pendant l'appel API 
   isLoadingNews = false;
 
-  @Input() categories: NewsCategory[] = [];
-  @Output() categorySelected = new EventEmitter<NewsCategory>();
 
   // Événement qui émet un tableau de NewsArticle
   @Output() newsGenerated = new EventEmitter<NewsArticle[]>(); 
 
   // Injection du BackendService
   constructor(private backendService: BackendService) { }
-
-  onCategoryClick(category: NewsCategory) {
-    this.categorySelected.emit(category);
-  }
 
   // Méthode appelée lorsque l'utilisateur clique sur le bouton de génération
   generateNewsByClick(): void {
@@ -38,7 +32,7 @@ export class CategoryFilterComponent {
     
     // Création de l'objet de requête (l'argument manquant)
     const requestData: NewsRequest = {
-      category: 'Informatique', 
+      category: 'Informatique', // La catégorie qui vous intéresse
       limit: 5 
     };
     
@@ -57,18 +51,5 @@ export class CategoryFilterComponent {
         
       }
     });
-  }
-
-  getCategoryIcon(iconName: string): string {
-    const icons: { [key: string]: string } = {
-      laptop: '💻',
-      trophy: '🏆',
-      government: '🏛️',
-      briefcase: '💼',
-      heart: '❤️',
-      flask: '🧪',
-      film: '🎬'
-    };
-    return icons[iconName] || '📰';
   }
 }
