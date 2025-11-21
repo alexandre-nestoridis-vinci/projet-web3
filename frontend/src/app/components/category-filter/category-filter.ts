@@ -12,7 +12,7 @@ import { BackendService } from '../../services/backend.service';
 })
 export class CategoryFilterComponent {
   
-  // État pour désactiver le bouton pendant l'appel API
+  // État pour désactiver le bouton pendant l'appel API 
   isLoadingNews = false;
 
   @Input() categories: NewsCategory[] = [];
