@@ -35,7 +35,7 @@ interface RawNewsItem {
  */
 async function fetchNewsWithGemini(
   category: string,
-  limit = 5
+  limit = 10
 ): Promise<RawNewsItem[]> {
   if (!GEMINI_API_KEY) {
     throw new Error("GEMINI_API_KEY not configured");
@@ -93,7 +93,7 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
  */
 async function fetchNewsWithOpenAI(
   category: string,
-  limit = 5
+  limit = 10
 ): Promise<RawNewsItem[]> {
   if (!OPENAI_API_KEY) {
     throw new Error("OPENAI_API_KEY not configured");
