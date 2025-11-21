@@ -1,0 +1,164 @@
+[debug] [2025-11-21T15:05:46.141Z] ----------------------------------------------------------------------
+[debug] [2025-11-21T15:05:46.143Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Msi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-11-21T15:05:46.144Z] CLI Version:   14.25.0
+[debug] [2025-11-21T15:05:46.144Z] Platform:      win32
+[debug] [2025-11-21T15:05:46.144Z] Node Version:  v22.12.0
+[debug] [2025-11-21T15:05:46.144Z] Time:          Fri Nov 21 2025 16:05:46 GMT+0100 (heure normale d’Europe centrale)
+[debug] [2025-11-21T15:05:46.144Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-11-21T15:05:46.301Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-21T15:05:46.301Z] > authorizing via signed-in user (alexandrenestoridis@gmail.com)
+[debug] [2025-11-21T15:05:46.404Z] java version "21.0.5" 2024-10-15 LTS
+Java(TM) SE Runtime Environment (build 21.0.5+9-LTS-239)
+
+[debug] [2025-11-21T15:05:46.404Z] Java HotSpot(TM) 64-Bit Server VM (build 21.0.5+9-LTS-239, mixed mode, sharing)
+
+[debug] [2025-11-21T15:05:46.427Z] Parsed Java major version: 21
+[info] i  emulators: Starting emulators: functions, firestore, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, extensions"}}
+[debug] [2025-11-21T15:05:46.430Z] Checked if tokens are valid: true, expires at: 1763740378108
+[debug] [2025-11-21T15:05:46.430Z] Checked if tokens are valid: true, expires at: 1763740378108
+[debug] [2025-11-21T15:05:46.431Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci [none]
+[debug] [2025-11-21T15:05:47.271Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci 200
+[debug] [2025-11-21T15:05:47.271Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci {"projectNumber":"118445075960","projectId":"news-app-api-vinci","lifecycleState":"ACTIVE","name":"news-app-api-vinci","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-11-14T12:38:37.131854Z"}
+[debug] [2025-11-21T15:05:47.280Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-21T15:05:47.280Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-21T15:05:47.280Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-21T15:05:47.280Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-11-21T15:05:47.283Z] Emulator locator file path: C:\Users\Msi\AppData\Local\Temp\hub-news-app-api-vinci.json
+[debug] [2025-11-21T15:05:47.283Z] [hub] writing locator at C:\Users\Msi\AppData\Local\Temp\hub-news-app-api-vinci.json
+[debug] [2025-11-21T15:05:47.287Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2025-11-21T15:05:47.291Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-21T15:05:47.291Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-21T15:05:47.291Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-21T15:05:47.291Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
+[debug] [2025-11-21T15:05:47.301Z] defaultcredentials: writing to file C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json
+[debug] [2025-11-21T15:05:47.302Z] Setting GAC to C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Msi\\AppData\\Roaming\\firebase\\alexandrenestoridis_gmail_com_application_default_credentials.json"}}
+[debug] [2025-11-21T15:05:47.303Z] Checked if tokens are valid: true, expires at: 1763740378108
+[debug] [2025-11-21T15:05:47.303Z] Checked if tokens are valid: true, expires at: 1763740378108
+[debug] [2025-11-21T15:05:47.303Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig [none]
+[debug] [2025-11-21T15:05:47.684Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig 200
+[debug] [2025-11-21T15:05:47.684Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig {"projectId":"news-app-api-vinci","storageBucket":"news-app-api-vinci.firebasestorage.app"}
+[warn] !  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
+[warn] !  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
+[warn] !  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
+[debug] [2025-11-21T15:05:47.698Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-11-21T15:05:47.698Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2025-11-21T15:05:47.698Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\Msi\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",9099,"--websocket_port",9150,"--project_id","news-app-api-vinci","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":9099} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\Msi\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",9099,\"--websocket_port\",9150,\"--project_id\",\"news-app-api-vinci\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9099}"}}
+[info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2025-11-21T15:05:49.568Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "C:\VINCI\projet-web3\backend\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\VINCI\\projet-web3\\backend\\functions\" for Cloud Functions..."}}
+[debug] [2025-11-21T15:05:49.575Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2025-11-21T15:05:50.507Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2025-11-21T15:05:50.508Z] Building nodejs source
+[debug] [2025-11-21T15:05:50.508Z] Failed to find version of module node: reached end of search path C:\VINCI\projet-web3\backend\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-11-21T15:05:50.511Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-11-21T15:05:50.519Z] Found firebase-functions binary at 'C:\VINCI\projet-web3\backend\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8752
+
+[debug] [2025-11-21T15:05:51.066Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"},"eurApi":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"eurApi"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-11-21T15:05:55.103Z] defaultcredentials: writing to file C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json
+[debug] [2025-11-21T15:05:55.104Z] Setting GAC to C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Msi\\AppData\\Roaming\\firebase\\alexandrenestoridis_gmail_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api, eurApi. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api, eurApi."}}
+[info] +  functions[us-central1-api]: http function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/api)."}}
+[info] +  functions[us-central1-eurApi]: http function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/eurApi). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/eurApi)."}}
+[debug] [2025-11-21T15:05:55.109Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Firestore  │ 127.0.0.1:9099 │ http://127.0.0.1:4000/firestore  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500, 9150
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-11-21T15:05:57.774Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-21T15:05:57.774Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-21T15:05:57.774Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-21T15:05:57.774Z"],"workRunningCount":1}
+[debug] [2025-11-21T15:05:57.774Z] Accepted request POST /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-21T15:05:57.775Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-21T15:05:57.775Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-11-21T15:05:57.785Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2025-11-21T15:05:57.786Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[info] >  (node:20752) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead. {"user":"(node:20752) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:20752) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."}}
+[info] >  (Use `node --trace-deprecation ...` to show where the warning was created) {"user":"(Use `node --trace-deprecation ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (Use `node --trace-deprecation ...` to show where the warning was created)"}}
+[debug] [2025-11-21T15:05:58.683Z] [runtime-status] [20752] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-11-21T15:05:58.684Z] [runtime-status] [20752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-21T15:05:58.685Z] [runtime-status] [20752] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-11-21T15:05:58.685Z] [runtime-status] [20752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-21T15:05:58.970Z] [runtime-status] [20752] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-11-21T15:05:58.971Z] [runtime-status] [20752] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}}"}}
+[debug] [2025-11-21T15:05:58.971Z] [runtime-status] [20752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-21T15:05:58.975Z] [runtime-status] [20752] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-11-21T15:05:58.977Z] [runtime-status] [20752] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-21T15:05:58.978Z] [runtime-status] [20752] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2025-11-21T15:05:59.079Z] [runtime-status] [20752] initializeApp(DEFAULT) {"storageBucket":"news-app-api-vinci.firebasestorage.app","projectId":"news-app-api-vinci"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] initializeApp(DEFAULT) {\"storageBucket\":\"news-app-api-vinci.firebasestorage.app\",\"projectId\":\"news-app-api-vinci\"}"}}
+[debug] [2025-11-21T15:05:59.107Z] [runtime-status] [20752] Functions runtime initialized. {"cwd":"C:\\VINCI\\projet-web3\\backend\\functions","node_version":"22.12.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Functions runtime initialized. {\"cwd\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\",\"node_version\":\"22.12.0\"}"}}
+[debug] [2025-11-21T15:05:59.108Z] [runtime-status] [20752] Listening to port: \\?\pipe\fire_emu_e1ef794b7f8f0c44 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [20752] Listening to port: \\\\?\\pipe\\fire_emu_e1ef794b7f8f0c44"}}
+[debug] [2025-11-21T15:05:59.117Z] [worker-us-central1-api-bf8e06a0-ed26-4fed-9a66-76c7807a8da6]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-bf8e06a0-ed26-4fed-9a66-76c7807a8da6]: IDLE"}}
+[debug] [2025-11-21T15:05:59.118Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-21T15:05:59.118Z] [worker-us-central1-api-bf8e06a0-ed26-4fed-9a66-76c7807a8da6]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-bf8e06a0-ed26-4fed-9a66-76c7807a8da6]: BUSY"}}
+[info] >  Fetching with Gemini... {"user":"Fetching with Gemini...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Fetching with Gemini..."}}
+[info] >  Calling Gemini API for category: informatique {"user":"Calling Gemini API for category: informatique","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Calling Gemini API for category: informatique"}}
+[info] >  Gemini response received! {"user":"Gemini response received!","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response received!"}}
+[info] >  Gemini response text: ```json {"user":"Gemini response text: ```json","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response text: ```json"}}
+[info] >  [ {"user":"[","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m ["}}
+[info] >    { {"user":"  {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   {"}}
+[info] >      "title": "Microsoft Recall : une fonctionnalité critiquée pour sa sécurité et sa confidentialité", {"user":"    \"title\": \"Microsoft Recall : une fonctionnalité critiquée pour sa sécurité et sa confidentialité\",","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"title\": \"Microsoft Recall : une fonctionnalité critiquée pour sa sécurité et sa confidentialité\","}}
+[info] >      "description": "La nouvelle fonctionnalité \"Recall\" des PC Copilot+, qui enre {"user":"    \"description\": \"La nouvelle fonctionnalité \\\"Recall\\\" des PC Copilot+, qui enre","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"description\": \"La nouvelle fonctionnalité \\\"Recall\\\" des PC Copilot+, qui enre"}}
+[debug] [2025-11-21T15:06:21.073Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 21954.6068ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 21954.6068ms"}}
+[debug] [2025-11-21T15:06:21.073Z] [worker-us-central1-api-bf8e06a0-ed26-4fed-9a66-76c7807a8da6]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-bf8e06a0-ed26-4fed-9a66-76c7807a8da6]: IDLE"}}
+[debug] [2025-11-21T15:06:21.073Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-21T15:06:21.073Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-21T15:06:21.073Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
