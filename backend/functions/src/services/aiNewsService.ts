@@ -4,9 +4,9 @@
  */
 
 import axios from "axios";
-import {articlesCol} from "./firestore";
+import {articlesCol} from "../firestore";
 import {analyzeArticle} from "./aiService";
-import {Article} from "./types";
+import {Article} from "../types";
 import crypto from "crypto";
 
 // Configuration - À remplir avec ta clé API
