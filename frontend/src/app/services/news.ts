@@ -32,6 +32,12 @@ export class NewsService {
     return this.categories;
   }
 
+  // Expose a small helper to generate mock articles for a category (UI fallback)
+  public generateMockForCategory(categoryId: string, count: number = 5): NewsArticle[] {
+    const cat = this.getCategoryById(categoryId);
+    return this.generateMockNews(cat, count);
+  }
+
   // Récupérer les news du jour avec IA (version de test avec données simulées)
   fetchTodaysNews(request: NewsRequest): Observable<NewsArticle[]> {
     // Récupérer des articles bruts via le backend, puis les analyser un à un
@@ -94,7 +100,11 @@ export class NewsService {
     const content = rawArticle.content || rawArticle.description || '';
     const sourceName = (rawArticle.source && (typeof rawArticle.source === 'string' ? rawArticle.source : rawArticle.source.name)) || 'Unknown';
     const url = rawArticle.url || '';
-    const publishedAt = rawArticle.publishedAt ? new Date(rawArticle.publishedAt) : new Date();
+    let publishedAt = rawArticle.publishedAt ? new Date(rawArticle.publishedAt) : new Date();
+    // Normalize invalid dates -> fallback to now
+    if (isNaN((publishedAt as Date).getTime())) {
+      publishedAt = new Date();
+    }
     const imageUrl = rawArticle.urlToImage || rawArticle.imageUrl || '';
 
     const mapped: NewsArticle = {
@@ -116,7 +126,8 @@ export class NewsService {
   }
 
   private getCategoryById(categoryId: string): NewsCategory {
-    return this.categories.find(cat => cat.id === categoryId) || this.categories[0];
+    const id = (categoryId || '').toString().toLowerCase();
+    return this.categories.find(cat => (cat.id && cat.id.toLowerCase() === id) || (cat.name && cat.name.toLowerCase() === id)) || this.categories[0];
   }
 
   // Récupérer les news sauvegardées
@@ -126,5 +137,120 @@ export class NewsService {
 
   getAllSavedNews(): Observable<NewsArticle[]> {
     return this.firebaseService.getRecentNews();
+  }
+
+  // Fetch all existing news from the backend (no category filter)
+  // Public signature to ensure AOT/compiler sees the method in templates/components
+  public fetchAllExistingNews(limit: number = 100): Observable<NewsArticle[]> {
+    return this.backendService.fetchNews(undefined, limit).pipe(
+      switchMap((res: any) => {
+        const rawArticles: any[] = res?.articles || res || [];
+
+        if (!rawArticles || rawArticles.length === 0) {
+          return of([] as NewsArticle[]);
+        }
+
+        const slice = rawArticles.slice(0, limit);
+        const observables = slice.map(a => {
+          const catId = a.category || a.categoryName || this.getCategoryById('tech').id;
+          const cat = this.getCategoryById(catId);
+          return this.processArticleWithAI(a, cat);
+        });
+
+        return forkJoin(observables);
+      }),
+      catchError(err => {
+        console.error('Erreur fetchAllExistingNews:', err);
+        return of([] as NewsArticle[]);
+      })
+    );
+  }
+
+  // Fetch existing news from backend, optional category filter (does NOT create new news)
+  // This method is for retrieving persisted articles only.
+  public fetchExistingNews(category?: string, limit: number = 100): Observable<NewsArticle[]> {
+    // First try: ask backend to filter server-side (preferred)
+    return this.backendService.fetchNews(category, limit).pipe(
+      switchMap((res: any) => {
+        let rawArticles: any[] = res?.articles || res || [];
+
+        if (rawArticles && rawArticles.length > 0) {
+          // We received server-filtered results — map and return
+          const slice = rawArticles.slice(0, limit);
+          const observables = slice.map(a => {
+            const catId = category || a.category || a.categoryName || this.getCategoryById('tech').id;
+            const cat = this.getCategoryById(catId);
+            return this.processArticleWithAI(a, cat);
+          });
+          return forkJoin(observables);
+        }
+
+        // If server returned no results for the specific category, try fetching all
+        // persisted articles and perform tolerant client-side matching to avoid
+        // showing mocks when persisted data actually exists under a different
+        // category naming.
+        return this.backendService.fetchNews(undefined, limit).pipe(
+          switchMap((allRes: any) => {
+            let allRaw: any[] = allRes?.articles || allRes || [];
+
+            if (!allRaw || allRaw.length === 0) {
+              // truly no persisted articles at all
+              return of([] as NewsArticle[]);
+            }
+
+            if (!category) {
+              // No category requested — just map the top results
+              const slice = allRaw.slice(0, limit);
+              const observables = slice.map(a => {
+                const catId = a.category || a.categoryName || this.getCategoryById('tech').id;
+                const cat = this.getCategoryById(catId);
+                return this.processArticleWithAI(a, cat);
+              });
+              return forkJoin(observables);
+            }
+
+            const wanted = (category || '').toString().toLowerCase();
+            const filtered = allRaw.filter((a: any) => {
+              try {
+                const rawCat = a.category || a.categoryName || '';
+                if (!rawCat) return false;
+
+                const rawStr = (typeof rawCat === 'string') ? rawCat.toLowerCase() : (rawCat.name || rawCat.id || '').toString().toLowerCase();
+
+                if (rawStr === wanted) return true;
+                if (rawStr.includes(wanted) || wanted.includes(rawStr)) return true;
+
+                // compare against known categories
+                const catObj = this.getCategoryById(wanted);
+                if (catObj) {
+                  const candidates = [catObj.id, catObj.name, catObj.displayName].map((x: any) => (x || '').toString().toLowerCase());
+                  if (candidates.includes(rawStr)) return true;
+                }
+              } catch (e) {
+                return false;
+              }
+              return false;
+            });
+
+            if (!filtered || filtered.length === 0) {
+              return of([] as NewsArticle[]);
+            }
+
+            const slice = filtered.slice(0, limit);
+            const observables = slice.map(a => {
+              const catId = category || a.category || a.categoryName || this.getCategoryById('tech').id;
+              const cat = this.getCategoryById(catId);
+              return this.processArticleWithAI(a, cat);
+            });
+
+            return forkJoin(observables);
+          })
+        );
+      }),
+      catchError(err => {
+        console.error('Erreur fetchExistingNews:', err);
+        return of([] as NewsArticle[]);
+      })
+    );
   }
 }

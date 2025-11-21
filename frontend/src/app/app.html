@@ -1,19 +1,67 @@
-<!-- Header -->
 <app-header></app-header>
 
-<!-- Main Content -->
 <main class="main-container">
-  <!-- Category Filter -->
   <section class="filter-section">
     <app-category-filter 
       [categories]="categories" 
-      (categorySelected)="onCategorySelected($event)">
+      (categorySelected)="onCategorySelected($event)"
+      
+      (newsGenerated)="onNewsGenerated($event)">
     </app-category-filter>
   </section>
 
-  <!-- News Sections -->
+  <section class="filter-controls" style="margin: 1rem 0; display:flex; gap:1rem; align-items:center;">
+    <div class="filter-item">
+      <label for="sort">Trier par date</label>
+      <select id="sort" #sortSel (change)="onSortChange(sortSel.value)">
+        <option value="newest" [selected]="true">Plus récent</option>
+        <option value="oldest">Plus ancien</option>
+      </select>
+    </div>
+
+    <div class="filter-item">
+      <label for="sourceSelect">Source</label>
+      <select id="sourceSelect" #sourceSel (change)="onSourceFilterChange(sourceSel.value)">
+        <option value="">Toutes les sources</option>
+        <option *ngFor="let s of getAvailableSources()" [value]="s">{{ s }}</option>
+      </select>
+    </div>
+
+    <div class="filter-item" style="flex:1;">
+      <label for="sourceSearch">Rechercher source</label>
+  <input id="sourceSearch" #sourceInput type="search" placeholder="Tapez un nom de source..." (input)="onSourceSearchInput(sourceInput.value)" />
+    </div>
+  </section>
+
+  <section class="global-search" style="margin: 0.5rem 0;">
+    <input
+      type="search"
+      placeholder="Rechercher parmi toutes les actualités..."
+      [value]="searchTerm"
+      #globalSearch
+      (focus)="onSearchFocus()"
+      (input)="onSearchInput(globalSearch.value)"
+      (keyup.enter)="onSearchSubmit()"
+      style="width:100%; padding:.5rem; box-sizing:border-box;"
+    />
+
+    <ul *ngIf="suggestionResults.length > 0 && searchTerm.length >= 0" class="suggestions" style="list-style:none; margin:0.5rem 0; padding:0; max-height:200px; overflow:auto; border:1px solid #eee;">
+      <li *ngFor="let s of suggestionResults" (click)="onSelectSuggestion(s)" style="padding:.5rem; cursor:pointer; border-bottom:1px solid #f5f5f5;">
+        <strong>{{ s.title }}</strong>
+        <div style="font-size:.85rem; color:#666;">{{ s.source }} — {{ s.publishedAt ? (s.publishedAt | date:'short') : '' }}</div>
+      </li>
+    </ul>
+  </section>
+
   <section class="news-content">
-    <div class="news-grid">
+
+    <div *ngIf="searchActive">
+      <div class="results-grid">
+        <app-news-card *ngFor="let a of searchResults" [article]="a"></app-news-card>
+      </div>
+    </div>
+
+    <div class="news-grid" *ngIf="!searchActive && activeCategories.length > 0">
       <app-news-section 
         *ngFor="let category of activeCategories" 
         [category]="category"
@@ -21,19 +69,22 @@
       </app-news-section>
     </div>
 
-    <!-- Loading indicator -->
+    <div *ngIf="!searchActive && (!activeCategories || activeCategories.length === 0)">
+      <div class="results-grid">
+        <app-news-card *ngFor="let a of articles" [article]="a"></app-news-card>
+      </div>
+    </div>
+
     <div *ngIf="isLoading" class="loading-container">
       <div class="spinner"></div>
       <p>Récupération des actualités en cours...</p>
     </div>
 
-    <!-- Empty state -->
     <div *ngIf="!isLoading && articles.length === 0" class="empty-state">
       <h2>Aucune actualité disponible</h2>
-      <p>Cliquez sur une catégorie pour récupérer les news du jour</p>
+      <p>Cliquez sur une catégorie ou utilisez le bouton Générer pour récupérer les news du jour</p>
     </div>
   </section>
 </main>
 
-<!-- Router Outlet for additional pages -->
 <router-outlet></router-outlet>

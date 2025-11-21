@@ -46,34 +46,6 @@ export class AiService {
     );
   }
 
-  // Récupère des news réelles via le backend (qui appelle aiNewsService)
-  fetchRealNews(category: string, limit = 5, forceRefresh = false) {
-    // Construire l'URL vers le backend. Le backend expose /api/fetch-ai-news
-    // On utilise environment.api.baseUrl si défini, sinon on tombe sur l'URL fournie en local.
-    const base = environment.api?.baseUrl || '';
-    const candidate = `${base}/api/fetch-ai-news`;
-    // Certains environnements ont déjà une route complète dans baseUrl; acceptons aussi l'URL explicite
-    const url = candidate.replace('//api/', '/api/');
-
-    const body = { category, limit, forceRefresh };
-
-    return this.http.post<any>(url, body).pipe(
-      map(res => {
-        if (res?.ok && Array.isArray(res.articles)) {
-          return res.articles as NewsArticle[];
-        }
-        // If backend returned articles directly (older shape), try that
-        if (Array.isArray(res)) return res as NewsArticle[];
-        throw new Error(res?.message || 'No articles returned');
-      }),
-      catchError(err => {
-        console.error('Erreur fetchRealNews:', err);
-        // Fallback: return empty array so UI can handle gracefully
-        return of([] as NewsArticle[]);
-      })
-    );
-  }
-
   // Méthodes de simulation (à remplacer par de vraies API IA plus tard)
   private generateSummary(content: string): string {
     if (!content) return 'Aucun contenu disponible pour le résumé.';

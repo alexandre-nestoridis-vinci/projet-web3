@@ -21,6 +21,65 @@
     }
   }
 
+  // Ajout des styles du bouton de génération AI
+  .generation-area {
+    text-align: center;
+    // Ajout d'espace au-dessus et en dessous pour bien séparer le bouton du header
+    margin: 0 0 2.5rem 0; 
+  }
+
+  .btn-generate-ai {
+    // Utilisation d'une couleur d'accent qui contraste avec le gris/bleu existant
+    $ai-color: #4f46e5; // Indigo 
+    
+    background-color: $ai-color;
+    color: white;
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 700;
+    border: none;
+    border-radius: 9999px; // Bouton ovale
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba($ai-color, 0.4); 
+    
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+
+    &:hover:not([disabled]) {
+      background-color: darken($ai-color, 5%);
+      transform: translateY(-2px);
+    }
+
+    &[disabled] {
+      background-color: #94a3b8; // Couleur grise désactivée
+      color: #f8fafc;
+      opacity: 0.8;
+      cursor: not-allowed;
+      box-shadow: none;
+      transform: none;
+    }
+
+    /* Styles pour l'icône de chargement (spinner) */
+    .spinner {
+      border: 3px solid rgba(255, 255, 255, 0.3);
+      border-top: 3px solid white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      animation: spin 1s linear infinite;
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+  // Fin de l'ajout des styles du bouton
+  
   .categories-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
