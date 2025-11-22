@@ -1,152 +1,152 @@
 ﻿[
     {
-        "id":  "bUxjSiFf07p8JJu2qk1v",
-        "title":  "Claude 3.5 Sonnet d\u0027Anthropic surpasse GPT-4o d\u0027OpenAI dans de nombreux benchmarks",
-        "description":  "Anthropic a lancé Claude 3.5 Sonnet, son nouveau modèle de langage, affirmant qu\u0027il surpasse les performances de GPT-4o d\u0027OpenAI sur plusieurs critères, notamment la compréhension visuelle et la rapidité.",
-        "content":  "Claude 3.5 Sonnet est présenté comme un modèle plus rapide, plus coûteux et plus intelligent que son prédécesseur, Claude 3 Opus, et prétend surpasser les capacités de GPT-4o, en particulier pour les tâches de raisonnement visuel et la génération de code. Anthropic met en avant ses avancées en matière de multimodalité et sa capacité à analyser des données complexes, marquant une étape importante dans la course à l\u0027IA générative la plus performante et repoussant les limites de ce que les modèles de langage peuvent accomplir.",
-        "url":  "https://siecledigital.fr/2024/06/21/claude-3-5-sonnet-anthropic-surpasse-gpt-4o-openai/",
+        "id":  "FybgidfEMp0GEKETTNt1",
+        "title":  "Apple présente la puce M4, une avancée majeure pour l\u0027IA dans le nouvel iPad Pro",
+        "description":  "Apple a dévoilé sa nouvelle puce M4, inaugurée avec l\u0027iPad Pro, et conçue pour des performances exceptionnelles en matière d\u0027intelligence artificielle et de graphisme.",
+        "content":  "La puce M4, gravée en 3 nanomètres, intègre un moteur neuronal significativement plus puissant que ses prédécesseurs, ce qui la rend particulièrement adaptée aux tâches d\u0027IA complexes et au rendu graphique professionnel. Cette innovation promet de transformer l\u0027iPad Pro en une machine encore plus performante pour la création de contenu et les applications gourmandes en ressources.",
+        "url":  "https://www.apple.com/newsroom",
         "source":  {
-                       "name":  "Siècle Digital",
+                       "name":  "Apple Newsroom",
                        "url":  ""
                    },
         "publishedAt":  {
-                            "_seconds":  1763827630,
-                            "_nanoseconds":  256000000
+                            "_seconds":  1763838060,
+                            "_nanoseconds":  413000000
                         },
         "category":  "informatique",
-        "dedupHash":  "3eb2e10b27ccf61e9bb8f315c71a3c01",
-        "summary":  "Claude 3. 5 Sonnet d\u0027Anthropic surpasse GPT-4o d\u0027OpenAI dans de nombreux benchmarks Anthropic a lancé Claude 3.",
-        "sentiment":  "neutral",
+        "dedupHash":  "1bb319dfefe22fef298a9f3428faf145",
+        "summary":  "Apple présente la puce M4, une avancée majeure pour l\u0027IA dans le nouvel iPad Pro Apple a dévoilé sa nouvelle puce M4, inaugurée avec l\u0027iPad Pro, et conçue pour des performances exceptionnelles en mati",
+        "sentiment":  "positive",
         "keywords":  [
-                         "claude",
-                         "sonnet",
-                         "anthropic",
-                         "surpasse",
-                         "openai"
+                         "apple",
+                         "sente",
+                         "puce",
+                         "avanc",
+                         "majeure"
                      ],
         "fetchedAt":  {
-                          "_seconds":  1763827630,
-                          "_nanoseconds":  257000000
+                          "_seconds":  1763838060,
+                          "_nanoseconds":  413000000
                       }
     },
     {
-        "id":  "zyNpwf6A0dPrIBlbra1t",
-        "title":  "AMD lance ses puces Ryzen AI 300 pour PC portables, intensifiant la concurrence",
-        "description":  "AMD dévoile sa nouvelle série de processeurs Ryzen AI 300, optimisés pour l\u0027intelligence artificielle et destinés aux ordinateurs portables, visant à concurrencer directement Intel et Qualcomm sur le marché des PC Copilot+.",
-        "content":  "Les Ryzen AI 300, basés sur l\u0027architecture Zen 5 et intégrant un NPU (Neural Processing Unit) XDNA 2, promettent des performances significatives pour les tâches d\u0027IA locales, comme celles requises par les futures fonctionnalités de Windows Copilot+. Ces puces, dotées de jusqu\u0027à 12 cœurs CPU et un GPU RDNA 3.5 intégré, visent à offrir une puissance de calcul élevée et une efficacité énergétique pour une nouvelle génération de PC portables \u0027IA-ready\u0027, marquant une étape clé dans la course à l\u0027ordinateur portable intelligent.",
-        "url":  "https://www.tomshardware.fr/amd-ryzen-ai-300-des-puches-pour-pc-portables-musclees-face-a-qualcomm-et-intel/",
+        "id":  "ZBVNPRxbWlb1pGgbpp1R",
+        "title":  "Alerte : Nouvelles campagnes de rançongiciel sophistiquées ciblant les entreprises",
+        "description":  "Les experts en cybersécurité alertent sur une recrudescence de campagnes de rançongiciel ciblant de manière plus sophistiquée les entreprises de toutes tailles.",
+        "content":  "Ces attaques utilisent des techniques d\u0027ingénierie sociale avancées et exploitent des vulnérabilités connues pour s\u0027infiltrer dans les réseaux. Les recommandations incluent le renforcement de l\u0027authentification multifacteur, la mise à jour régulière des systèmes et la sensibilisation accrue des employés aux tentatives de phishing pour prévenir les compromissions.",
+        "url":  "https://www.anssi.gouv.fr/actualites",
         "source":  {
-                       "name":  "Tom\u0027s Hardware France",
+                       "name":  "ANSSI",
                        "url":  ""
                    },
         "publishedAt":  {
-                            "_seconds":  1763827630,
-                            "_nanoseconds":  235000000
+                            "_seconds":  1763838060,
+                            "_nanoseconds":  396000000
                         },
         "category":  "informatique",
-        "dedupHash":  "37ada092a9485a6c42014cf447eaa096",
-        "summary":  "AMD lance ses puces Ryzen AI 300 pour PC portables, intensifiant la concurrence AMD dévoile sa nouvelle série de processeurs Ryzen AI 300, optimisés pour l\u0027intelligence artificielle et destinés aux or",
+        "dedupHash":  "7658d0be87e1237f088b50ff4ed1d6bf",
+        "summary":  "Alerte : Nouvelles campagnes de rançongiciel sophistiquées ciblant les entreprises Les experts en cybersécurité alertent sur une recrudescence de campagnes de rançongiciel ciblant de manière plus soph",
         "sentiment":  "neutral",
         "keywords":  [
-                         "lance",
-                         "puces",
-                         "ryzen",
-                         "pour",
-                         "portables"
+                         "alerte",
+                         "nouvelles",
+                         "campagnes",
+                         "ongiciel",
+                         "sophistiqu"
                      ],
         "fetchedAt":  {
-                          "_seconds":  1763827630,
-                          "_nanoseconds":  236000000
+                          "_seconds":  1763838060,
+                          "_nanoseconds":  396000000
                       }
     },
     {
-        "id":  "a2ajhjKyUAeXvYLOu6vH",
-        "title":  "Microsoft Azure mise sur les régions cloud souveraines pour séduire le secteur public",
-        "description":  "Microsoft renforce sa stratégie pour le cloud souverain en France, avec des discussions autour de l\u0027offre \u0027Cloud de Confiance\u0027 et la certification SecNumCloud, afin d\u0027attirer les entités gouvernementales et les organisations sensibles.",
-        "content":  "Face aux préoccupations de souveraineté numérique et de protection des données, Microsoft cherche à adapter son offre Azure pour répondre aux exigences strictes du secteur public français. L\u0027objectif est d\u0027obtenir la qualification SecNumCloud pour une partie de ses services, en garantissant que les données soient hébergées et gérées sur le territoire français, sans exposition aux lois extraterritoriales. Ce virage stratégique vise à rassurer les clients réticents à utiliser des clouds américains et à capter une part de marché importante dans les services publics et les infrastructures critiques.",
-        "url":  "https://www.journaldunet.com/solutions/cloud-computing/1454559-azure-microsoft-parie-sur-les-regions-cloud-souveraines-pour-attirer-les-acteurs-publics/",
+        "id":  "dgNblXkzHqTFSypogdMF",
+        "title":  "Microsoft Build 2024 : L\u0027IA d\u0027entreprise et Copilot au centre des annonces",
+        "description":  "Microsoft a dévoilé d\u0027importantes avancées en matière d\u0027IA et de son assistant Copilot, ciblant principalement le monde de l\u0027entreprise et les développeurs.",
+        "content":  "La conférence Build a montré comment Copilot est désormais plus intégré et personnalisable, capable de se connecter à des bases de données externes et d\u0027automatiser des tâches complexes. De nouvelles fonctionnalités d\u0027IA générative ont été introduites pour Azure AI, Windows et Teams, renforçant la position de Microsoft en tant que leader dans l\u0027adoption de l\u0027IA pour la productivité professionnelle.",
+        "url":  "https://news.microsoft.com/build",
         "source":  {
-                       "name":  "Journal du Net",
+                       "name":  "Microsoft News",
                        "url":  ""
                    },
         "publishedAt":  {
-                            "_seconds":  1763827630,
-                            "_nanoseconds":  216000000
+                            "_seconds":  1763838060,
+                            "_nanoseconds":  377000000
                         },
         "category":  "informatique",
-        "dedupHash":  "e516f7afe91a40f432665715e448e589",
-        "summary":  "Microsoft Azure mise sur les régions cloud souveraines pour séduire le secteur public Microsoft renforce sa stratégie pour le cloud souverain en France, avec des discussions autour de l\u0027offre \u0027Cloud d",
+        "dedupHash":  "576026fcdfc1efd5fbdcf4bdd29c92a6",
+        "summary":  "Microsoft Build 2024 : L\u0027IA d\u0027entreprise et Copilot au centre des annonces Microsoft a dévoilé d\u0027importantes avancées en matière d\u0027IA et de son assistant Copilot, ciblant principalement le monde de l\u0027",
         "sentiment":  "neutral",
         "keywords":  [
                          "microsoft",
-                         "azure",
-                         "mise",
-                         "gions",
-                         "cloud"
+                         "build",
+                         "2024",
+                         "entreprise",
+                         "copilot"
                      ],
         "fetchedAt":  {
-                          "_seconds":  1763827630,
-                          "_nanoseconds":  216000000
+                          "_seconds":  1763838060,
+                          "_nanoseconds":  377000000
                       }
     },
     {
-        "id":  "csz2LATXWsb3M7GaLPlw",
-        "title":  "Une faille critique découverte dans HTTP/2, une mise à jour d\u0027urgence requise",
-        "description":  "Une vulnérabilité critique a été identifiée dans le protocole HTTP/2, pouvant permettre des attaques par déni de service (DoS). Une mise à jour d\u0027urgence est fortement recommandée pour les administrateurs de serveurs.",
-        "content":  "Cette faille, baptisée CVE-2024-27983, affecte la manière dont HTTP/2 gère les en-têtes de requêtes, permettant à un attaquant d\u0027envoyer un flux de données malveillant qui surcharge la mémoire du serveur et provoque son crash. Les serveurs Nginx, Apache, et d\u0027autres implémentations de HTTP/2 sont concernés. Les éditeurs ont déjà commencé à déployer des correctifs pour protéger les systèmes contre ces attaques potentielles qui peuvent paralyser des services en ligne.",
-        "url":  "https://www.lemondeinformatique.fr/actualites/lire-une-faille-critique-decouverte-dans-http-2-une-mise-a-jour-d-urgence-requise-95240.html",
+        "id":  "vCA3zhqJ5Yjum70ElYw7",
+        "title":  "Google I/O 2024 : L\u0027IA Gemini au cœur de toutes les innovations de Google",
+        "description":  "Lors de sa conférence annuelle I/O, Google a présenté une intégration massive de son IA Gemini à travers Android, Search, Workspace et d\u0027autres produits.",
+        "content":  "La conférence a mis en lumière la stratégie de Google pour démocratiser l\u0027IA, avec des fonctionnalités comme \u0027AI Overviews\u0027 dans la recherche, des améliorations pour l\u0027assistant Gemini et des outils d\u0027IA générative pour les développeurs. L\u0027accent a été mis sur la manière dont l\u0027IA peut rendre les expériences numériques plus utiles et personnalisées au quotidien pour des milliards d\u0027utilisateurs.",
+        "url":  "https://blog.google/google-io",
         "source":  {
-                       "name":  "Le Monde Informatique",
+                       "name":  "Google Blog",
                        "url":  ""
                    },
         "publishedAt":  {
-                            "_seconds":  1763827630,
-                            "_nanoseconds":  194000000
+                            "_seconds":  1763838060,
+                            "_nanoseconds":  354000000
                         },
         "category":  "informatique",
-        "dedupHash":  "0095b70519a0357961286a17b8ad012d",
-        "summary":  "Une faille critique découverte dans HTTP/2, une mise à jour d\u0027urgence requise Une vulnérabilité critique a été identifiée dans le protocole HTTP/2, pouvant permettre des attaques par déni de service (",
-        "sentiment":  "negative",
+        "dedupHash":  "c9399af013d4d888a39cd6535651886b",
+        "summary":  "Google I/O 2024 : L\u0027IA Gemini au cœur de toutes les innovations de Google Lors de sa conférence annuelle I/O, Google a présenté une intégration massive de son IA Gemini à travers Android, Search, Work",
+        "sentiment":  "positive",
         "keywords":  [
-                         "faille",
-                         "critique",
-                         "couverte",
-                         "dans",
-                         "http"
+                         "google",
+                         "2024",
+                         "gemini",
+                         "toutes",
+                         "innovations"
                      ],
         "fetchedAt":  {
-                          "_seconds":  1763827630,
-                          "_nanoseconds":  194000000
+                          "_seconds":  1763838060,
+                          "_nanoseconds":  354000000
                       }
     },
     {
-        "id":  "wqGeRPRdImmLRLfZicS7",
-        "title":  "L\u0027ANSSI publie son guide pour sécuriser les systèmes d\u0027intelligence artificielle",
-        "description":  "L\u0027Agence nationale de la sécurité des systèmes d\u0027information (ANSSI) a dévoilé un guide pratique destiné à aider les organisations à sécuriser leurs systèmes basés sur l\u0027IA, abordant les risques et proposant des mesures préventives.",
-        "content":  "Le document de 50 pages aborde la cybersécurité des systèmes d\u0027IA sous plusieurs angles, y compris la chaîne d\u0027approvisionnement, la conception, l\u0027exploitation et la maintenance. Il vise à fournir des recommandations pour anticiper les menaces spécifiques à l\u0027IA, telles que les attaques par empoisonnement de données ou l\u0027évasion. Ce guide est une réponse directe à la croissance exponentielle de l\u0027IA et aux défis de sécurité qu\u0027elle pose, offrant une feuille de route pour intégrer la sécurité dès la conception des systèmes d\u0027IA.",
-        "url":  "https://www.zdnet.fr/actualites/l-anssi-publie-son-guide-pour-securiser-les-systemes-d-intelligence-artificielle-39967727.htm",
+        "id":  "DCL9B8BmqnycivWTdZ4d",
+        "title":  "OpenAI lance GPT-4o, un modèle d\u0027IA multimodal capable de traiter texte, audio et vidéo",
+        "description":  "OpenAI a dévoilé son nouveau modèle phare, GPT-4o, conçu pour une interaction naturelle et en temps réel, intégrant le traitement du texte, de l\u0027audio et de l\u0027image.",
+        "content":  "Ce modèle \u0027omni\u0027 représente une avancée majeure dans les capacités conversationnelles de l\u0027IA, permettant des dialogues audio plus fluides, une meilleure compréhension visuelle et une rapidité accrue. Il est prévu pour être déployé progressivement auprès des utilisateurs de ChatGPT, y compris la version gratuite, marquant une étape importante vers des interfaces homme-machine plus intuitives.",
+        "url":  "https://openai.com/blog/gpt-4o",
         "source":  {
-                       "name":  "ZDNet France",
+                       "name":  "OpenAI Blog",
                        "url":  ""
                    },
         "publishedAt":  {
-                            "_seconds":  1763827630,
-                            "_nanoseconds":  70000000
+                            "_seconds":  1763838060,
+                            "_nanoseconds":  230000000
                         },
         "category":  "informatique",
-        "dedupHash":  "4188f4594e53755b3894eebcb4837baa",
-        "summary":  "L\u0027ANSSI publie son guide pour sécuriser les systèmes d\u0027intelligence artificielle L\u0027Agence nationale de la sécurité des systèmes d\u0027information (ANSSI) a dévoilé un guide pratique destiné à aider les or",
+        "dedupHash":  "d0b113843a97308c901df74e7d284972",
+        "summary":  "OpenAI lance GPT-4o, un modèle d\u0027IA multimodal capable de traiter texte, audio et vidéo OpenAI a dévoilé son nouveau modèle phare, GPT-4o, conçu pour une interaction naturelle et en temps réel, intégr",
         "sentiment":  "neutral",
         "keywords":  [
-                         "anssi",
-                         "publie",
-                         "guide",
-                         "pour",
-                         "curiser"
+                         "openai",
+                         "lance",
+                         "multimodal",
+                         "capable",
+                         "traiter"
                      ],
         "fetchedAt":  {
-                          "_seconds":  1763827630,
-                          "_nanoseconds":  71000000
+                          "_seconds":  1763838060,
+                          "_nanoseconds":  230000000
                       }
     }
 ]

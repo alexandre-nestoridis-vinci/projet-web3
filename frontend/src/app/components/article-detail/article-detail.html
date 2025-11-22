@@ -1,0 +1,74 @@
+
+
+<main class="main-container" *ngIf="article">
+  <div class="article-detail-wrapper">
+    
+    <div class="article-content-col">
+      <h1 class="article-title">{{ article.title }}</h1>
+      
+      <p class="article-summary-text">{{ article.summary }}</p>
+      
+      <hr>
+      
+      <div class="article-body">
+        <div [innerHTML]="article.content"></div>
+      </div>
+    </div>
+    
+    <div class="analysis-panel-col">
+      <div class="analysis-panel">
+        <h2 class="panel-title">DÉTAILS & ANALYSE IA</h2>
+        
+        <div class="detail-group">
+          <label>Source</label>
+          <p class="detail-value source-value">
+            <span class="source-icon">📰</span> {{ article.source }}
+          </p>
+        </div>
+        
+        <div class="detail-group">
+          <label>Publié le</label>
+          <p class="detail-value date-value">
+            <span class="date-icon">🗓️</span> {{ article.publishedAt | date:'dd MMM. yyyy à HH:mm' }}
+          </p>
+        </div>
+        
+        <div class="detail-group">
+          <label>Catégorie</label>
+          <span class="category-badge" 
+                [style.background-color]="article.category?.color || '#10b981'">
+            {{ article.category?.displayName || 'GÉNÉRAL' }}
+          </span>
+        </div>
+        
+        <div class="detail-group">
+          <label>Sentiment</label>
+          <span class="sentiment-badge" 
+                [style.background-color]="getSentimentColor(article.sentiment || 'neutral')"
+                [style.color]="'white'">
+            {{ getSentimentIcon(article.sentiment || 'neutral') }} 
+            {{ article.sentiment | uppercase }}
+          </span>
+        </div>
+
+        <div class="detail-group">
+          <label>Mots-clés</label>
+          <div class="keyword-tags">
+            <span class="keyword-tag" *ngFor="let tag of article.tags">{{ tag }}</span>
+          </div>
+        </div>
+
+        <a [routerLink]="['/']" class="btn-back-home">
+          Retour à l'accueil
+        </a>
+        
+      </div>
+    </div>
+    
+  </div>
+</main>
+
+<div *ngIf="!article" class="not-found-message">
+    <p>Article non trouvé ou en cours de chargement...</p>
+    <a [routerLink]="['/']">← Retour à la liste des actualités</a>
+</div>

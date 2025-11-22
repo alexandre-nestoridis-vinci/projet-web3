@@ -4,10 +4,7 @@
 >
   <div 
     class="card-link-wrapper"
-    [routerLink]="article.aiGenerated ? ['/article', article.title] : null"
-    [attr.href]="!article.aiGenerated ? article.url : null"
-    [attr.target]="!article.aiGenerated ? '_blank' : null"
-    [attr.rel]="!article.aiGenerated ? 'noopener' : null"
+    (click)="navigateToDetail()" 
   >
     <div class="card-content">
       <h3 class="article-title">{{ article.title }}</h3>
@@ -21,7 +18,7 @@
     </div>
 
     <div class="hover-overlay">
-        <span class="overlay-text">Voir les détails de l'article</span>
+      <span class="overlay-text">Voir les détails de l'article</span>
     </div>
   </div>
 </article>
