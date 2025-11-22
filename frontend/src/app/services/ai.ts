@@ -86,15 +86,4 @@ export class AiService {
     
     return topics.filter(topic => lowerContent.includes(topic)).slice(0, 3);
   }
-
-  // Méthode pour intégrer une vraie API IA plus tard
-  private callOpenAI(prompt: string): Observable<any> {
-    const headers = {
-      'Authorization': `Bearer ${environment.openai.apiKey}`,
-      'Content-Type': 'application/json'
-    };
-
-
-      // Fonction OpenAI supprimée
-  }
 }

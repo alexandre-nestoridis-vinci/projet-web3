@@ -4,7 +4,7 @@
  */
 
 import {articlesCol} from "../firestore";
-import {Article, Comment} from "../types";
+import {Article} from "../types";
 
 /**
  * Get articles with optional category filter
@@ -109,45 +109,4 @@ export async function getMostRecentArticleByCategory(
     id: doc.id,
     ...(doc.data() as Omit<Article, "id">),
   };
-}
-
-/**
- * Add a comment to an article
- * @param {string} articleId - Article ID
- * @param {Omit<Comment, "id">} comment - Comment data without ID
- * @return {Promise<Comment>} Created comment with ID
- */
-export async function addComment(
-  articleId: string,
-  comment: Omit<Comment, "id">
-): Promise<Comment> {
-  const commentsRef = articlesCol.doc(articleId).collection("comments");
-  const docRef = await commentsRef.add({
-    ...comment,
-    createdAt: new Date(),
-  });
-
-  return {
-    id: docRef.id,
-    ...comment,
-    createdAt: new Date(),
-  };
-}
-
-/**
- * Get all comments for an article
- * @param {string} articleId - Article ID
- * @return {Promise<Comment[]>} List of comments
- */
-export async function getComments(articleId: string): Promise<Comment[]> {
-  const commentsRef = articlesCol
-    .doc(articleId)
-    .collection("comments")
-    .orderBy("createdAt", "asc");
-
-  const snap = await commentsRef.get();
-  return snap.docs.map((d) => ({
-    id: d.id,
-    ...(d.data() as Omit<Comment, "id">),
-  }));
 }
