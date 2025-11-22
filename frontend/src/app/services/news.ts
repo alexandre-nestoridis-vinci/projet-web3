@@ -71,26 +71,8 @@ export class NewsService {
   }
 
   private generateMockNews(category: NewsCategory, count: number): NewsArticle[] {
-    const articles: NewsArticle[] = [];
     
-    for (let i = 0; i < count; i++) {
-      articles.push({
-        id: `${category.id}-${Date.now()}-${i}`,
-        title: `${category.displayName} - Actualité ${i + 1}`,
-        summary: `Ceci est un résumé d'article de test pour la catégorie ${category.displayName}. Cette actualité a été générée pour démontrer le fonctionnement de l'interface.`,
-        content: `Contenu complet de l'article ${i + 1} dans la catégorie ${category.displayName}. Cette information est générée automatiquement pour les tests.`,
-        category: category,
-        source: 'Source de test',
-        url: 'https://example.com',
-        publishedAt: new Date(),
-        aiGenerated: true,
-        imageUrl: `https://picsum.photos/400/200?random=${Date.now() + i}`,
-        tags: [`${category.name}`, 'test', 'actualité'],
-        sentiment: ['positive', 'neutral', 'negative'][Math.floor(Math.random() * 3)] as any
-      });
-    }
-    
-    return articles;
+    return [];
   }
 
   private processArticleWithAI(rawArticle: any, category: NewsCategory): Observable<NewsArticle> {

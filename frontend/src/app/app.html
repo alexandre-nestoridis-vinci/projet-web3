@@ -7,44 +7,26 @@
     </app-category-filter>
   </section>
 
-  <section class="filter-controls" style="margin: 1rem 0; display:flex; gap:1rem; align-items:center;">
-    <div class="filter-item">
-      <label for="sort">Trier par date</label>
-      <select id="sort" #sortSel (change)="onSortChange(sortSel.value)">
-        <option value="newest" [selected]="true">Plus récent</option>
-        <option value="oldest">Plus ancien</option>
-      </select>
-    </div>
+  <section class="global-search-container">
+    <div class="search-input-wrapper">
+      <input
+        type="search"
+        placeholder="Rechercher parmi toutes les actualités..."
+        [value]="searchTerm"
+        #globalSearch
+        (focus)="onSearchFocus()"
+        (input)="onSearchInput(globalSearch.value)"
+        (keyup.enter)="onSearchSubmit()"
+        class="global-search-input"
+      />
+      <button *ngIf="searchTerm.length > 0" class="clear-search-button" (click)="clearSearch()">
+      </button>
+      </div>
 
-    <div class="filter-item">
-      <label for="sourceSelect">Source</label>
-      <select id="sourceSelect" #sourceSel (change)="onSourceFilterChange(sourceSel.value)">
-        <option value="">Toutes les sources</option>
-        <option *ngFor="let s of getAvailableSources()" [value]="s">{{ s }}</option>
-      </select>
-    </div>
-
-    <div class="filter-item" style="flex:1;">
-      <label for="sourceSearch">Rechercher source</label>
-      <input id="sourceSearch" #sourceInput type="search" placeholder="Tapez un nom de source..." (input)="onSourceFilterChange(sourceInput.value)" />    </div>
-  </section>
-
-  <section class="global-search" style="margin: 0.5rem 0;">
-    <input
-      type="search"
-      placeholder="Rechercher parmi toutes les actualités..."
-      [value]="searchTerm"
-      #globalSearch
-      (focus)="onSearchFocus()"
-      (input)="onSearchInput(globalSearch.value)"
-      (keyup.enter)="onSearchSubmit()"
-      style="width:100%; padding:.5rem; box-sizing:border-box;"
-    />
-
-    <ul *ngIf="suggestionResults.length > 0 && searchTerm.length >= 0" class="suggestions" style="list-style:none; margin:0.5rem 0; padding:0; max-height:200px; overflow:auto; border:1px solid #eee;">
-      <li *ngFor="let s of suggestionResults" (click)="onSelectSuggestion(s)" style="padding:.5rem; cursor:pointer; border-bottom:1px solid #f5f5f5;">
+    <ul *ngIf="suggestionResults.length > 0 && searchTerm.length >= 0" class="suggestions">
+      <li *ngFor="let s of suggestionResults" (click)="onSelectSuggestion(s)">
         <strong>{{ s.title }}</strong>
-        <div style="font-size:.85rem; color:#666;">{{ s.source }} — {{ s.publishedAt ? (s.publishedAt | date:'short') : '' }}</div>
+        <div class="suggestion-meta">{{ s.source }} — {{ s.publishedAt ? (s.publishedAt | date:'short') : '' }}</div>
       </li>
     </ul>
   </section>
