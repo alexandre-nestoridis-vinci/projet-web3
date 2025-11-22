@@ -4,7 +4,11 @@
  */
 
 import {Request, Response} from "express";
+import {defineSecret} from "firebase-functions/params";
 import {fetchRealNewsWithAI} from "../services/aiNewsService";
+
+
+const GEMINI_SECRET = defineSecret("GEMINI_API_KEY");
 
 /**
  * POST /api/fetch-ai-news
@@ -14,11 +18,20 @@ import {fetchRealNewsWithAI} from "../services/aiNewsService";
  * @param {Response} res - Express response
  */
 export async function fetchAINewsHandler(req: Request, res: Response) {
-  const category = String(req.body?.category || "informatique");
-  const forceRefresh = Boolean(req.body?.forceRefresh || false);
-
   try {
-    const result = await fetchRealNewsWithAI(category, 5, forceRefresh);
+    const category = String(req.body?.category || "informatique");
+    const forceRefresh = Boolean(req.body?.forceRefresh || false);
+
+    // Récupère la valeur du secret AU RUNTIME
+    // (nécessite que onRequest ait été appelé avec `secrets: [GEMINI_SECRET]`)
+    const key = await GEMINI_SECRET.value();
+    if (!key) {
+      console.error("Secret GEMINI_API_KEY not available (NO API KEY)");
+      return res.status(500).json({ok: false, error: "NO API KEY"});
+    }
+
+    // appelle ton service en passant la clé
+    const result = await fetchRealNewsWithAI(category, 5, forceRefresh, key);
 
     if (result.success) {
       return res.json({
@@ -28,16 +41,10 @@ export async function fetchAINewsHandler(req: Request, res: Response) {
         articles: result.articles,
       });
     } else {
-      return res.status(200).json({
-        ok: false,
-        message: result.message,
-      });
+      return res.status(200).json({ok: false, message: result.message});
     }
   } catch (e) {
     console.error("Fetch AI news error:", e);
-    return res.status(500).json({
-      ok: false,
-      error: String(e),
-    });
+    return res.status(500).json({ok: false, error: String(e)});
   }
 }
