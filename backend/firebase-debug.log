@@ -1,48 +1,270 @@
-[debug] [2025-11-22T19:20:36.884Z] ----------------------------------------------------------------------
-[debug] [2025-11-22T19:20:36.888Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ekoue\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2025-11-22T19:20:36.889Z] CLI Version:   14.25.1
-[debug] [2025-11-22T19:20:36.889Z] Platform:      win32
-[debug] [2025-11-22T19:20:36.889Z] Node Version:  v24.11.1
-[debug] [2025-11-22T19:20:36.889Z] Time:          Sat Nov 22 2025 20:20:36 GMT+0100 (heure normale d’Europe centrale)
-[debug] [2025-11-22T19:20:36.889Z] ----------------------------------------------------------------------
+[debug] [2025-11-22T21:29:25.832Z] ----------------------------------------------------------------------
+[debug] [2025-11-22T21:29:25.834Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\Msi\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-11-22T21:29:25.835Z] CLI Version:   14.25.0
+[debug] [2025-11-22T21:29:25.835Z] Platform:      win32
+[debug] [2025-11-22T21:29:25.835Z] Node Version:  v22.12.0
+[debug] [2025-11-22T21:29:25.835Z] Time:          Sat Nov 22 2025 22:29:25 GMT+0100 (heure normale d’Europe centrale)
+[debug] [2025-11-22T21:29:25.835Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2025-11-22T19:20:37.151Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-11-22T19:20:37.151Z] > authorizing via signed-in user (ekouehelmut@gmail.com)
-[debug] [2025-11-22T19:20:37.306Z] openjdk version "21.0.6" 2025-01-21 LTS
+[debug] [2025-11-22T21:29:25.999Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-22T21:29:26.000Z] > authorizing via signed-in user (alexandrenestoridis@gmail.com)
+[debug] [2025-11-22T21:29:26.092Z] java version "21.0.5" 2024-10-15 LTS
+Java(TM) SE Runtime Environment (build 21.0.5+9-LTS-239)
 
-[debug] [2025-11-22T19:20:37.307Z] OpenJDK Runtime Environment (build 21.0.6+10-LTS)
-OpenJDK 64-Bit Server VM (build 21.0.6+10-LTS, mixed mode, sharing)
+[debug] [2025-11-22T21:29:26.093Z] Java HotSpot(TM) 64-Bit Server VM (build 21.0.5+9-LTS-239, mixed mode, sharing)
 
-[debug] [2025-11-22T19:20:37.325Z] Parsed Java major version: 21
+[debug] [2025-11-22T21:29:26.119Z] Parsed Java major version: 21
 [info] i  emulators: Starting emulators: functions, firestore, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, extensions"}}
-[debug] [2025-11-22T19:20:37.328Z] Checked if tokens are valid: true, expires at: 1763841621831
-[debug] [2025-11-22T19:20:37.328Z] Checked if tokens are valid: true, expires at: 1763841621831
-[debug] [2025-11-22T19:20:37.330Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci [none]
-[debug] [2025-11-22T19:20:38.155Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci 200
-[debug] [2025-11-22T19:20:38.155Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci {"projectNumber":"118445075960","projectId":"news-app-api-vinci","lifecycleState":"ACTIVE","name":"news-app-api-vinci","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-11-14T12:38:37.131854Z"}
-[debug] [2025-11-22T19:20:38.174Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T19:20:38.174Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T19:20:38.174Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T19:20:38.174Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2025-11-22T19:20:38.181Z] Emulator locator file path: C:\Users\ekoue\AppData\Local\Temp\hub-news-app-api-vinci.json
-[debug] [2025-11-22T19:20:38.181Z] [hub] writing locator at C:\Users\ekoue\AppData\Local\Temp\hub-news-app-api-vinci.json
-[debug] [2025-11-22T19:20:38.192Z] [Extensions] Started Extensions emulator, this is a noop.
-[debug] [2025-11-22T19:20:38.200Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T19:20:38.200Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T19:20:38.200Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T19:20:38.200Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[debug] [2025-11-22T21:29:26.121Z] Checked if tokens are valid: true, expires at: 1763849503152
+[debug] [2025-11-22T21:29:26.122Z] Checked if tokens are valid: true, expires at: 1763849503152
+[debug] [2025-11-22T21:29:26.122Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci [none]
+[debug] [2025-11-22T21:29:26.400Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci 200
+[debug] [2025-11-22T21:29:26.400Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci {"projectNumber":"118445075960","projectId":"news-app-api-vinci","lifecycleState":"ACTIVE","name":"news-app-api-vinci","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-11-14T12:38:37.131854Z"}
+[debug] [2025-11-22T21:29:26.409Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T21:29:26.410Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T21:29:26.410Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T21:29:26.410Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-11-22T21:29:26.413Z] Emulator locator file path: C:\Users\Msi\AppData\Local\Temp\hub-news-app-api-vinci.json
+[debug] [2025-11-22T21:29:26.413Z] [hub] writing locator at C:\Users\Msi\AppData\Local\Temp\hub-news-app-api-vinci.json
+[debug] [2025-11-22T21:29:26.417Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2025-11-22T21:29:26.421Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T21:29:26.421Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T21:29:26.421Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T21:29:26.421Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
 [warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
-[debug] [2025-11-22T19:20:38.221Z] defaultcredentials: writing to file C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json
-[debug] [2025-11-22T19:20:38.224Z] Setting GAC to C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\ekoue\\AppData\\Roaming\\firebase\\ekouehelmut_gmail_com_application_default_credentials.json"}}
-[debug] [2025-11-22T19:20:38.224Z] Checked if tokens are valid: true, expires at: 1763841621831
-[debug] [2025-11-22T19:20:38.224Z] Checked if tokens are valid: true, expires at: 1763841621831
-[debug] [2025-11-22T19:20:38.225Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig [none]
-[debug] [2025-11-22T19:20:38.591Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig 200
-[debug] [2025-11-22T19:20:38.591Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig {"projectId":"news-app-api-vinci","storageBucket":"news-app-api-vinci.firebasestorage.app"}
+[debug] [2025-11-22T21:29:26.432Z] defaultcredentials: writing to file C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json
+[debug] [2025-11-22T21:29:26.433Z] Setting GAC to C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Msi\\AppData\\Roaming\\firebase\\alexandrenestoridis_gmail_com_application_default_credentials.json"}}
+[debug] [2025-11-22T21:29:26.433Z] Checked if tokens are valid: true, expires at: 1763849503152
+[debug] [2025-11-22T21:29:26.433Z] Checked if tokens are valid: true, expires at: 1763849503152
+[debug] [2025-11-22T21:29:26.433Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig [none]
+[debug] [2025-11-22T21:29:26.781Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig 200
+[debug] [2025-11-22T21:29:26.782Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig {"projectId":"news-app-api-vinci","storageBucket":"news-app-api-vinci.firebasestorage.app"}
 [warn] !  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
 [warn] !  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
 [warn] !  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
-[debug] [2025-11-22T19:20:38.614Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2025-11-22T19:20:38.614Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2025-11-22T19:20:38.614Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ekoue\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",9099,"--websocket_port",9150,"--project_id","news-app-api-vinci","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":9099} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ekoue\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",9099,\"--websocket_port\",9150,\"--project_id\",\"news-app-api-vinci\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9099}"}}
+[debug] [2025-11-22T21:29:26.795Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-11-22T21:29:26.795Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2025-11-22T21:29:26.795Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\Msi\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",9099,"--websocket_port",9150,"--project_id","news-app-api-vinci","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":9099} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\Msi\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",9099,\"--websocket_port\",9150,\"--project_id\",\"news-app-api-vinci\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9099}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2025-11-22T21:29:28.656Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "C:\VINCI\projet-web3\backend\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\VINCI\\projet-web3\\backend\\functions\" for Cloud Functions..."}}
+[debug] [2025-11-22T21:29:28.663Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2025-11-22T21:29:29.659Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2025-11-22T21:29:29.659Z] Building nodejs source
+[debug] [2025-11-22T21:29:29.660Z] Failed to find version of module node: reached end of search path C:\VINCI\projet-web3\backend\functions\node_modules
+[info] +  functions: Using node@22 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-11-22T21:29:29.662Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-11-22T21:29:29.670Z] Found firebase-functions binary at 'C:\VINCI\projet-web3\backend\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8632
+
+[debug] [2025-11-22T21:29:30.256Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"},"eurApi":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"eurApi"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-11-22T21:29:34.295Z] defaultcredentials: writing to file C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json
+[debug] [2025-11-22T21:29:34.297Z] Setting GAC to C:\Users\Msi\AppData\Roaming\firebase\alexandrenestoridis_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\Msi\\AppData\\Roaming\\firebase\\alexandrenestoridis_gmail_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api, eurApi. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api, eurApi."}}
+[info] +  functions[us-central1-api]: http function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/api)."}}
+[info] +  functions[us-central1-eurApi]: http function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/eurApi). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/eurApi)."}}
+[debug] [2025-11-22T21:29:34.305Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: connect ECONNREFUSED ::1:40001. If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Firestore  │ 127.0.0.1:9099 │ http://127.0.0.1:4000/firestore  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500, 9150
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-11-22T21:29:34.721Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:29:34.721Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:29:34.721Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:29:34.721Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:29:34.721Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T21:29:34.722Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:29:34.722Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-11-22T21:29:34.736Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2025-11-22T21:29:34.737Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[info] >  (node:14280) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead. {"user":"(node:14280) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (node:14280) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead."}}
+[info] >  (Use `node --trace-deprecation ...` to show where the warning was created) {"user":"(Use `node --trace-deprecation ...` to show where the warning was created)","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m (Use `node --trace-deprecation ...` to show where the warning was created)"}}
+[debug] [2025-11-22T21:29:35.714Z] [runtime-status] [14280] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-11-22T21:29:35.716Z] [runtime-status] [14280] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T21:29:35.716Z] [runtime-status] [14280] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-11-22T21:29:35.716Z] [runtime-status] [14280] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T21:29:36.013Z] [runtime-status] [14280] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-11-22T21:29:36.013Z] [runtime-status] [14280] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}}"}}
+[debug] [2025-11-22T21:29:36.013Z] [runtime-status] [14280] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T21:29:36.018Z] [runtime-status] [14280] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-11-22T21:29:36.020Z] [runtime-status] [14280] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T21:29:36.021Z] [runtime-status] [14280] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\VINCI\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2025-11-22T21:29:36.130Z] [runtime-status] [14280] initializeApp(DEFAULT) {"storageBucket":"news-app-api-vinci.firebasestorage.app","projectId":"news-app-api-vinci"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] initializeApp(DEFAULT) {\"storageBucket\":\"news-app-api-vinci.firebasestorage.app\",\"projectId\":\"news-app-api-vinci\"}"}}
+[debug] [2025-11-22T21:29:36.160Z] [runtime-status] [14280] Functions runtime initialized. {"cwd":"C:\\VINCI\\projet-web3\\backend\\functions","node_version":"22.12.0"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Functions runtime initialized. {\"cwd\":\"C:\\\\VINCI\\\\projet-web3\\\\backend\\\\functions\",\"node_version\":\"22.12.0\"}"}}
+[debug] [2025-11-22T21:29:36.160Z] [runtime-status] [14280] Listening to port: \\?\pipe\fire_emu_4eeedcc7fc995876 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [14280] Listening to port: \\\\?\\pipe\\fire_emu_4eeedcc7fc995876"}}
+[debug] [2025-11-22T21:29:36.177Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:29:36.177Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:29:36.178Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[debug] [2025-11-22T21:29:36.963Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 785.7239ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 785.7239ms"}}
+[debug] [2025-11-22T21:29:36.964Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:29:36.964Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:29:36.965Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:29:36.965Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:29:40.758Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:29:40.758Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:29:40.758Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:29:40.758Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:29:40.758Z] Accepted request OPTIONS /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T21:29:40.759Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:29:40.759Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T21:29:40.759Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:29:40.760Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[debug] [2025-11-22T21:29:40.764Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 4.1026ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 4.1026ms"}}
+[debug] [2025-11-22T21:29:40.764Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:29:40.764Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:29:40.764Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:29:40.765Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:29:40.765Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:29:40.765Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:29:40.765Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:29:40.765Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:29:40.765Z] Accepted request POST /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T21:29:40.766Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:29:40.766Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T21:29:40.766Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:29:40.766Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[info] >  Fetching with Gemini... {"user":"Fetching with Gemini...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Fetching with Gemini..."}}
+[info] >  Calling Gemini API for category: Informatique {"user":"Calling Gemini API for category: Informatique","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Calling Gemini API for category: Informatique"}}
+[info] >  Gemini response received! {"user":"Gemini response received!","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response received!"}}
+[info] >  Gemini response text: ```json {"user":"Gemini response text: ```json","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response text: ```json"}}
+[info] >  [ {"user":"[","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m ["}}
+[info] >    { {"user":"  {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   {"}}
+[info] >      "title": "OpenAI lance GPT-4o, un modèle multimodal plus rapide et plus expressif", {"user":"    \"title\": \"OpenAI lance GPT-4o, un modèle multimodal plus rapide et plus expressif\",","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"title\": \"OpenAI lance GPT-4o, un modèle multimodal plus rapide et plus expressif\","}}
+[info] >      "description": "OpenAI a dévoilé GPT-4o, un nouveau modèle intégrant texte, audio et vidéo, of {"user":"    \"description\": \"OpenAI a dévoilé GPT-4o, un nouveau modèle intégrant texte, audio et vidéo, of","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"description\": \"OpenAI a dévoilé GPT-4o, un nouveau modèle intégrant texte, audio et vidéo, of"}}
+[debug] [2025-11-22T21:29:53.329Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 12562.7312ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 12562.7312ms"}}
+[debug] [2025-11-22T21:29:53.329Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:29:53.330Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:29:53.330Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:29:53.330Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:18.165Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:30:18.165Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:18.165Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:30:18.165Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:30:18.165Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T21:30:18.166Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:30:18.166Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T21:30:18.166Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:30:18.166Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[debug] [2025-11-22T21:30:18.202Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 35.6115ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 35.6115ms"}}
+[debug] [2025-11-22T21:30:18.202Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:30:18.202Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:30:18.203Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:30:18.203Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:21.700Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:30:21.700Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:21.700Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:30:21.700Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:30:21.700Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T21:30:21.700Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:30:21.701Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T21:30:21.701Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:30:21.701Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[debug] [2025-11-22T21:30:21.728Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 27.6043ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 27.6043ms"}}
+[debug] [2025-11-22T21:30:21.729Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:30:21.729Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:30:21.729Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:30:21.729Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:24.000Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:30:24.000Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:24.000Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:30:24.000Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:30:24.000Z] Accepted request OPTIONS /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T21:30:24.001Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:30:24.001Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T21:30:24.001Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:30:24.001Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[debug] [2025-11-22T21:30:24.003Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 2.1251ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 2.1251ms"}}
+[debug] [2025-11-22T21:30:24.004Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:30:24.004Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:30:24.004Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:30:24.004Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:24.004Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:30:24.004Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:24.004Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T21:30:24.004Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:30:24.005Z] Accepted request POST /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T21:30:24.005Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:30:24.005Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T21:30:24.005Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:30:24.005Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[info] >  Fetching with Gemini... {"user":"Fetching with Gemini...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Fetching with Gemini..."}}
+[info] >  Calling Gemini API for category: Informatique {"user":"Calling Gemini API for category: Informatique","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Calling Gemini API for category: Informatique"}}
+[info] >  Gemini response received! {"user":"Gemini response received!","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response received!"}}
+[info] >  Gemini response text: ```json {"user":"Gemini response text: ```json","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response text: ```json"}}
+[info] >  [ {"user":"[","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m ["}}
+[info] >    { {"user":"  {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   {"}}
+[info] >      "title": "Le Parlement Européen adopte définitivement le Règlement sur l'Intelligence Artificielle (AI Act)", {"user":"    \"title\": \"Le Parlement Européen adopte définitivement le Règlement sur l'Intelligence Artificielle (AI Act)\",","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"title\": \"Le Parlement Européen adopte définitivement le Règlement sur l'Intelligence Artificielle (AI Act)\","}}
+[info] >      "description": "L'Union Européenne est la première juridiction mondi {"user":"    \"description\": \"L'Union Européenne est la première juridiction mondi","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"description\": \"L'Union Européenne est la première juridiction mondi"}}
+[debug] [2025-11-22T21:30:40.597Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 16592.5142ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 16592.5142ms"}}
+[debug] [2025-11-22T21:30:40.597Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:30:40.597Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:30:40.598Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:30:40.598Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:48.585Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:30:48.584Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T21:30:48.585Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T21:30:48.584Z"],"workRunningCount":1}
+[debug] [2025-11-22T21:30:48.585Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T21:30:48.585Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T21:30:48.585Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T21:30:48.585Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T21:30:48.586Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: BUSY"}}
+[debug] [2025-11-22T21:30:48.612Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 26.9936ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 26.9936ms"}}
+[debug] [2025-11-22T21:30:48.613Z] [worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-cb6e5640-675b-46be-9f09-523a050a38a8]: IDLE"}}
+[debug] [2025-11-22T21:30:48.614Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T21:30:48.615Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T21:30:48.615Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}

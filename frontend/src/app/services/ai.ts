@@ -94,13 +94,7 @@ export class AiService {
       'Content-Type': 'application/json'
     };
 
-    const body = {
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 500,
-      temperature: 0.7
-    };
 
-    return this.http.post('https://api.openai.com/v1/chat/completions', body, { headers });
+      // Fonction OpenAI supprimée
   }
 }

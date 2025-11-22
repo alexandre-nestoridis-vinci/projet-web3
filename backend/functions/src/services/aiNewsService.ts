@@ -11,7 +11,7 @@ import crypto from "crypto";
 
 // Configuration - À remplir avec ta clé API
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-const OPENAI_API_KEY = process.env.OPENAI_API_KEY || "";
+// Plus d'utilisation d'OpenAI
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 heure
 
 /** Structure de news brute depuis l'IA */
@@ -87,65 +87,6 @@ UNIQUEMENT du JSON valide, aucun autre texte.`;
   }
 }
 
-/**
- * Récupère les news via OpenAI (meilleure qualité)
- * @param {string} category - Catégorie des news
- * @param {number} limit - Nombre maximum de news
- * @return {Promise<RawNewsItem[]>} News récupérées
- */
-async function fetchNewsWithOpenAI(
-  category: string,
-  limit = 5
-): Promise<Array<{
-  title: string;
-  description: string;
-  content: string;
-  url: string;
-  source: string;
-}>> {
-  if (!OPENAI_API_KEY) {
-    throw new Error("OPENAI_API_KEY not configured");
-  }
-
-  const prompt = `Donne-moi ${limit} actualités récentes du ` +
-    `domaine "${category}" en français.
-Format JSON exact:
-[
-  {
-    "title": "Titre de l'actualité",
-    "description": "Description courte",
-    "content": "Contenu détaillé de l'article",
-    "url": "https://example.com",
-    "source": "Nom de la source"
-  }
-]
-UNIQUEMENT du JSON valide, aucun autre texte.`;
-
-  try {
-    const response = await axios.post(
-      "https://api.openai.com/v1/chat/completions",
-      {
-        model: "gpt-3.5-turbo",
-        messages: [{role: "user", content: prompt}],
-        temperature: 0.7,
-        max_tokens: 2000,
-      },
-      {
-        headers: {Authorization: `Bearer ${OPENAI_API_KEY}`},
-        timeout: 15000,
-      }
-    );
-
-    const text = response.data?.choices?.[0]?.message?.content || "";
-    const jsonMatch = text.match(/\[[\s\S]*\]/);
-    if (!jsonMatch) throw new Error("Invalid response format");
-
-    return JSON.parse(jsonMatch[0]);
-  } catch (e) {
-    console.error("OpenAI API error:", e);
-    throw e;
-  }
-}
 
 /**
  * Vérifie si on doit récupérer les news (cache 1h)
@@ -198,8 +139,8 @@ export async function fetchRealNewsWithAI(
       };
     }
 
-    // Récupérer via IA (Gemini, fallback OpenAI, mock data)
-    let newsData: RawNewsItem[] | Article[];
+    // Récupérer via IA (Gemini uniquement)
+    let newsData: RawNewsItem[] | Article[] = [];
     let source = "";
 
     if (GEMINI_API_KEY) {
@@ -208,30 +149,7 @@ export async function fetchRealNewsWithAI(
         newsData = await fetchNewsWithGemini(category, limit);
         source = "Gemini";
       } catch (e) {
-        console.warn("Gemini failed, trying OpenAI...");
-        if (OPENAI_API_KEY) {
-          try {
-            console.log("Fetching with OpenAI...");
-            newsData = await fetchNewsWithOpenAI(category, limit);
-            source = "OpenAI";
-          } catch (e2) {
-            console.warn("OpenAI failed, no data available");
-            newsData = [];
-            source = "No Data";
-          }
-        } else {
-          console.warn("No OpenAI key, no data available");
-          newsData = [];
-          source = "No Data";
-        }
-      }
-    } else if (OPENAI_API_KEY) {
-      try {
-        console.log("Fetching with OpenAI...");
-        newsData = await fetchNewsWithOpenAI(category, limit);
-        source = "OpenAI";
-      } catch (e) {
-        console.warn("OpenAI failed, no data available");
+        console.warn("Gemini failed, no data available");
         newsData = [];
         source = "No Data";
       }

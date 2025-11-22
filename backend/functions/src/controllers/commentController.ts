@@ -1,3 +1,4 @@
+// Fichier supprimé : les commentaires ne sont plus utilisés
 /**
  * Comment Controller
  * Handles HTTP requests related to article comments
