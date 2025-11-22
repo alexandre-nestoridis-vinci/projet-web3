@@ -33,11 +33,20 @@ app.get("/api/health", (req, res) => {
   });
 });
 
-/**
- * Export the Express app as a Cloud Function
- */
-export const api = functions.https.onRequest(app);
+// API pour traitement IA
+export const processWithAI = onRequest(async (request, response) => {
+  // Headers CORS
+  response.set("Access-Control-Allow-Origin", "*");
+  response.set("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
+  response.set("Access-Control-Allow-Headers", "Content-Type");
 
-// Region alias for europe-west1
-export const eurApi = functions.https.onRequest(app);
+  if (request.method === "OPTIONS") {
+    response.status(204).send("");
+    return;
+  }
 
+  response.json({
+    message: "API IA - À implémenter",
+    status: "TODO",
+  });
+});
