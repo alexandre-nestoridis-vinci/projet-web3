@@ -1,152 +1,152 @@
 ﻿[
     {
-        "id":  "s5Ok9gRCupf51KIjoSuE",
-        "title":  "La consommation énergétique de l\u0027IA, un défi croissant pour le secteur informatique",
-        "description":  "L\u0027essor fulgurant de l\u0027intelligence artificielle soulève des préoccupations croissantes concernant son empreinte énergétique et son impact environnemental.",
-        "content":  "Alors que l\u0027intelligence artificielle continue de progresser et de s\u0027intégrer dans de multiples secteurs, les experts alertent sur la consommation électrique exponentielle des centres de données et des infrastructures nécessaires à son fonctionnement. L\u0027entraînement de modèles d\u0027IA complexes et l\u0027exécution d\u0027inférences à grande échelle nécessitent des quantités colossales d\u0027énergie, posant un défi majeur en termes de développement durable. Cette consommation grandissante pourrait non seulement peser sur les réseaux électriques, mais aussi contribuer de manière significative aux émissions de carbone si l\u0027énergie n\u0027est pas issue de sources renouvelables, poussant le secteur à rechercher des solutions d\u0027IA plus efficientes.",
-        "url":  "https://www.techniques-ingenieur.fr/actualite/articles/l-intelligence-artificielle-une-consommation-energetique-grandissante-111077/",
+        "id":  "bUxjSiFf07p8JJu2qk1v",
+        "title":  "Claude 3.5 Sonnet d\u0027Anthropic surpasse GPT-4o d\u0027OpenAI dans de nombreux benchmarks",
+        "description":  "Anthropic a lancé Claude 3.5 Sonnet, son nouveau modèle de langage, affirmant qu\u0027il surpasse les performances de GPT-4o d\u0027OpenAI sur plusieurs critères, notamment la compréhension visuelle et la rapidité.",
+        "content":  "Claude 3.5 Sonnet est présenté comme un modèle plus rapide, plus coûteux et plus intelligent que son prédécesseur, Claude 3 Opus, et prétend surpasser les capacités de GPT-4o, en particulier pour les tâches de raisonnement visuel et la génération de code. Anthropic met en avant ses avancées en matière de multimodalité et sa capacité à analyser des données complexes, marquant une étape importante dans la course à l\u0027IA générative la plus performante et repoussant les limites de ce que les modèles de langage peuvent accomplir.",
+        "url":  "https://siecledigital.fr/2024/06/21/claude-3-5-sonnet-anthropic-surpasse-gpt-4o-openai/",
         "source":  {
-                       "name":  "Techniques de l\u0027Ingénieur",
+                       "name":  "Siècle Digital",
                        "url":  ""
                    },
         "publishedAt":  {
-                            "_seconds":  1763825883,
-                            "_nanoseconds":  489000000
+                            "_seconds":  1763827630,
+                            "_nanoseconds":  256000000
                         },
         "category":  "informatique",
-        "dedupHash":  "cd82bb1833dbfb71ec75810b4d588a33",
-        "summary":  "La consommation énergétique de l\u0027IA, un défi croissant pour le secteur informatique L\u0027essor fulgurant de l\u0027intelligence artificielle soulève des préoccupations croissantes concernant son empreinte éne",
-        "sentiment":  "negative",
-        "keywords":  [
-                         "consommation",
-                         "nerg",
-                         "tique",
-                         "croissant",
-                         "pour"
-                     ],
-        "fetchedAt":  {
-                          "_seconds":  1763825883,
-                          "_nanoseconds":  489000000
-                      }
-    },
-    {
-        "id":  "V0qZxXnLmxWnyCHXwhGb",
-        "title":  "IBM acquiert HashiCorp pour 6,4 milliards de dollars, renforçant son offre cloud et IA",
-        "description":  "IBM a annoncé l\u0027acquisition de HashiCorp, éditeur de logiciels d\u0027automatisation d\u0027infrastructure cloud comme Terraform et Vault, pour un montant de 6,4 milliards de dollars.",
-        "content":  "Cette acquisition majeure par IBM de HashiCorp, une entreprise clé dans le domaine de l\u0027infrastructure as a code et de la gestion de secrets, représente une étape stratégique pour le géant technologique. HashiCorp est réputé pour ses outils open source et commerciaux tels que Terraform pour le provisionnement d\u0027infrastructure, Vault pour la gestion des identités et des accès, et Consul pour le maillage de services. En intégrant ces technologies, IBM vise à renforcer sa position sur le marché du cloud hybride et de l\u0027intelligence artificielle, en offrant à ses clients des solutions complètes pour l\u0027automatisation et la sécurité des environnements multi-cloud.",
-        "url":  "https://www.lemondeinformatique.fr/actualites/lire-ibm-acquiert-hashicorp-pour-6-4-milliards-de-dollars-93976.html",
-        "source":  {
-                       "name":  "Le Monde Informatique",
-                       "url":  ""
-                   },
-        "publishedAt":  {
-                            "_seconds":  1763825883,
-                            "_nanoseconds":  451000000
-                        },
-        "category":  "informatique",
-        "dedupHash":  "f2eef4ac2e52b4413d49df41414c8000",
-        "summary":  "IBM acquiert HashiCorp pour 6,4 milliards de dollars, renforçant son offre cloud et IA IBM a annoncé l\u0027acquisition de HashiCorp, éditeur de logiciels d\u0027automatisation d\u0027infrastructure cloud comme Terr",
+        "dedupHash":  "3eb2e10b27ccf61e9bb8f315c71a3c01",
+        "summary":  "Claude 3. 5 Sonnet d\u0027Anthropic surpasse GPT-4o d\u0027OpenAI dans de nombreux benchmarks Anthropic a lancé Claude 3.",
         "sentiment":  "neutral",
         "keywords":  [
-                         "acquiert",
-                         "hashicorp",
-                         "pour",
-                         "milliards",
-                         "dollars"
+                         "claude",
+                         "sonnet",
+                         "anthropic",
+                         "surpasse",
+                         "openai"
                      ],
         "fetchedAt":  {
-                          "_seconds":  1763825883,
-                          "_nanoseconds":  451000000
+                          "_seconds":  1763827630,
+                          "_nanoseconds":  257000000
                       }
     },
     {
-        "id":  "6qtBOfdfQ5cgEPrtehwU",
-        "title":  "NVIDIA pulvérise les attentes avec des résultats record portés par l\u0027IA",
-        "description":  "Le géant des puces NVIDIA a annoncé des résultats trimestriels exceptionnels, dépassant largement les prévisions grâce à la forte demande pour ses processeurs dédiés à l\u0027intelligence artificielle.",
-        "content":  "NVIDIA, acteur incontournable du marché des semi-conducteurs, a une nouvelle fois surpris les analystes en publiant des chiffres financiers stratosphériques pour son premier trimestre fiscal 2025. Le chiffre d\u0027affaires a bondi de plus de 262% sur un an, atteignant 26 milliards de dollars, principalement tiré par la division \u0027Data Center\u0027 qui fournit les puces GPU essentielles au développement et à l\u0027exécution des modèles d\u0027IA. Ces résultats confirment la position dominante de NVIDIA dans l\u0027économie de l\u0027intelligence artificielle et renforcent son statut de valeur phare sur les marchés boursiers.",
-        "url":  "https://www.journaldunet.com/economie/resultats-financiers/1453272-nvidia-resultats-financiers-2024-analyse/",
+        "id":  "zyNpwf6A0dPrIBlbra1t",
+        "title":  "AMD lance ses puces Ryzen AI 300 pour PC portables, intensifiant la concurrence",
+        "description":  "AMD dévoile sa nouvelle série de processeurs Ryzen AI 300, optimisés pour l\u0027intelligence artificielle et destinés aux ordinateurs portables, visant à concurrencer directement Intel et Qualcomm sur le marché des PC Copilot+.",
+        "content":  "Les Ryzen AI 300, basés sur l\u0027architecture Zen 5 et intégrant un NPU (Neural Processing Unit) XDNA 2, promettent des performances significatives pour les tâches d\u0027IA locales, comme celles requises par les futures fonctionnalités de Windows Copilot+. Ces puces, dotées de jusqu\u0027à 12 cœurs CPU et un GPU RDNA 3.5 intégré, visent à offrir une puissance de calcul élevée et une efficacité énergétique pour une nouvelle génération de PC portables \u0027IA-ready\u0027, marquant une étape clé dans la course à l\u0027ordinateur portable intelligent.",
+        "url":  "https://www.tomshardware.fr/amd-ryzen-ai-300-des-puches-pour-pc-portables-musclees-face-a-qualcomm-et-intel/",
+        "source":  {
+                       "name":  "Tom\u0027s Hardware France",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763827630,
+                            "_nanoseconds":  235000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "37ada092a9485a6c42014cf447eaa096",
+        "summary":  "AMD lance ses puces Ryzen AI 300 pour PC portables, intensifiant la concurrence AMD dévoile sa nouvelle série de processeurs Ryzen AI 300, optimisés pour l\u0027intelligence artificielle et destinés aux or",
+        "sentiment":  "neutral",
+        "keywords":  [
+                         "lance",
+                         "puces",
+                         "ryzen",
+                         "pour",
+                         "portables"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763827630,
+                          "_nanoseconds":  236000000
+                      }
+    },
+    {
+        "id":  "a2ajhjKyUAeXvYLOu6vH",
+        "title":  "Microsoft Azure mise sur les régions cloud souveraines pour séduire le secteur public",
+        "description":  "Microsoft renforce sa stratégie pour le cloud souverain en France, avec des discussions autour de l\u0027offre \u0027Cloud de Confiance\u0027 et la certification SecNumCloud, afin d\u0027attirer les entités gouvernementales et les organisations sensibles.",
+        "content":  "Face aux préoccupations de souveraineté numérique et de protection des données, Microsoft cherche à adapter son offre Azure pour répondre aux exigences strictes du secteur public français. L\u0027objectif est d\u0027obtenir la qualification SecNumCloud pour une partie de ses services, en garantissant que les données soient hébergées et gérées sur le territoire français, sans exposition aux lois extraterritoriales. Ce virage stratégique vise à rassurer les clients réticents à utiliser des clouds américains et à capter une part de marché importante dans les services publics et les infrastructures critiques.",
+        "url":  "https://www.journaldunet.com/solutions/cloud-computing/1454559-azure-microsoft-parie-sur-les-regions-cloud-souveraines-pour-attirer-les-acteurs-publics/",
         "source":  {
                        "name":  "Journal du Net",
                        "url":  ""
                    },
         "publishedAt":  {
-                            "_seconds":  1763825883,
-                            "_nanoseconds":  413000000
+                            "_seconds":  1763827630,
+                            "_nanoseconds":  216000000
                         },
         "category":  "informatique",
-        "dedupHash":  "4f3a97b36cf6d7e71297decfc275cb14",
-        "summary":  "NVIDIA pulvérise les attentes avec des résultats record portés par l\u0027IA Le géant des puces NVIDIA a annoncé des résultats trimestriels exceptionnels, dépassant largement les prévisions grâce à la fort",
-        "sentiment":  "neutral",
-        "keywords":  [
-                         "nvidia",
-                         "pulv",
-                         "rise",
-                         "attentes",
-                         "avec"
-                     ],
-        "fetchedAt":  {
-                          "_seconds":  1763825883,
-                          "_nanoseconds":  413000000
-                      }
-    },
-    {
-        "id":  "e7fZBf2zJSaeROOoVGab",
-        "title":  "Google TAG alerte sur des campagnes d\u0027espionnage d\u0027État exploitant des failles 0-day",
-        "description":  "Le groupe d\u0027analyse des menaces (TAG) de Google a révélé des campagnes d\u0027espionnage soutenues par des États, ciblant les utilisateurs d\u0027Android et de Chrome via des vulnérabilités zero-day.",
-        "content":  "Les experts du Threat Analysis Group (TAG) de Google ont mis en lumière plusieurs opérations d\u0027espionnage numérique financées par des États, qui exploitent des failles de sécurité non découvertes (zero-day) dans les systèmes d\u0027exploitation Android et le navigateur Chrome. Ces attaques visent à surveiller des individus ciblés, souvent dans des contextes politiques ou journalistiques. Google a travaillé à patcher ces vulnérabilités critiques et continue de surveiller ces menaces sophistiquées pour protéger ses utilisateurs contre des acteurs malveillants hautement organisés.",
-        "url":  "https://www.lemondeinformatique.fr/actualites/lire-google-tag-alerte-sur-des-campagnes-d-espionnage-d-etat-exploitant-des-failles-0-day-94090.html",
-        "source":  {
-                       "name":  "Le Monde Informatique",
-                       "url":  ""
-                   },
-        "publishedAt":  {
-                            "_seconds":  1763825883,
-                            "_nanoseconds":  364000000
-                        },
-        "category":  "informatique",
-        "dedupHash":  "30da89ae380c4c3aec6b758ed0152196",
-        "summary":  "Google TAG alerte sur des campagnes d\u0027espionnage d\u0027État exploitant des failles 0-day Le groupe d\u0027analyse des menaces (TAG) de Google a révélé des campagnes d\u0027espionnage soutenues par des États, ciblan",
-        "sentiment":  "negative",
-        "keywords":  [
-                         "google",
-                         "alerte",
-                         "campagnes",
-                         "espionnage",
-                         "exploitant"
-                     ],
-        "fetchedAt":  {
-                          "_seconds":  1763825883,
-                          "_nanoseconds":  365000000
-                      }
-    },
-    {
-        "id":  "W29HYDCHX4tHPrU0ErCo",
-        "title":  "Microsoft dévoile les PC Copilot+ et une nouvelle ère d\u0027IA intégrée pour Windows",
-        "description":  "Lors de sa conférence Build 2024, Microsoft a présenté les PC Copilot+, une nouvelle catégorie d\u0027ordinateurs Windows optimisés pour l\u0027IA, intégrant des fonctionnalités comme \u0027Rappel\u0027 et \u0027Cocreator\u0027.",
-        "content":  "Les PC Copilot+ représentent une avancée majeure pour Microsoft dans l\u0027intégration de l\u0027intelligence artificielle directement au cœur de Windows. Ces machines, équipées de puces ARM comme le Snapdragon X Elite, sont conçues pour offrir des performances d\u0027IA exceptionnelles, avec des fonctionnalités innovantes telles que \u0027Rappel\u0027 (Recall), qui permet de retrouver facilement tout ce qui a été vu ou fait sur l\u0027ordinateur, et \u0027Cocreator\u0027, pour la création d\u0027images assistée par IA. Cette initiative marque la volonté de Microsoft de transformer l\u0027expérience utilisateur grâce à l\u0027IA locale, tout en soulevant des débats sur la confidentialité des données.",
-        "url":  "https://www.lemondeinformatique.fr/actualites/lire-microsoft-mise-sur-l-ia-avec-les-pc-copilot-et-de-nouvelles-fonctionnalites-windows-94082.html",
-        "source":  {
-                       "name":  "Le Monde Informatique",
-                       "url":  ""
-                   },
-        "publishedAt":  {
-                            "_seconds":  1763825883,
-                            "_nanoseconds":  25000000
-                        },
-        "category":  "informatique",
-        "dedupHash":  "64601fbe17d61668fa3e051b23dcab31",
-        "summary":  "Microsoft dévoile les PC Copilot+ et une nouvelle ère d\u0027IA intégrée pour Windows Lors de sa conférence Build 2024, Microsoft a présenté les PC Copilot+, une nouvelle catégorie d\u0027ordinateurs Windows op",
+        "dedupHash":  "e516f7afe91a40f432665715e448e589",
+        "summary":  "Microsoft Azure mise sur les régions cloud souveraines pour séduire le secteur public Microsoft renforce sa stratégie pour le cloud souverain en France, avec des discussions autour de l\u0027offre \u0027Cloud d",
         "sentiment":  "neutral",
         "keywords":  [
                          "microsoft",
-                         "voile",
-                         "copilot",
-                         "nouvelle",
-                         "pour"
+                         "azure",
+                         "mise",
+                         "gions",
+                         "cloud"
                      ],
         "fetchedAt":  {
-                          "_seconds":  1763825883,
-                          "_nanoseconds":  27000000
+                          "_seconds":  1763827630,
+                          "_nanoseconds":  216000000
+                      }
+    },
+    {
+        "id":  "csz2LATXWsb3M7GaLPlw",
+        "title":  "Une faille critique découverte dans HTTP/2, une mise à jour d\u0027urgence requise",
+        "description":  "Une vulnérabilité critique a été identifiée dans le protocole HTTP/2, pouvant permettre des attaques par déni de service (DoS). Une mise à jour d\u0027urgence est fortement recommandée pour les administrateurs de serveurs.",
+        "content":  "Cette faille, baptisée CVE-2024-27983, affecte la manière dont HTTP/2 gère les en-têtes de requêtes, permettant à un attaquant d\u0027envoyer un flux de données malveillant qui surcharge la mémoire du serveur et provoque son crash. Les serveurs Nginx, Apache, et d\u0027autres implémentations de HTTP/2 sont concernés. Les éditeurs ont déjà commencé à déployer des correctifs pour protéger les systèmes contre ces attaques potentielles qui peuvent paralyser des services en ligne.",
+        "url":  "https://www.lemondeinformatique.fr/actualites/lire-une-faille-critique-decouverte-dans-http-2-une-mise-a-jour-d-urgence-requise-95240.html",
+        "source":  {
+                       "name":  "Le Monde Informatique",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763827630,
+                            "_nanoseconds":  194000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "0095b70519a0357961286a17b8ad012d",
+        "summary":  "Une faille critique découverte dans HTTP/2, une mise à jour d\u0027urgence requise Une vulnérabilité critique a été identifiée dans le protocole HTTP/2, pouvant permettre des attaques par déni de service (",
+        "sentiment":  "negative",
+        "keywords":  [
+                         "faille",
+                         "critique",
+                         "couverte",
+                         "dans",
+                         "http"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763827630,
+                          "_nanoseconds":  194000000
+                      }
+    },
+    {
+        "id":  "wqGeRPRdImmLRLfZicS7",
+        "title":  "L\u0027ANSSI publie son guide pour sécuriser les systèmes d\u0027intelligence artificielle",
+        "description":  "L\u0027Agence nationale de la sécurité des systèmes d\u0027information (ANSSI) a dévoilé un guide pratique destiné à aider les organisations à sécuriser leurs systèmes basés sur l\u0027IA, abordant les risques et proposant des mesures préventives.",
+        "content":  "Le document de 50 pages aborde la cybersécurité des systèmes d\u0027IA sous plusieurs angles, y compris la chaîne d\u0027approvisionnement, la conception, l\u0027exploitation et la maintenance. Il vise à fournir des recommandations pour anticiper les menaces spécifiques à l\u0027IA, telles que les attaques par empoisonnement de données ou l\u0027évasion. Ce guide est une réponse directe à la croissance exponentielle de l\u0027IA et aux défis de sécurité qu\u0027elle pose, offrant une feuille de route pour intégrer la sécurité dès la conception des systèmes d\u0027IA.",
+        "url":  "https://www.zdnet.fr/actualites/l-anssi-publie-son-guide-pour-securiser-les-systemes-d-intelligence-artificielle-39967727.htm",
+        "source":  {
+                       "name":  "ZDNet France",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763827630,
+                            "_nanoseconds":  70000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "4188f4594e53755b3894eebcb4837baa",
+        "summary":  "L\u0027ANSSI publie son guide pour sécuriser les systèmes d\u0027intelligence artificielle L\u0027Agence nationale de la sécurité des systèmes d\u0027information (ANSSI) a dévoilé un guide pratique destiné à aider les or",
+        "sentiment":  "neutral",
+        "keywords":  [
+                         "anssi",
+                         "publie",
+                         "guide",
+                         "pour",
+                         "curiser"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763827630,
+                          "_nanoseconds":  71000000
                       }
     }
 ]

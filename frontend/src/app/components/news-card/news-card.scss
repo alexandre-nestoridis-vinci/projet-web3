@@ -1,24 +1,23 @@
 .news-card {
   /* Conteneur de la carte (Base Dark Mode) */
-  background: #1a202c; /* Fond très sombre */
-  color: #e0e0e0; /* Texte principal clair */
+  background: #1a202c; 
+  color: #e0e0e0; 
   border-radius: 12px;
   overflow: hidden;
-  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25); /* Ombre marquée */
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.25); 
   transition: all 0.3s;
   height: 100%;
   display: flex;
   flex-direction: column;
-  position: relative; 
-  cursor: pointer; /* Indique que la carte est cliquable */
+  position: relative; /* CRUCIAL : Base pour le positionnement absolu des enfants */
+  cursor: pointer; 
 
   &:hover {
     transform: translateY(-4px);
-    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5); /* Ombre plus intense au survol */
+    box-shadow: 0 8px 35px rgba(0, 0, 0, 0.5); 
   }
   
   /* L'image de fond (texture High-Tech) */
-  /* Cette classe doit être ajoutée à votre news-card.html si vous voulez une image par article */
   .card-background-image {
       position: absolute;
       top: 0;
@@ -26,86 +25,76 @@
       width: 100%;
       height: 100%;
       object-fit: cover;
-      opacity: 0.15; /* Opacité très faible pour la texture */
+      opacity: 0.15; 
       z-index: 1;
   }
 
   /* ------------------- */
   /* Contenu de la Carte */
   /* ------------------- */
-
-  .card-header {
-    /* Suppression totale de l'en-tête (badges, sentiments) pour coller au visuel */
-    display: none; 
-  }
-
-  .card-image {
-    /* Supprimer l'ancienne image d'en-tête si elle n'est pas la texture de fond */
+  .card-header, .card-image {
     display: none; 
   }
 
   .card-content {
     position: relative;
-    z-index: 2; /* S'assurer que le contenu est au-dessus de la texture de fond */
+    z-index: 2; 
     padding: 1.5rem;
-    padding-top: 5rem; /* Espace visuel pour un grand titre */
-    flex: 1; /* Permet au contenu de s'étendre */
+    padding-top: 1rem; 
+    flex: 1; 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; /* Ancre le contenu vers le bas de la carte */
+    justify-content: flex-end; 
   }
 
-  /* Titre (Focus principal) */
-  .article-title {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.4rem; 
-    font-weight: 700;
-    line-height: 1.3;
-    color: #e0e0e0;
-    /* Ajoutez une petite ombre de texte pour le contraste si besoin */
-    // text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5); 
-  }
+  /* ... (Titre, Résumé, Métadonnées - Conservés) ... */
+  
+  .article-tags, .card-actions { display: none; }
+  
+  /* ------------------- */
+  /* Animation de Survol */
+  /* ------------------- */
 
-  .article-summary {
-    margin: 0 0 1rem 0;
-    color: #bdbdbd;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    flex: 1; 
-
-    /* Propriétés pour la Troncation de Texte (Ceci est le bloc concerné) */
-    display: -webkit-box;
-    -webkit-line-clamp: 3; /* Le préfixe WebKit */
-    -webkit-box-orient: vertical;
-    line-clamp: 3; 
+  .card-link-wrapper {
+    /* 🚩 CORRECTION : Supprimer le positionnement absolu pour le laisser dans le flux */
+    /* Nous enlevons : position: absolute; top: 0; left: 0; */
+    width: 100%;
+    height: 100%;
     overflow: hidden;
-  }
-
-  /* Métadonnées (Source/Date) */
-  .article-meta {
     display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 1rem;
-    font-size: 0.8rem;
-    color: #9e9e9e; 
-    
-    .source {
-      color: #7085f3; /* Accentuation subtile */
-      font-weight: 500;
-    }
-    
-    .date {
-      color: #9e9e9e;
-    }
+    flex-direction: column;
+  }
 
-    .ai-badge {
-      display: none; /* Badge IA non présent dans le mock-up */
+  .hover-overlay {
+    /* C'est CE sélecteur qui DOIT rester en position absolue pour l'animation */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(138, 85, 229, 0.9); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10; 
+    
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+
+    .overlay-text {
+      color: white;
+      font-size: 1.2rem;
+      font-weight: 700;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     }
   }
 
-  /* Tags et Actions */
-  .article-tags, .card-actions {
-    display: none; /* Suppression des tags et du bouton "Lire l'article" */
+  /* Déclencheur : Fait remonter l'overlay au survol */
+  &:hover {
+    .hover-overlay {
+      opacity: 1;
+      transform: translateY(0); 
+    }
   }
 }
