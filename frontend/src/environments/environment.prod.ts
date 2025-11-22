@@ -13,9 +13,9 @@ export const environment = {
     // 🔥 URLs pour production (Firebase Functions déployées)
     baseUrl: "", // Base URL vide car chaque fonction a sa propre URL
     endpoints: {
-      testFirestore: "https://testfirestore-4dizaotfxa-uc.a.run.app",
-      fetchNews: "https://fetchnews-4dizaotfxa-uc.a.run.app",
-      processWithAI: "https://processwithai-4dizaotfxa-uc.a.run.app"
+      testFirestore: "/api/health",
+      fetchNews: "/api/news",
+      processWithAI: "/api/fetch-ai-news"
     }
   },
   newsApi: {
