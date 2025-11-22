@@ -10,12 +10,12 @@ export const environment = {
     appId: "1:118445075960:web:484e66323f36962babba0d"
   },
   api: {
-    // 🔥 URLs pour production (Firebase Functions déployées)
-    baseUrl: "", // Base URL vide car chaque fonction a sa propre URL
+    // 🔥 URLs pour production (Firebase Hosting + rewrites vers Cloud Functions)
+    baseUrl: "", // Utilise le domaine du frontend
     endpoints: {
-      testFirestore: "https://testfirestore-4dizaotfxa-uc.a.run.app",
-      fetchNews: "https://fetchnews-4dizaotfxa-uc.a.run.app",
-      processWithAI: "https://processwithai-4dizaotfxa-uc.a.run.app"
+      testFirestore: "/api/health",
+      fetchNews: "/api/news",
+      processWithAI: "/api/fetch-ai-news"
     }
   },
   newsApi: {

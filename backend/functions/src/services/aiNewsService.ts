@@ -10,7 +10,7 @@ import {Article} from "../types";
 import crypto from "crypto";
 
 // Configuration - À remplir avec ta clé API
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
+const GEMINI_API_KEY = "";
 // Plus d'utilisation d'OpenAI
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 heure
 
