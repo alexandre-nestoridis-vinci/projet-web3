@@ -1,64 +1,173 @@
-// Styles globaux pour l'application
+/* app.scss */
+/* Dans app.scss ou styles.scss */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Roboto:wght@400;700&display=swap');
+
+/* Styles existants pour les éléments principaux */
 .main-container {
+  padding: 2rem;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-  min-height: calc(100vh - 80px);
 }
 
-.filter-section {
-  margin: 0 auto;
-  max-width: 800px;
+.top-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
+.ai-generator-block {
+  display: flex; /* Permet le centrage des éléments enfants */
+  flex-direction: column;
+  align-items: center; /* Centre horizontalement les enfants */
+  text-align: center; /* Centre le texte */
+  padding: 2rem 0; /* Ajout d'un peu de padding vertical */
+  
+  .ai-generation-title {
+    font-family: 'Playfair Display', serif; /* Typo plus élégante */
+    font-size: 3rem; /* Plus grand */
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 0.5rem;
+    line-height: 1.2; /* Améliore l'espacement si le titre est sur plusieurs lignes */
+  }
+
+  .ai-generation-subtitle {
+    font-family: 'Roboto', sans-serif; /* Typo claire pour la description */
+    font-size: 1.25rem; /* Taille confortable */
+    color: #555;
+    margin-bottom: 1.5rem; /* Espacement avec le bouton */
+    max-width: 600px; /* Limite la largeur pour une meilleure lisibilité */
+  }
+  
+  /* Assurez-vous que le composant app-category-filter est aussi centré */
+  app-category-filter {
+    display: block; /* Important pour que align-items: center fonctionne sur son conteneur */
+    margin-top: 1rem; /* Ajustez l'espacement si nécessaire */
+  }
+}
+
+.search-section {
+  display: flex;
+  justify-content: center; /* Centre la barre de recherche */
+  width: 100%; /* S'assure qu'il prend toute la largeur disponible */
+  
+  .global-search-container {
+    width: 100%;
+    max-width: 700px; /* Limite la largeur de la barre de recherche */
+    position: relative; /* Pour positionner les suggestions */
+  }
+
+  .global-search-input {
+    width: 100%;
+    padding: 1rem 1.5rem;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    color: #333;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Ombre plus prononcée */
+    transition: all 0.2s ease-in-out;
+
+    &:focus {
+      outline: none;
+      border-color: #7f52ff; /* Bordure violette au focus */
+      box-shadow: 0 0 0 3px rgba(127, 82, 255, 0.2);
+    }
+  }
+
+  .clear-search-button {
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #999;
+    cursor: pointer;
+    &:hover {
+      color: #333;
+    }
+  }
+
+  .suggestions {
+    position: absolute;
+    top: 100%; /* Sous la barre de recherche */
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-top: none;
+    border-radius: 0 0 12px 12px;
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    z-index: 10;
+    max-height: 300px;
+    overflow-y: auto;
+    
+    li {
+      padding: 0.8rem 1.5rem;
+      cursor: pointer;
+      border-bottom: 1px solid #f0f4f8;
+      
+      &:last-child {
+        border-bottom: none;
+      }
+      
+      &:hover {
+        background-color: #f8faff;
+      }
+      
+      strong {
+        display: block;
+        font-size: 1rem;
+        color: #333;
+      }
+      
+      .suggestion-meta {
+        font-size: 0.85rem;
+        color: #777;
+        margin-top: 0.2rem;
+      }
+    }
+  }
+}
+
+/* Styles pour la grille des actualités */
 .news-content {
-  margin-top: 2rem;
+  margin-top: 3rem;
+
+  .results-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+  }
 }
 
-.news-grid {
-  display: flex;
-  flex-direction: column;
-  gap: 3rem;
-}
-
-.loading-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 4rem 2rem;
+/* Styles pour l'état de chargement et l'état vide */
+.loading-container, .empty-state {
   text-align: center;
+  padding: 3rem;
+  color: #777;
 
-  .spinner {
-    width: 40px;
-    height: 40px;
-    border: 4px solid #f3f4f6;
-    border-top: 4px solid #3b82f6;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+  h2 {
+    font-size: 1.8rem;
+    color: #444;
     margin-bottom: 1rem;
   }
 
   p {
-    color: #6b7280;
-    font-size: 1.125rem;
+    font-size: 1.1rem;
   }
 }
 
-.empty-state {
-  text-align: center;
-  padding: 4rem 2rem;
-  
-  h2 {
-    margin: 0 0 1rem 0;
-    color: #374151;
-    font-size: 1.5rem;
-  }
-
-  p {
-    color: #6b7280;
-    font-size: 1.125rem;
-  }
+.spinner {
+  border: 4px solid rgba(0, 0, 0, 0.1);
+  border-left-color: #7f52ff;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+  margin: 0 auto 1rem;
 }
 
 @keyframes spin {
@@ -66,13 +175,18 @@
   100% { transform: rotate(360deg); }
 }
 
-// Media queries pour responsive
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .main-container {
-    padding: 0 0.5rem;
+  .ai-generator-block {
+    .ai-generation-title {
+      font-size: 2.2rem;
+    }
+    .ai-generation-subtitle {
+      font-size: 1rem;
+    }
   }
 
-  .filter-section {
-    margin: 0;
+  .news-content .results-grid {
+    grid-template-columns: 1fr;
   }
 }

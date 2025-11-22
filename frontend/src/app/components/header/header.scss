@@ -1,8 +1,9 @@
 .app-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  /* Changement majeur: Fond blanc et ombre légère */
+  background-color: white; 
+  color: #333; /* Texte sombre */
   padding: 1rem 0;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 
   .container {
     max-width: 1200px;
@@ -14,24 +15,39 @@
   }
 
   .brand {
-    h1 {
-      margin: 0;
-      font-size: 2rem;
-      font-weight: 700;
+    .logo-link {
       display: flex;
       align-items: center;
-      gap: 0.5rem;
+      text-decoration: none;
+      color: inherit;
+      cursor: pointer;
+    }
 
-      &::before {
-        content: '📰';
-        font-size: 1.5rem;
-      }
+    .logo-image {
+      height: 100px; /* Taille de l'image du logo (ajustez si nécessaire) */
+      margin-right: 10px;
+      /* Style des coins de l'icône dans le logo */
+      border-radius: 8px; 
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #333;
     }
 
     .subtitle {
       margin: 0.25rem 0 0 0;
-      opacity: 0.9;
-      font-size: 0.875rem;
+      opacity: 0.7;
+      font-size: 0.9rem;
+      color: #666;
     }
   }
 
@@ -40,35 +56,40 @@
     gap: 0.75rem;
     
     .btn {
-      padding: 0.5rem 1rem;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-weight: 500;
+      padding: 0.5rem 1rem; 
+      border: 1px solid #e2e8f0; /* Bordure claire */
+      border-radius: 8px; 
+      background: white; 
+      color: #666; /* Couleur de texte neutre */
+      font-weight: 600;
       transition: all 0.2s;
-      font-size: 0.875rem;
-
-      &.btn-primary {
-        background: rgba(255, 255, 255, 0.2);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.3);
-
-        &:hover {
-          background: rgba(255, 255, 255, 0.3);
-          transform: translateY(-1px);
-        }
-      }
-
-      &.btn-secondary {
-        background: rgba(255, 255, 255, 0.1);
-        color: white;
-        border: 1px solid rgba(255, 255, 255, 0.2);
+      font-size: 0.85rem;
+      
+      /* Appliquer le style discret aux trois boutons (.btn-primary, .btn-success, .btn-secondary) */
+      &.btn-primary, &.btn-success, &.btn-secondary {
+        background: white;
+        color: #666; 
+        border-color: #e2e8f0;
 
         &:hover {
-          background: rgba(255, 255, 255, 0.2);
+          background: #f0f4f8; 
           transform: translateY(-1px);
+          box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
         }
       }
     }
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .app-header .container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .app-header .nav-actions {
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    gap: 0.5rem;
   }
 }

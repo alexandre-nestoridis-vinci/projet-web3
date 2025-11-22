@@ -1,39 +1,4 @@
-<!-- Header -->
 <app-header></app-header>
-
-<!-- Main Content -->
 <main class="main-container">
-  <!-- Category Filter -->
-  <section class="filter-section">
-    <app-category-filter 
-      [categories]="categories" 
-      (categorySelected)="onCategorySelected($event)">
-    </app-category-filter>
-  </section>
-
-  <!-- News Sections -->
-  <section class="news-content">
-    <div class="news-grid">
-      <app-news-section 
-        *ngFor="let category of activeCategories" 
-        [category]="category"
-        [articles]="getArticlesByCategory(category.id)">
-      </app-news-section>
-    </div>
-
-    <!-- Loading indicator -->
-    <div *ngIf="isLoading" class="loading-container">
-      <div class="spinner"></div>
-      <p>Récupération des actualités en cours...</p>
-    </div>
-
-    <!-- Empty state -->
-    <div *ngIf="!isLoading && articles.length === 0" class="empty-state">
-      <h2>Aucune actualité disponible</h2>
-      <p>Cliquez sur une catégorie pour récupérer les news du jour</p>
-    </div>
-  </section>
+    <router-outlet></router-outlet> 
 </main>
-
-<!-- Router Outlet for additional pages -->
-<router-outlet></router-outlet>

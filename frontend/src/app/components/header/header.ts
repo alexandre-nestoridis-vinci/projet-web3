@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router'; 
 import { FirebaseService } from '../../services/firebase';
 import { BackendService } from '../../services/backend.service';
 import { NewsArticle, NewsCategory } from '../../models/news.model';
@@ -7,7 +8,7 @@ import { NewsArticle, NewsCategory } from '../../models/news.model';
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   templateUrl: './header.html',
   styleUrl: './header.scss'
 })

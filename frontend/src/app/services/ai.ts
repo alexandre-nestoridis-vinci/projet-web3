@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { AINewsAnalysis } from '../models/news.model';
+import { AINewsAnalysis, NewsArticle } from '../models/news.model';
 import { environment } from '../../environments/environment';
 
 @Injectable({
@@ -85,22 +85,5 @@ export class AiService {
     const lowerContent = content.toLowerCase();
     
     return topics.filter(topic => lowerContent.includes(topic)).slice(0, 3);
-  }
-
-  // Méthode pour intégrer une vraie API IA plus tard
-  private callOpenAI(prompt: string): Observable<any> {
-    const headers = {
-      'Authorization': `Bearer ${environment.openai.apiKey}`,
-      'Content-Type': 'application/json'
-    };
-
-    const body = {
-      model: 'gpt-3.5-turbo',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 500,
-      temperature: 0.7
-    };
-
-    return this.http.post('https://api.openai.com/v1/chat/completions', body, { headers });
   }
 }

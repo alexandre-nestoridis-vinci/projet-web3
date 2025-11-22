@@ -21,12 +21,7 @@ export interface Article {
   fetchedAt?: Date;
 }
 
-export interface Comment {
-  id?: string;
-  text: string;
-  authorName?: string;
-  createdAt: Date;
-}
+// Interface Comment supprimée
 
 export interface AnalysisResult {
   summary: string;
