@@ -3,14 +3,17 @@
  * Récupère les news réelles via une IA (Gemini ou OpenAI)
  */
 
+import * as functions from "firebase-functions";
 import axios from "axios";
 import {articlesCol} from "../firestore";
 import {analyzeArticle} from "./aiService";
 import {Article} from "../types";
 import crypto from "crypto";
 
+
+const GEMINI_API_KEY = functions.config().gemini.api_key || "";
+
 // Configuration - À remplir avec ta clé API
-const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 // Plus d'utilisation d'OpenAI
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 heure
 
