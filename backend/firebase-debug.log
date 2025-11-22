@@ -1,56 +1,48 @@
-[debug] [2025-11-22T02:20:19.511Z] ----------------------------------------------------------------------
-[debug] [2025-11-22T02:20:19.515Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ekoue\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
-[debug] [2025-11-22T02:20:19.516Z] CLI Version:   14.25.1
-[debug] [2025-11-22T02:20:19.516Z] Platform:      win32
-[debug] [2025-11-22T02:20:19.516Z] Node Version:  v24.11.1
-[debug] [2025-11-22T02:20:19.516Z] Time:          Sat Nov 22 2025 03:20:19 GMT+0100 (heure normale d’Europe centrale)
-[debug] [2025-11-22T02:20:19.516Z] ----------------------------------------------------------------------
+[debug] [2025-11-22T15:33:37.364Z] ----------------------------------------------------------------------
+[debug] [2025-11-22T15:33:37.367Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\ekoue\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js emulators:start
+[debug] [2025-11-22T15:33:37.368Z] CLI Version:   14.25.1
+[debug] [2025-11-22T15:33:37.368Z] Platform:      win32
+[debug] [2025-11-22T15:33:37.368Z] Node Version:  v24.11.1
+[debug] [2025-11-22T15:33:37.368Z] Time:          Sat Nov 22 2025 16:33:37 GMT+0100 (heure normale d’Europe centrale)
+[debug] [2025-11-22T15:33:37.368Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2025-11-22T02:20:19.519Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
-[debug] [2025-11-22T02:20:19.790Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2025-11-22T02:20:19.790Z] > authorizing via signed-in user (ekouehelmut@gmail.com)
-[debug] [2025-11-22T02:20:19.935Z] openjdk version "21.0.6" 2025-01-21 LTS
+[debug] [2025-11-22T15:33:37.596Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-11-22T15:33:37.597Z] > authorizing via signed-in user (ekouehelmut@gmail.com)
+[debug] [2025-11-22T15:33:37.849Z] openjdk version "21.0.6" 2025-01-21 LTS
 
-[debug] [2025-11-22T02:20:19.936Z] OpenJDK Runtime Environment (build 21.0.6+10-LTS)
+[debug] [2025-11-22T15:33:37.850Z] OpenJDK Runtime Environment (build 21.0.6+10-LTS)
 OpenJDK 64-Bit Server VM (build 21.0.6+10-LTS, mixed mode, sharing)
 
-[debug] [2025-11-22T02:20:19.954Z] Parsed Java major version: 21
+[debug] [2025-11-22T15:33:37.864Z] Parsed Java major version: 21
 [info] i  emulators: Starting emulators: functions, firestore, extensions {"metadata":{"emulator":{"name":"hub"},"message":"Starting emulators: functions, firestore, extensions"}}
-[debug] [2025-11-22T02:20:19.957Z] Checked if tokens are valid: false, expires at: 1763744910827
-[debug] [2025-11-22T02:20:19.958Z] Checked if tokens are valid: false, expires at: 1763744910827
-[debug] [2025-11-22T02:20:19.958Z] > refreshing access token with scopes: []
-[debug] [2025-11-22T02:20:19.960Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
-[debug] [2025-11-22T02:20:19.960Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2025-11-22T02:20:20.103Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
-[debug] [2025-11-22T02:20:20.103Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
-[debug] [2025-11-22T02:20:20.114Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
-[debug] [2025-11-22T02:20:20.114Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
-[debug] [2025-11-22T02:20:20.121Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci [none]
-[debug] [2025-11-22T02:20:20.871Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci 200
-[debug] [2025-11-22T02:20:20.871Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci {"projectNumber":"118445075960","projectId":"news-app-api-vinci","lifecycleState":"ACTIVE","name":"news-app-api-vinci","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-11-14T12:38:37.131854Z"}
-[debug] [2025-11-22T02:20:20.886Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T02:20:20.886Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T02:20:20.886Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T02:20:20.886Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
-[debug] [2025-11-22T02:20:20.892Z] Emulator locator file path: C:\Users\ekoue\AppData\Local\Temp\hub-news-app-api-vinci.json
-[debug] [2025-11-22T02:20:20.892Z] [hub] writing locator at C:\Users\ekoue\AppData\Local\Temp\hub-news-app-api-vinci.json
-[debug] [2025-11-22T02:20:20.900Z] [Extensions] Started Extensions emulator, this is a noop.
-[debug] [2025-11-22T02:20:20.909Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T02:20:20.910Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T02:20:20.910Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
-[debug] [2025-11-22T02:20:20.910Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
+[debug] [2025-11-22T15:33:37.868Z] Checked if tokens are valid: true, expires at: 1763826554489
+[debug] [2025-11-22T15:33:37.868Z] Checked if tokens are valid: true, expires at: 1763826554489
+[debug] [2025-11-22T15:33:37.869Z] >>> [apiv2][query] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci [none]
+[debug] [2025-11-22T15:33:38.170Z] <<< [apiv2][status] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci 200
+[debug] [2025-11-22T15:33:38.170Z] <<< [apiv2][body] GET https://cloudresourcemanager.googleapis.com/v1/projects/news-app-api-vinci {"projectNumber":"118445075960","projectId":"news-app-api-vinci","lifecycleState":"ACTIVE","name":"news-app-api-vinci","labels":{"firebase":"enabled","firebase-core":"disabled"},"createTime":"2025-11-14T12:38:37.131854Z"}
+[debug] [2025-11-22T15:33:38.187Z] [logging] Logging Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T15:33:38.187Z] [firestore] Firestore Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T15:33:38.187Z] [firestore.websocket] websocket server for firestore only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T15:33:38.187Z] assigned listening specs for emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}]},"metadata":{"message":"assigned listening specs for emulators"}}
+[debug] [2025-11-22T15:33:38.193Z] Emulator locator file path: C:\Users\ekoue\AppData\Local\Temp\hub-news-app-api-vinci.json
+[debug] [2025-11-22T15:33:38.194Z] [hub] writing locator at C:\Users\ekoue\AppData\Local\Temp\hub-news-app-api-vinci.json
+[debug] [2025-11-22T15:33:38.204Z] [Extensions] Started Extensions emulator, this is a noop.
+[debug] [2025-11-22T15:33:38.212Z] [functions] Functions Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T15:33:38.212Z] [eventarc] Eventarc Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T15:33:38.212Z] [tasks] Cloud Tasks Emulator only supports listening on one address (127.0.0.1). Not listening on ::1
+[debug] [2025-11-22T15:33:38.212Z] late-assigned ports for functions and eventarc emulators {"user":{"hub":[{"address":"127.0.0.1","family":"IPv4","port":4400},{"address":"::1","family":"IPv6","port":4400}],"ui":[{"address":"127.0.0.1","family":"IPv4","port":4000},{"address":"::1","family":"IPv6","port":4000}],"logging":[{"address":"127.0.0.1","family":"IPv4","port":4500}],"firestore":[{"address":"127.0.0.1","family":"IPv4","port":9099}],"firestore.websocket":[{"address":"127.0.0.1","family":"IPv4","port":9150}],"functions":[{"address":"127.0.0.1","family":"IPv4","port":5001}],"eventarc":[{"address":"127.0.0.1","family":"IPv4","port":9299}],"tasks":[{"address":"127.0.0.1","family":"IPv4","port":9499}]},"metadata":{"message":"late-assigned ports for functions and eventarc emulators"}}
 [warn] !  functions: The following emulators are not running, calls to these services from the Functions emulator will affect production: apphosting, auth, database, hosting, pubsub, storage, dataconnect {"metadata":{"emulator":{"name":"functions"},"message":"The following emulators are not running, calls to these services from the Functions emulator will affect production: \u001b[1mapphosting, auth, database, hosting, pubsub, storage, dataconnect\u001b[22m"}}
-[debug] [2025-11-22T02:20:20.965Z] defaultcredentials: writing to file C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json
-[debug] [2025-11-22T02:20:20.970Z] Setting GAC to C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\ekoue\\AppData\\Roaming\\firebase\\ekouehelmut_gmail_com_application_default_credentials.json"}}
-[debug] [2025-11-22T02:20:20.970Z] Checked if tokens are valid: true, expires at: 1763781619114
-[debug] [2025-11-22T02:20:20.970Z] Checked if tokens are valid: true, expires at: 1763781619114
-[debug] [2025-11-22T02:20:20.971Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig [none]
-[debug] [2025-11-22T02:20:21.288Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig 200
-[debug] [2025-11-22T02:20:21.288Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig {"projectId":"news-app-api-vinci","storageBucket":"news-app-api-vinci.firebasestorage.app"}
+[debug] [2025-11-22T15:33:38.233Z] defaultcredentials: writing to file C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json
+[debug] [2025-11-22T15:33:38.235Z] Setting GAC to C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\ekoue\\AppData\\Roaming\\firebase\\ekouehelmut_gmail_com_application_default_credentials.json"}}
+[debug] [2025-11-22T15:33:38.236Z] Checked if tokens are valid: true, expires at: 1763826554489
+[debug] [2025-11-22T15:33:38.236Z] Checked if tokens are valid: true, expires at: 1763826554489
+[debug] [2025-11-22T15:33:38.236Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig [none]
+[debug] [2025-11-22T15:33:38.644Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig 200
+[debug] [2025-11-22T15:33:38.644Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/news-app-api-vinci/adminSdkConfig {"projectId":"news-app-api-vinci","storageBucket":"news-app-api-vinci.firebasestorage.app"}
 [warn] !  firestore: Cloud Firestore Emulator does not support multiple databases yet. {"metadata":{"emulator":{"name":"firestore"},"message":"Cloud Firestore Emulator does not support multiple databases yet."}}
 [warn] !  firestore: Did not find a Cloud Firestore rules file specified in a firebase.json config file. {"metadata":{"emulator":{"name":"firestore"},"message":"Did not find a Cloud Firestore rules file specified in a firebase.json config file."}}
 [warn] !  firestore: The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration. {"metadata":{"emulator":{"name":"firestore"},"message":"The emulator will default to allowing all reads and writes. Learn more about this option: https://firebase.google.com/docs/emulator-suite/install_and_configure#security_rules_configuration."}}
-[debug] [2025-11-22T02:20:21.346Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
-[debug] [2025-11-22T02:20:21.346Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
-[debug] [2025-11-22T02:20:21.346Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ekoue\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",9099,"--websocket_port",9150,"--project_id","news-app-api-vinci","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":9099} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ekoue\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",9099,\"--websocket_port\",9150,\"--project_id\",\"news-app-api-vinci\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9099}"}}
+[debug] [2025-11-22T15:33:38.664Z] Ignoring unsupported arg: auto_download {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: auto_download"}}
+[debug] [2025-11-22T15:33:38.664Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
+[debug] [2025-11-22T15:33:38.664Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ekoue\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",9099,"--websocket_port",9150,"--project_id","news-app-api-vinci","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":9099} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ekoue\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",9099,\"--websocket_port\",9150,\"--project_id\",\"news-app-api-vinci\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9099}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}

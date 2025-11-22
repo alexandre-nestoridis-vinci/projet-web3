@@ -1,0 +1,152 @@
+﻿[
+    {
+        "id":  "s5Ok9gRCupf51KIjoSuE",
+        "title":  "La consommation énergétique de l\u0027IA, un défi croissant pour le secteur informatique",
+        "description":  "L\u0027essor fulgurant de l\u0027intelligence artificielle soulève des préoccupations croissantes concernant son empreinte énergétique et son impact environnemental.",
+        "content":  "Alors que l\u0027intelligence artificielle continue de progresser et de s\u0027intégrer dans de multiples secteurs, les experts alertent sur la consommation électrique exponentielle des centres de données et des infrastructures nécessaires à son fonctionnement. L\u0027entraînement de modèles d\u0027IA complexes et l\u0027exécution d\u0027inférences à grande échelle nécessitent des quantités colossales d\u0027énergie, posant un défi majeur en termes de développement durable. Cette consommation grandissante pourrait non seulement peser sur les réseaux électriques, mais aussi contribuer de manière significative aux émissions de carbone si l\u0027énergie n\u0027est pas issue de sources renouvelables, poussant le secteur à rechercher des solutions d\u0027IA plus efficientes.",
+        "url":  "https://www.techniques-ingenieur.fr/actualite/articles/l-intelligence-artificielle-une-consommation-energetique-grandissante-111077/",
+        "source":  {
+                       "name":  "Techniques de l\u0027Ingénieur",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763825883,
+                            "_nanoseconds":  489000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "cd82bb1833dbfb71ec75810b4d588a33",
+        "summary":  "La consommation énergétique de l\u0027IA, un défi croissant pour le secteur informatique L\u0027essor fulgurant de l\u0027intelligence artificielle soulève des préoccupations croissantes concernant son empreinte éne",
+        "sentiment":  "negative",
+        "keywords":  [
+                         "consommation",
+                         "nerg",
+                         "tique",
+                         "croissant",
+                         "pour"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763825883,
+                          "_nanoseconds":  489000000
+                      }
+    },
+    {
+        "id":  "V0qZxXnLmxWnyCHXwhGb",
+        "title":  "IBM acquiert HashiCorp pour 6,4 milliards de dollars, renforçant son offre cloud et IA",
+        "description":  "IBM a annoncé l\u0027acquisition de HashiCorp, éditeur de logiciels d\u0027automatisation d\u0027infrastructure cloud comme Terraform et Vault, pour un montant de 6,4 milliards de dollars.",
+        "content":  "Cette acquisition majeure par IBM de HashiCorp, une entreprise clé dans le domaine de l\u0027infrastructure as a code et de la gestion de secrets, représente une étape stratégique pour le géant technologique. HashiCorp est réputé pour ses outils open source et commerciaux tels que Terraform pour le provisionnement d\u0027infrastructure, Vault pour la gestion des identités et des accès, et Consul pour le maillage de services. En intégrant ces technologies, IBM vise à renforcer sa position sur le marché du cloud hybride et de l\u0027intelligence artificielle, en offrant à ses clients des solutions complètes pour l\u0027automatisation et la sécurité des environnements multi-cloud.",
+        "url":  "https://www.lemondeinformatique.fr/actualites/lire-ibm-acquiert-hashicorp-pour-6-4-milliards-de-dollars-93976.html",
+        "source":  {
+                       "name":  "Le Monde Informatique",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763825883,
+                            "_nanoseconds":  451000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "f2eef4ac2e52b4413d49df41414c8000",
+        "summary":  "IBM acquiert HashiCorp pour 6,4 milliards de dollars, renforçant son offre cloud et IA IBM a annoncé l\u0027acquisition de HashiCorp, éditeur de logiciels d\u0027automatisation d\u0027infrastructure cloud comme Terr",
+        "sentiment":  "neutral",
+        "keywords":  [
+                         "acquiert",
+                         "hashicorp",
+                         "pour",
+                         "milliards",
+                         "dollars"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763825883,
+                          "_nanoseconds":  451000000
+                      }
+    },
+    {
+        "id":  "6qtBOfdfQ5cgEPrtehwU",
+        "title":  "NVIDIA pulvérise les attentes avec des résultats record portés par l\u0027IA",
+        "description":  "Le géant des puces NVIDIA a annoncé des résultats trimestriels exceptionnels, dépassant largement les prévisions grâce à la forte demande pour ses processeurs dédiés à l\u0027intelligence artificielle.",
+        "content":  "NVIDIA, acteur incontournable du marché des semi-conducteurs, a une nouvelle fois surpris les analystes en publiant des chiffres financiers stratosphériques pour son premier trimestre fiscal 2025. Le chiffre d\u0027affaires a bondi de plus de 262% sur un an, atteignant 26 milliards de dollars, principalement tiré par la division \u0027Data Center\u0027 qui fournit les puces GPU essentielles au développement et à l\u0027exécution des modèles d\u0027IA. Ces résultats confirment la position dominante de NVIDIA dans l\u0027économie de l\u0027intelligence artificielle et renforcent son statut de valeur phare sur les marchés boursiers.",
+        "url":  "https://www.journaldunet.com/economie/resultats-financiers/1453272-nvidia-resultats-financiers-2024-analyse/",
+        "source":  {
+                       "name":  "Journal du Net",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763825883,
+                            "_nanoseconds":  413000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "4f3a97b36cf6d7e71297decfc275cb14",
+        "summary":  "NVIDIA pulvérise les attentes avec des résultats record portés par l\u0027IA Le géant des puces NVIDIA a annoncé des résultats trimestriels exceptionnels, dépassant largement les prévisions grâce à la fort",
+        "sentiment":  "neutral",
+        "keywords":  [
+                         "nvidia",
+                         "pulv",
+                         "rise",
+                         "attentes",
+                         "avec"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763825883,
+                          "_nanoseconds":  413000000
+                      }
+    },
+    {
+        "id":  "e7fZBf2zJSaeROOoVGab",
+        "title":  "Google TAG alerte sur des campagnes d\u0027espionnage d\u0027État exploitant des failles 0-day",
+        "description":  "Le groupe d\u0027analyse des menaces (TAG) de Google a révélé des campagnes d\u0027espionnage soutenues par des États, ciblant les utilisateurs d\u0027Android et de Chrome via des vulnérabilités zero-day.",
+        "content":  "Les experts du Threat Analysis Group (TAG) de Google ont mis en lumière plusieurs opérations d\u0027espionnage numérique financées par des États, qui exploitent des failles de sécurité non découvertes (zero-day) dans les systèmes d\u0027exploitation Android et le navigateur Chrome. Ces attaques visent à surveiller des individus ciblés, souvent dans des contextes politiques ou journalistiques. Google a travaillé à patcher ces vulnérabilités critiques et continue de surveiller ces menaces sophistiquées pour protéger ses utilisateurs contre des acteurs malveillants hautement organisés.",
+        "url":  "https://www.lemondeinformatique.fr/actualites/lire-google-tag-alerte-sur-des-campagnes-d-espionnage-d-etat-exploitant-des-failles-0-day-94090.html",
+        "source":  {
+                       "name":  "Le Monde Informatique",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763825883,
+                            "_nanoseconds":  364000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "30da89ae380c4c3aec6b758ed0152196",
+        "summary":  "Google TAG alerte sur des campagnes d\u0027espionnage d\u0027État exploitant des failles 0-day Le groupe d\u0027analyse des menaces (TAG) de Google a révélé des campagnes d\u0027espionnage soutenues par des États, ciblan",
+        "sentiment":  "negative",
+        "keywords":  [
+                         "google",
+                         "alerte",
+                         "campagnes",
+                         "espionnage",
+                         "exploitant"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763825883,
+                          "_nanoseconds":  365000000
+                      }
+    },
+    {
+        "id":  "W29HYDCHX4tHPrU0ErCo",
+        "title":  "Microsoft dévoile les PC Copilot+ et une nouvelle ère d\u0027IA intégrée pour Windows",
+        "description":  "Lors de sa conférence Build 2024, Microsoft a présenté les PC Copilot+, une nouvelle catégorie d\u0027ordinateurs Windows optimisés pour l\u0027IA, intégrant des fonctionnalités comme \u0027Rappel\u0027 et \u0027Cocreator\u0027.",
+        "content":  "Les PC Copilot+ représentent une avancée majeure pour Microsoft dans l\u0027intégration de l\u0027intelligence artificielle directement au cœur de Windows. Ces machines, équipées de puces ARM comme le Snapdragon X Elite, sont conçues pour offrir des performances d\u0027IA exceptionnelles, avec des fonctionnalités innovantes telles que \u0027Rappel\u0027 (Recall), qui permet de retrouver facilement tout ce qui a été vu ou fait sur l\u0027ordinateur, et \u0027Cocreator\u0027, pour la création d\u0027images assistée par IA. Cette initiative marque la volonté de Microsoft de transformer l\u0027expérience utilisateur grâce à l\u0027IA locale, tout en soulevant des débats sur la confidentialité des données.",
+        "url":  "https://www.lemondeinformatique.fr/actualites/lire-microsoft-mise-sur-l-ia-avec-les-pc-copilot-et-de-nouvelles-fonctionnalites-windows-94082.html",
+        "source":  {
+                       "name":  "Le Monde Informatique",
+                       "url":  ""
+                   },
+        "publishedAt":  {
+                            "_seconds":  1763825883,
+                            "_nanoseconds":  25000000
+                        },
+        "category":  "informatique",
+        "dedupHash":  "64601fbe17d61668fa3e051b23dcab31",
+        "summary":  "Microsoft dévoile les PC Copilot+ et une nouvelle ère d\u0027IA intégrée pour Windows Lors de sa conférence Build 2024, Microsoft a présenté les PC Copilot+, une nouvelle catégorie d\u0027ordinateurs Windows op",
+        "sentiment":  "neutral",
+        "keywords":  [
+                         "microsoft",
+                         "voile",
+                         "copilot",
+                         "nouvelle",
+                         "pour"
+                     ],
+        "fetchedAt":  {
+                          "_seconds":  1763825883,
+                          "_nanoseconds":  27000000
+                      }
+    }
+]

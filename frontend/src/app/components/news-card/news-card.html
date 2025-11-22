@@ -1,35 +1,23 @@
-<article class="news-card" *ngIf="article">
-  <div class="card-header">
-    <span class="category-badge" [style.background-color]="article.category.color">
-      {{ article.category.displayName }}
-    </span>
-    <span class="sentiment" [style.color]="getSentimentColor(article.sentiment || 'neutral')">
-      {{ getSentimentIcon(article.sentiment || 'neutral') }}
-    </span>
-  </div>
-
-  <div class="card-image" *ngIf="article.imageUrl">
-    <img [src]="article.imageUrl" [alt]="article.title" />
-  </div>
-
-  <div class="card-content">
-    <h3 class="article-title">{{ article.title }}</h3>
-    <p class="article-summary">{{ article.summary }}</p>
-    
-    <div class="article-meta">
-      <span class="source">{{ article.source }}</span>
-      <span class="date">{{ article.publishedAt | date:'short':'fr' }}</span>
-      <span class="ai-badge" *ngIf="article.aiGenerated">🤖 IA</span>
+<article 
+  class="news-card" 
+  *ngIf="article"
+>
+  <div 
+    class="card-link-wrapper"
+    [routerLink]="article.aiGenerated ? ['/article', article.title] : null"
+    [attr.href]="!article.aiGenerated ? article.url : null"
+    [attr.target]="!article.aiGenerated ? '_blank' : null"
+    [attr.rel]="!article.aiGenerated ? 'noopener' : null"
+  >
+    <div class="card-content">
+      <h3 class="article-title">{{ article.title }}</h3>
+      <p class="article-summary">{{ article.summary }}</p>
+      
+      <div class="article-meta">
+        <span class="source">{{ article.source }}</span>
+        <span class="date">{{ article.publishedAt | date:'short':'fr' }}</span>
+        <span class="ai-badge" *ngIf="article.aiGenerated">🤖 IA</span>
+      </div>
     </div>
-
-    <div class="article-tags" *ngIf="article.tags.length > 0">
-      <span class="tag" *ngFor="let tag of article.tags">{{ tag }}</span>
-    </div>
-  </div>
-
-  <div class="card-actions">
-    <a [href]="article.url" target="_blank" rel="noopener" class="read-more-btn">
-      Lire l'article complet
-    </a>
   </div>
 </article>

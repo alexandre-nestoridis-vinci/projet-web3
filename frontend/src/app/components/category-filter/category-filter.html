@@ -1,10 +1,9 @@
 <div class="category-filter">
-  
   <div class="generation-area">
     <button 
-      (click)="generateNewsByClick()"  
+      (click)="generateNewsByClick()"  
       [disabled]="isLoadingNews" 
-      class="btn-generate-ai" 
+      class="btn-generate-ai generate-news-button" 
       [class.is-loading]="isLoadingNews"
     >
       <span *ngIf="!isLoadingNews">
@@ -15,10 +14,4 @@
       </span>
     </button>
   </div>
-  
-  <div class="filter-header">
-    <h2>Actualités Tech générées par IA</h2>
-    <p>Cliquez sur le bouton pour obtenir les 5 dernières actualités du domaine de l'informatique.</p>
-  </div>
-  
-  </div>
+</div>

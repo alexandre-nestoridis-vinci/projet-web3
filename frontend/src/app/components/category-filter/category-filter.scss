@@ -1,59 +1,66 @@
 .category-filter {
-  padding: 2rem;
-  background: #f8fafc;
-  border-radius: 12px;
-  margin: 2rem 0;
+  /* Suppression des anciens padding, background et margin du bloc complet */
+  padding: 0;
+  background: none;
+  border-radius: 0;
+  margin: 0;
+  
+  /* Les styles de marges et de fond sont désormais gérés par .ai-generation-block dans app.scss */
 
   .filter-header {
+    /* Styles pour le titre et le sous-titre de l'IA (transférés ici) */
     text-align: center;
     margin-bottom: 2rem;
 
     h2 {
       margin: 0 0 0.5rem 0;
-      color: #1e293b;
-      font-size: 1.5rem;
+      color: #333; /* Couleur de texte sombre */
+      font-size: 2.5rem; /* Grande taille d'après le mock-up */
+      font-weight: 700;
     }
 
     p {
       margin: 0;
-      color: #64748b;
-      font-size: 0.875rem;
+      color: #666; /* Couleur de texte secondaire */
+      font-size: 1.1rem;
     }
   }
 
   // Ajout des styles du bouton de génération AI
   .generation-area {
     text-align: center;
-    // Ajout d'espace au-dessus et en dessous pour bien séparer le bouton du header
-    margin: 0 0 2.5rem 0; 
+    margin: 0; /* Suppression des marges pour laisser le bloc parent gérer l'espacement */
   }
 
   .btn-generate-ai {
+    /* Les styles de bouton doivent être définis par .generate-news-button dans app.scss 
+       mais nous allons garantir ici les styles de base et les animations de chargement. */
+
     // Utilisation d'une couleur d'accent qui contraste avec le gris/bleu existant
     $ai-color: #4f46e5; // Indigo 
     
-    background-color: $ai-color;
+    background: linear-gradient(135deg, #a855f7 0%, #6366f1 100%); /* Dégradé du mock-up */
     color: white;
-    padding: 12px 28px;
-    font-size: 1rem;
-    font-weight: 700;
+    padding: 0.75rem 1.5rem; /* Ajusté pour correspondre à la DA */
+    font-size: 1.2rem;
+    font-weight: 600;
     border: none;
-    border-radius: 9999px; // Bouton ovale
+    border-radius: 12px; 
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 5px 15px rgba($ai-color, 0.4); 
+    box-shadow: 0 5px 20px rgba(99, 102, 241, 0.4); 
     
     display: inline-flex;
     align-items: center;
     gap: 10px;
 
     &:hover:not([disabled]) {
-      background-color: darken($ai-color, 5%);
+      box-shadow: 0 8px 30px rgba(99, 102, 241, 0.6);
       transform: translateY(-2px);
     }
 
     &[disabled] {
-      background-color: #94a3b8; // Couleur grise désactivée
+      background-color: #94a3b8;
       color: #f8fafc;
       opacity: 0.8;
       cursor: not-allowed;
@@ -78,50 +85,5 @@
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
   }
-  // Fin de l'ajout des styles du bouton
-  
-  .categories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .category-btn {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 1.5rem 1rem;
-    background: white;
-    border: 2px solid #e2e8f0;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-    color: inherit;
-
-    &:hover {
-      border-color: var(--category-color);
-      background: color-mix(in srgb, var(--category-color) 5%, white);
-      transform: translateY(-2px);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    }
-
-    .category-icon {
-      font-size: 2rem;
-      display: block;
-    }
-
-    .category-name {
-      font-weight: 600;
-      color: #374151;
-      font-size: 0.875rem;
-    }
-
-    &:active {
-      transform: translateY(0);
-    }
-  }
 }
+/* Les anciens styles .categories-grid, .category-btn, etc. sont omis car ils ont été supprimés du HTML. */

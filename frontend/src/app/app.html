@@ -1,38 +1,46 @@
 <app-header></app-header>
 
 <main class="main-container">
-  <section class="filter-section">
-    <app-category-filter 
-      (newsGenerated)="onNewsGenerated($event)">
-    </app-category-filter>
-  </section>
+  
+  <section class="top-section">
+    
+    <div class="ai-generator-block">
+      <h1 class="ai-generation-title">Actualités Tech générées par IA</h1>
+      <p class="ai-generation-subtitle">Cliquez sur le bouton pour obtenir les 5 dernières actualités du domaine de l'informatique.</p>
+      
+      <app-category-filter 
+        (newsGenerated)="onNewsGenerated($event)">
+      </app-category-filter>
+    </div>
 
-  <section class="global-search-container">
-    <div class="search-input-wrapper">
-      <input
-        type="search"
-        placeholder="Rechercher parmi toutes les actualités..."
-        [value]="searchTerm"
-        #globalSearch
-        (focus)="onSearchFocus()"
-        (input)="onSearchInput(globalSearch.value)"
-        (keyup.enter)="onSearchSubmit()"
-        class="global-search-input"
-      />
-      <button *ngIf="searchTerm.length > 0" class="clear-search-button" (click)="clearSearch()">
-      </button>
+    <div class="search-section">
+      <div class="global-search-container">
+        <div class="search-input-wrapper">
+          <input
+            type="search"
+            placeholder="Rechercher parmi toutes les actualités..."
+            [value]="searchTerm"
+            #globalSearch
+            (focus)="onSearchFocus()"
+            (input)="onSearchInput(globalSearch.value)"
+            (keyup.enter)="onSearchSubmit()"
+            class="global-search-input"
+          />
+          <button *ngIf="searchTerm.length > 0" class="clear-search-button" (click)="clearSearch()">
+          </button>
+        </div>
+
+        <ul *ngIf="suggestionResults.length > 0 && searchTerm.length > 0" class="suggestions">
+          <li *ngFor="let s of suggestionResults" (click)="onSelectSuggestion(s)">
+            <strong>{{ s.title }}</strong>
+            <div class="suggestion-meta">{{ s.source }} — {{ s.publishedAt ? (s.publishedAt | date:'short') : '' }}</div>
+          </li>
+        </ul>
       </div>
-
-    <ul *ngIf="suggestionResults.length > 0 && searchTerm.length >= 0" class="suggestions">
-      <li *ngFor="let s of suggestionResults" (click)="onSelectSuggestion(s)">
-        <strong>{{ s.title }}</strong>
-        <div class="suggestion-meta">{{ s.source }} — {{ s.publishedAt ? (s.publishedAt | date:'short') : '' }}</div>
-      </li>
-    </ul>
+    </div>
   </section>
-
+  
   <section class="news-content">
-
     <div *ngIf="searchActive">
       <div class="results-grid">
         <app-news-card *ngFor="let a of searchResults" [article]="a"></app-news-card>
