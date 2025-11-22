@@ -68,7 +68,6 @@ export class App implements OnInit {
     } as NewsArticle;
   }
 
-  // 🚩 DÉMARRAGE : Simplifié pour charger toutes les news persistées
   ngOnInit() {
     this.categories = this.newsService.getCategories();
     

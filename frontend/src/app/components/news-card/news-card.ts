@@ -1,12 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NewsArticle } from '../../models/news.model';
-import { RouterLink } from '@angular/router'; // 🚩 CORRECTION : Ajout de l'import RouterLink
+import { RouterLink } from '@angular/router'; 
 
 @Component({
   selector: 'app-news-card',
   standalone: true,
-  // 🚩 CORRECTION : Ajout de RouterLink au tableau imports
   imports: [CommonModule, RouterLink], 
   templateUrl: './news-card.html',
   styleUrl: './news-card.scss'

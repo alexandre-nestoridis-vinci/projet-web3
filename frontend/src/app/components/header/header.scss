@@ -15,7 +15,6 @@
   }
 
   .brand {
-    /* 🚩 NOUVEAU: Conteneur du logo cliquable */
     .logo-link {
       display: flex;
       align-items: center;
@@ -24,7 +23,6 @@
       cursor: pointer;
     }
 
-    /* 🚩 NOUVEAU: Image du logo */
     .logo-image {
       height: 100px; /* Taille de l'image du logo (ajustez si nécessaire) */
       margin-right: 10px;
@@ -32,7 +30,6 @@
       border-radius: 8px; 
     }
 
-    /* 🚩 NOUVEAU: Conteneur du texte */
     .logo-text {
       display: flex;
       flex-direction: column;

@@ -77,9 +77,7 @@
     display: -webkit-box;
     -webkit-line-clamp: 3; /* Le préfixe WebKit */
     -webkit-box-orient: vertical;
-    
-    line-clamp: 3; /* 🚩 CORRECTION : Ajout de la propriété standard */
-
+    line-clamp: 3; 
     overflow: hidden;
   }
 

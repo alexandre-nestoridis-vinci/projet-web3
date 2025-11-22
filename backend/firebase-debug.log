@@ -46,3 +46,313 @@ OpenJDK 64-Bit Server VM (build 21.0.6+10-LTS, mixed mode, sharing)
 [debug] [2025-11-22T15:33:38.664Z] Ignoring unsupported arg: single_project_mode_error {"metadata":{"emulator":{"name":"firestore"},"message":"Ignoring unsupported arg: single_project_mode_error"}}
 [debug] [2025-11-22T15:33:38.664Z] Starting Firestore Emulator with command {"binary":"java","args":["-Dgoogle.cloud_firestore.debug_log_level=FINE","-Duser.language=en","-jar","C:\\Users\\ekoue\\.cache\\firebase\\emulators\\cloud-firestore-emulator-v1.19.8.jar","--host","127.0.0.1","--port",9099,"--websocket_port",9150,"--project_id","news-app-api-vinci","--single_project_mode",true,"--functions_emulator","127.0.0.1:5001"],"optionalArgs":["port","webchannel_port","host","rules","websocket_port","functions_emulator","seed_from_export","project_id","single_project_mode"],"joinArgs":false,"shell":false,"port":9099} {"metadata":{"emulator":{"name":"firestore"},"message":"Starting Firestore Emulator with command {\"binary\":\"java\",\"args\":[\"-Dgoogle.cloud_firestore.debug_log_level=FINE\",\"-Duser.language=en\",\"-jar\",\"C:\\\\Users\\\\ekoue\\\\.cache\\\\firebase\\\\emulators\\\\cloud-firestore-emulator-v1.19.8.jar\",\"--host\",\"127.0.0.1\",\"--port\",9099,\"--websocket_port\",9150,\"--project_id\",\"news-app-api-vinci\",\"--single_project_mode\",true,\"--functions_emulator\",\"127.0.0.1:5001\"],\"optionalArgs\":[\"port\",\"webchannel_port\",\"host\",\"rules\",\"websocket_port\",\"functions_emulator\",\"seed_from_export\",\"project_id\",\"single_project_mode\"],\"joinArgs\":false,\"shell\":false,\"port\":9099}"}}
 [info] i  firestore: Firestore Emulator logging to firestore-debug.log {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator logging to \u001b[1mfirestore-debug.log\u001b[22m"}}
+[debug] [2025-11-22T15:33:41.151Z] Nov 22, 2025 4:33:41 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start
+INFO: Started WebSocket server on ws://127.0.0.1:9150
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 22, 2025 4:33:41 PM com.google.cloud.datastore.emulator.firestore.websocket.WebSocketServer start\r\nINFO: Started WebSocket server on ws://127.0.0.1:9150\r\n"}}
+[debug] [2025-11-22T15:33:41.297Z] API endpoint: http:// {"metadata":{"emulator":{"name":"firestore"},"message":"API endpoint: http://"}}
+[debug] [2025-11-22T15:33:41.298Z] 127.0.0.1:9099
+If you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:
+
+   export FIRESTORE_EMULATOR_HOST=127.0.0.1:9099
+
+If you are running a Firestore in Datastore Mode project, run:
+
+   export DATASTORE_EMULATOR_HOST=127.0.0.1:9099
+
+Note: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.
+Dev App Server is now running.
+
+ {"metadata":{"emulator":{"name":"firestore"},"message":"127.0.0.1:9099\nIf you are using a library that supports the FIRESTORE_EMULATOR_HOST environment variable, run:\r\n\n   export FIRESTORE_EMULATOR_HOST=127.0.0.1:9099\n\nIf you are running a Firestore in Datastore Mode project, run:\r\n\n   export DATASTORE_EMULATOR_HOST=127.0.0.1:9099\n\nNote: Support for Datastore Mode is in preview. If you encounter any bugs please file at https://github.com/firebase/firebase-tools/issues.\r\nDev App Server is now running.\n\r\n"}}
+[info] +  firestore: Firestore Emulator UI websocket is running on 9150. {"metadata":{"emulator":{"name":"firestore"},"message":"Firestore Emulator UI websocket is running on 9150."}}
+[debug] [2025-11-22T15:33:41.321Z] [Extensions] Connecting Extensions emulator, this is a noop.
+[info] i  functions: Watching "C:\Users\ekoue\ECOLE\BIN\BIN3\WEB3\projet-web3\backend\functions" for Cloud Functions... {"metadata":{"emulator":{"name":"functions"},"message":"Watching \"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\" for Cloud Functions..."}}
+[debug] [2025-11-22T15:33:41.335Z] Validating nodejs source
+[warn] !  functions: package.json indicates an outdated version of firebase-functions. Please upgrade using npm install --save firebase-functions@latest in your functions directory. 
+[warn] !  functions: Please note that there will be breaking changes when you upgrade. 
+[debug] [2025-11-22T15:33:42.917Z] > [functions] package.json contents: {
+  "name": "functions",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts .",
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "serve": "npm run build && firebase emulators:start --only functions",
+    "shell": "npm run build && firebase functions:shell",
+    "start": "npm run shell",
+    "deploy": "firebase deploy --only functions",
+    "logs": "firebase functions:log"
+  },
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "dependencies": {
+    "axios": "^1.13.2",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.0",
+    "@typescript-eslint/parser": "^5.12.0",
+    "eslint": "^8.9.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-import": "^2.25.4",
+    "firebase-functions-test": "^3.1.0",
+    "typescript": "^5.7.3"
+  },
+  "private": true
+}
+[debug] [2025-11-22T15:33:42.917Z] Building nodejs source
+[debug] [2025-11-22T15:33:42.918Z] Failed to find version of module node: reached end of search path C:\Users\ekoue\ECOLE\BIN\BIN3\WEB3\projet-web3\backend\functions\node_modules
+[warn] !  functions: Your requested "node" version "22" doesn't match your global version "24". Using node@24 from host. 
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-11-22T15:33:42.922Z] Could not find functions.yaml. Must use http discovery
+[debug] [2025-11-22T15:33:42.942Z] Found firebase-functions binary at 'C:\Users\ekoue\ECOLE\BIN\BIN3\WEB3\projet-web3\backend\functions\node_modules\.bin\firebase-functions'
+[info] Serving at port 8232
+
+[debug] [2025-11-22T15:33:44.356Z] Got response from /__/functions.yaml {"endpoints":{"api":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"api"},"eurApi":{"availableMemoryMb":null,"timeoutSeconds":null,"minInstances":null,"maxInstances":null,"ingressSettings":null,"concurrency":null,"serviceAccountEmail":null,"vpc":null,"platform":"gcfv2","labels":{},"httpsTrigger":{},"entryPoint":"eurApi"}},"specVersion":"v1alpha1","requiredAPIs":[],"extensions":{}}
+[debug] [2025-11-22T15:33:48.398Z] defaultcredentials: writing to file C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json
+[debug] [2025-11-22T15:33:48.400Z] Setting GAC to C:\Users\ekoue\AppData\Roaming\firebase\ekouehelmut_gmail_com_application_default_credentials.json {"metadata":{"emulator":{"name":"functions"},"message":"Setting GAC to C:\\Users\\ekoue\\AppData\\Roaming\\firebase\\ekouehelmut_gmail_com_application_default_credentials.json"}}
+[info] +  functions: Loaded functions definitions from source: api, eurApi. {"metadata":{"emulator":{"name":"functions"},"message":"Loaded functions definitions from source: api, eurApi."}}
+[info] +  functions[us-central1-api]: http function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/api). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/api)."}}
+[info] +  functions[us-central1-eurApi]: http function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/eurApi). {"metadata":{"emulator":{"name":"functions"},"message":"\u001b[1mhttp\u001b[22m function initialized (http://127.0.0.1:5001/news-app-api-vinci/us-central1/eurApi)."}}
+[debug] [2025-11-22T15:33:48.411Z] Could not find VSCode notification endpoint: FetchError: request to http://localhost:40001/vscode/notify failed, reason: . If you are not running the Firebase Data Connect VSCode extension, this is expected and not an issue.
+[info] 
+┌─────────────────────────────────────────────────────────────┐
+│ ✔  All emulators ready! It is now safe to connect your app. │
+│ i  View Emulator UI at http://127.0.0.1:4000/               │
+└─────────────────────────────────────────────────────────────┘
+
+┌────────────┬────────────────┬──────────────────────────────────┐
+│ Emulator   │ Host:Port      │ View in Emulator UI              │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Functions  │ 127.0.0.1:5001 │ http://127.0.0.1:4000/functions  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Firestore  │ 127.0.0.1:9099 │ http://127.0.0.1:4000/firestore  │
+├────────────┼────────────────┼──────────────────────────────────┤
+│ Extensions │ 127.0.0.1:5001 │ http://127.0.0.1:4000/extensions │
+└────────────┴────────────────┴──────────────────────────────────┘
+  Emulator Hub host: 127.0.0.1 port: 4400
+  Other reserved ports: 4500, 9150
+┌─────────────────────────┬───────────────┬─────────────────────┐
+│ Extension Instance Name │ Extension Ref │ View in Emulator UI │
+└─────────────────────────┴───────────────┴─────────────────────┘
+Issues? Report them at https://github.com/firebase/firebase-tools/issues and attach the *-debug.log files.
+ 
+[debug] [2025-11-22T15:34:03.133Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:34:03.133Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:34:03.134Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:34:03.133Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:34:03.134Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:34:03.140Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:34:03.141Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[info] i  functions: Loaded environment variables from .env. 
+[debug] [2025-11-22T15:34:03.165Z] [worker-pool] addWorker(us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] addWorker(us-central1-api)"}}
+[debug] [2025-11-22T15:34:03.166Z] [worker-pool] Adding worker with key us-central1-api, total=1 {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] Adding worker with key us-central1-api, total=1"}}
+[debug] [2025-11-22T15:34:04.783Z] [runtime-status] [42492] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-11-22T15:34:04.784Z] [runtime-status] [42492] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T15:34:04.785Z] [runtime-status] [42492] Outgoing network have been stubbed. [{"name":"http","status":"mocked"},{"name":"http","status":"mocked"},{"name":"https","status":"mocked"},{"name":"https","status":"mocked"},{"name":"net","status":"mocked"}] {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Outgoing network have been stubbed. [{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"http\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"https\",\"status\":\"mocked\"},{\"name\":\"net\",\"status\":\"mocked\"}]"}}
+[debug] [2025-11-22T15:34:04.786Z] [runtime-status] [42492] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T15:34:05.340Z] [runtime-status] [42492] Checked functions.config() {"config":{}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Checked functions.config() {\"config\":{}}"}}
+[debug] [2025-11-22T15:34:05.340Z] [runtime-status] [42492] firebase-functions has been stubbed. {"functionsResolution":{"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] firebase-functions has been stubbed. {\"functionsResolution\":{\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}}"}}
+[debug] [2025-11-22T15:34:05.342Z] [runtime-status] [42492] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T15:34:05.352Z] [runtime-status] [42492] Resolved module firebase-admin {"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Resolved module firebase-admin {\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}"}}
+[debug] [2025-11-22T15:34:05.356Z] [runtime-status] [42492] Resolved module firebase-functions {"declared":true,"installed":true,"version":"6.6.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-functions\\lib\\v2\\index.js"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Resolved module firebase-functions {\"declared\":true,\"installed\":true,\"version\":\"6.6.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-functions\\\\lib\\\\v2\\\\index.js\"}"}}
+[debug] [2025-11-22T15:34:05.357Z] [runtime-status] [42492] firebase-admin has been stubbed. {"adminResolution":{"declared":true,"installed":true,"version":"12.7.0","resolution":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions\\node_modules\\firebase-admin\\lib\\index.js"}} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] firebase-admin has been stubbed. {\"adminResolution\":{\"declared\":true,\"installed\":true,\"version\":\"12.7.0\",\"resolution\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\\\\node_modules\\\\firebase-admin\\\\lib\\\\index.js\"}}"}}
+[debug] [2025-11-22T15:34:05.513Z] [runtime-status] [42492] initializeApp(DEFAULT) {"storageBucket":"news-app-api-vinci.firebasestorage.app","projectId":"news-app-api-vinci"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] initializeApp(DEFAULT) {\"storageBucket\":\"news-app-api-vinci.firebasestorage.app\",\"projectId\":\"news-app-api-vinci\"}"}}
+[debug] [2025-11-22T15:34:05.557Z] [runtime-status] [42492] Functions runtime initialized. {"cwd":"C:\\Users\\ekoue\\ECOLE\\BIN\\BIN3\\WEB3\\projet-web3\\backend\\functions","node_version":"24.11.1"} {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Functions runtime initialized. {\"cwd\":\"C:\\\\Users\\\\ekoue\\\\ECOLE\\\\BIN\\\\BIN3\\\\WEB3\\\\projet-web3\\\\backend\\\\functions\",\"node_version\":\"24.11.1\"}"}}
+[debug] [2025-11-22T15:34:05.557Z] [runtime-status] [42492] Listening to port: \\?\pipe\fire_emu_f605b148d9de4979 {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[runtime-status] [42492] Listening to port: \\\\?\\pipe\\fire_emu_f605b148d9de4979"}}
+[debug] [2025-11-22T15:34:05.611Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:34:05.612Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:34:05.613Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:34:06.391Z] Nov 22, 2025 4:34:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead
+INFO: Detected HTTP/2 connection.
+ {"metadata":{"emulator":{"name":"firestore"},"message":"Nov 22, 2025 4:34:06 PM io.gapi.emulators.netty.HttpVersionRoutingHandler channelRead\r\nINFO: Detected HTTP/2 connection.\r\n"}}
+[debug] [2025-11-22T15:34:08.953Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 3341.0241ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 3341.0241ms"}}
+[debug] [2025-11-22T15:34:08.956Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:34:08.957Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:34:08.957Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:34:08.958Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:34:11.347Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:34:11.347Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:34:11.348Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:34:11.347Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:34:11.348Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:34:11.353Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:34:11.354Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T15:34:11.355Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:34:11.358Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:34:11.400Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 43.095ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 43.095ms"}}
+[debug] [2025-11-22T15:34:11.404Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:34:11.404Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:34:11.404Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:34:11.405Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:34:11.408Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:34:11.408Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:34:11.410Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:34:11.408Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:34:11.410Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:34:11.418Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:34:11.419Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T15:34:11.419Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:34:11.421Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:34:11.456Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 34.814ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 34.814ms"}}
+[debug] [2025-11-22T15:34:11.457Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:34:11.458Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:34:11.458Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:34:11.458Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:26.822Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:37:26.822Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:26.822Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:37:26.822Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:37:26.822Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:37:26.826Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:37:26.826Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T15:37:26.826Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:37:26.827Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:37:26.860Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 32.813ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 32.813ms"}}
+[debug] [2025-11-22T15:37:26.861Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:37:26.861Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:37:26.861Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:37:26.862Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:37.613Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:37:37.613Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:37.614Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:37:37.613Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:37:37.614Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:37:37.616Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:37:37.617Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T15:37:37.617Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:37:37.617Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:37:37.636Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 19.0862ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 19.0862ms"}}
+[debug] [2025-11-22T15:37:37.637Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:37:37.638Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:37:37.638Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:37:37.638Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:39.049Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:37:39.049Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:39.050Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:37:39.049Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:37:39.050Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:37:39.052Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:37:39.052Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T15:37:39.052Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:37:39.054Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:37:39.080Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 26.8504ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 26.8504ms"}}
+[debug] [2025-11-22T15:37:39.082Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:37:39.082Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:37:39.082Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:37:39.082Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:43.658Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:37:43.658Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:43.658Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:37:43.658Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:37:43.658Z] Accepted request OPTIONS /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T15:37:43.660Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:37:43.661Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T15:37:43.661Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:37:43.663Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:37:43.668Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 5.5496ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 5.5496ms"}}
+[debug] [2025-11-22T15:37:43.670Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:37:43.670Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:37:43.671Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:37:43.671Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:43.673Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:37:43.673Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:37:43.675Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:37:43.673Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:37:43.675Z] Accepted request POST /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T15:37:43.679Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:37:43.680Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T15:37:43.680Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:37:43.681Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[info] >  Fetching with Gemini... {"user":"Fetching with Gemini...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Fetching with Gemini..."}}
+[info] >  Calling Gemini API for category: Informatique {"user":"Calling Gemini API for category: Informatique","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Calling Gemini API for category: Informatique"}}
+[info] >  Gemini response received! {"user":"Gemini response received!","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response received!"}}
+[info] >  Gemini response text: ```json {"user":"Gemini response text: ```json","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response text: ```json"}}
+[info] >  [ {"user":"[","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m ["}}
+[info] >    { {"user":"  {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   {"}}
+[info] >      "title": "Microsoft dévoile les PC Copilot+ et une nouvelle ère d'IA intégrée pour Windows", {"user":"    \"title\": \"Microsoft dévoile les PC Copilot+ et une nouvelle ère d'IA intégrée pour Windows\",","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"title\": \"Microsoft dévoile les PC Copilot+ et une nouvelle ère d'IA intégrée pour Windows\","}}
+[info] >      "description": "Lors de sa conférence Build 2024, Microsoft a présenté les PC Copilot {"user":"    \"description\": \"Lors de sa conférence Build 2024, Microsoft a présenté les PC Copilot","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"description\": \"Lors de sa conférence Build 2024, Microsoft a présenté les PC Copilot"}}
+[debug] [2025-11-22T15:38:03.513Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 19832.0601ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 19832.0601ms"}}
+[debug] [2025-11-22T15:38:03.514Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:38:03.515Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:38:03.515Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:38:03.515Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:38:13.029Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:38:13.029Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:38:13.030Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:38:13.029Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:38:13.030Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:38:13.035Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:38:13.035Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T15:38:13.036Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:38:13.037Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:38:13.103Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 66.7517ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 66.7517ms"}}
+[debug] [2025-11-22T15:38:13.105Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:38:13.105Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:38:13.105Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:38:13.106Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:38:25.456Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:38:25.456Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:38:25.456Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:38:25.456Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:38:25.457Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news --> us-central1-api
+[debug] [2025-11-22T15:38:25.460Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:38:25.460Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news, mapping to path=/api/news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news, mapping to path=/api/news"}}
+[debug] [2025-11-22T15:38:25.460Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:38:25.462Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:38:25.480Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 19.105ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 19.105ms"}}
+[debug] [2025-11-22T15:38:25.481Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:38:25.481Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:38:25.482Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:38:25.482Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:43:23.529Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:43:23.529Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:43:23.529Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/news-2025-11-22T15:43:23.529Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:43:23.529Z] Accepted request GET /news-app-api-vinci/us-central1/api/api/news?limit=200 --> us-central1-api
+[debug] [2025-11-22T15:43:23.532Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:43:23.532Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200 {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/news?limit=200, mapping to path=/api/news?limit=200"}}
+[debug] [2025-11-22T15:43:23.532Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:43:23.533Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:43:23.564Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 30.6732ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 30.6732ms"}}
+[debug] [2025-11-22T15:43:23.565Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:43:23.565Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:43:23.565Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:43:23.565Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:50:49.566Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:50:49.566Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:50:49.566Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:50:49.566Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:50:49.566Z] Accepted request OPTIONS /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T15:50:49.572Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:50:49.573Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T15:50:49.573Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:50:49.579Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[debug] [2025-11-22T15:50:49.589Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 10.9693ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 10.9693ms"}}
+[debug] [2025-11-22T15:50:49.593Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:50:49.593Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:50:49.596Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:50:49.597Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:50:49.600Z] [work-queue] {"queuedWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:50:49.600Z"],"queueLength":1,"runningWork":[],"workRunningCount":0}
+[debug] [2025-11-22T15:50:49.601Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":["/news-app-api-vinci/us-central1/api/api/fetch-ai-news-2025-11-22T15:50:49.600Z"],"workRunningCount":1}
+[debug] [2025-11-22T15:50:49.601Z] Accepted request POST /news-app-api-vinci/us-central1/api/api/fetch-ai-news --> us-central1-api
+[debug] [2025-11-22T15:50:49.607Z] [functions] Runtime ready! Sending request! {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Runtime ready! Sending request!"}}
+[debug] [2025-11-22T15:50:49.608Z] [functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news {"metadata":{"emulator":{"name":"functions"},"message":"[functions] Got req.url=/news-app-api-vinci/us-central1/api/api/fetch-ai-news, mapping to path=/api/fetch-ai-news"}}
+[debug] [2025-11-22T15:50:49.608Z] [worker-pool] submitRequest(triggerId=us-central1-api) {"metadata":{"emulator":{"name":"functions"},"message":"[worker-pool] submitRequest(triggerId=us-central1-api)"}}
+[info] i  functions: Beginning execution of "us-central1-api" {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Beginning execution of \"us-central1-api\""}}
+[debug] [2025-11-22T15:50:49.610Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: BUSY"}}
+[info] >  Fetching with Gemini... {"user":"Fetching with Gemini...","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Fetching with Gemini..."}}
+[info] >  Calling Gemini API for category: Informatique {"user":"Calling Gemini API for category: Informatique","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Calling Gemini API for category: Informatique"}}
+[info] >  Gemini response received! {"user":"Gemini response received!","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response received!"}}
+[info] >  Gemini response text: ```json {"user":"Gemini response text: ```json","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m Gemini response text: ```json"}}
+[info] >  [ {"user":"[","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m ["}}
+[info] >    { {"user":"  {","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m   {"}}
+[info] >      "title": "OpenAI retire sa voix \"Sky\" après des plaintes de Scarlett Johansson pour ressemblance", {"user":"    \"title\": \"OpenAI retire sa voix \\\"Sky\\\" après des plaintes de Scarlett Johansson pour ressemblance\",","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"title\": \"OpenAI retire sa voix \\\"Sky\\\" après des plaintes de Scarlett Johansson pour ressemblance\","}}
+[info] >      "description": "L'entreprise a suspendu l'une des voix de son IA, \"Sky\", ut {"user":"    \"description\": \"L'entreprise a suspendu l'une des voix de son IA, \\\"Sky\\\", ut","metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"\u001b[90m> \u001b[39m     \"description\": \"L'entreprise a suspendu l'une des voix de son IA, \\\"Sky\\\", ut"}}
+[debug] [2025-11-22T15:51:07.787Z] Finishing up request with event=pause {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=pause"}}
+[info] i  functions: Finished "us-central1-api" in 18177.3747ms {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finished \"us-central1-api\" in 18177.3747ms"}}
+[debug] [2025-11-22T15:51:07.788Z] [worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"[worker-us-central1-api-b0a2a980-1cd1-47e7-9a05-fdc1afff56f3]: IDLE"}}
+[debug] [2025-11-22T15:51:07.788Z] Finishing up request with event=finish {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=finish"}}
+[debug] [2025-11-22T15:51:07.789Z] Finishing up request with event=close {"metadata":{"emulator":{"name":"functions"},"function":{"name":"us-central1-api"},"extension":{},"message":"Finishing up request with event=close"}}
+[debug] [2025-11-22T15:51:07.789Z] [work-queue] {"queuedWork":[],"queueLength":0,"runningWork":[],"workRunningCount":0}
